@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raudinei Afonso</title>
 
-    <!-- Fonte elegante estilo cartão -->
+    <!-- Fonte Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -21,96 +21,123 @@
         }
 
         .container {
-            max-width: 420px;
+            max-width: 600px;
             margin: auto;
-            padding: 30px 20px 60px;
+            padding: 40px 20px;
         }
 
+        /* Logo */
         .logo {
-            width: 90px;
-            opacity: 0.92;
-            margin-top: 20px;
+            width: 120px;
+            margin-bottom: 20px;
         }
 
+        /* Título */
         h1 {
-            font-size: 1.9rem;
-            font-weight: 600;
-            margin-bottom: 4px;
-            margin-top: 15px;
+            font-size: 28px;
+            margin: 10px 0 0 0;
+            color: #1f4a57; /* azul petróleo */
         }
 
-        h2 {
-            font-size: 1rem;
-            font-weight: 400;
-            color: #5c6b80;
-            margin-top: 0;
+        .subtitle {
+            font-size: 16px;
+            color: #4a5b68;
+            margin-bottom: 28px;
         }
 
+        /* Títulos de seção */
         .section-title {
-            margin-top: 30px;
-            font-size: 1.1rem;
             font-weight: 600;
-            color: #1d2b45;
-            border-left: 4px solid #1d5e7b;
+            font-size: 18px;
+            margin-bottom: 10px;
+            border-left: 4px solid #1f4a57;
             padding-left: 10px;
             display: inline-block;
+            color: #1f4a57;
+            margin-top: 30px;
         }
 
-        .resume {
-            font-size: 0.95rem;
-            color: #3d4a5c;
-            margin: 15px 0 25px;
-            line-height: 1.5rem;
-            padding: 0 10px;
+        /* Texto do resumo */
+        .resume-text {
+            max-width: 480px;
+            margin: 0 auto 35px auto;
+            line-height: 1.6;
+            color: #3b4751;
         }
 
-        .button {
-            display: block;
-            width: 90%;
-            margin: 12px auto;
-            padding: 14px;
-            background-color: #f3f6fa;
-            border-radius: 14px;
-            text-decoration: none;
+        /* Botões */
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            max-width: 340px;
+            background-color: #f2f4f7;
+            padding: 15px;
+            margin: 10px auto;
+            border-radius: 12px;
             color: #1d2b45;
+            font-size: 16px;
             font-weight: 500;
-            font-size: 1rem;
-            border: 1px solid #dce3ec;
-            transition: 0.15s;
+            text-decoration: none;
+            transition: 0.25s;
         }
 
-        .button:hover {
-            background-color: #e9eef4;
+        .btn-icon {
+            font-size: 18px;
+            display: inline-block;
+            transform: translateX(-4px);
+            opacity: 0.9;
+            transition: 0.25s ease;
+        }
+
+        .btn:hover .btn-icon {
+            transform: translateX(2px);
+            opacity: 1;
+        }
+
+        .btn:hover {
+            background-color: #e4e7eb;
         }
     </style>
 </head>
+
 <body>
+    <div class="container">
 
-<div class="container">
+        <!-- Logo -->
+        <img src="logo.png" alt="Logo" class="logo">
 
-    <!-- Logo -->
-    <img class="logo" src="/mnt/data/D55EEF7C-CFA9-4633-8906-F61E31C2E066.jpeg" alt="Logo">
+        <h1>Raudinei Afonso</h1>
+        <div class="subtitle">Estratégia e Planejamento Agrícola</div>
 
-    <!-- Nome -->
-    <h1>Raudinei Afonso</h1>
-    <h2>Estratégia e Planejamento Agrícola</h2>
+        <!-- Resumo -->
+        <div class="section-title">Resumo Profissional</div>
+        <p class="resume-text">
+            Engenheiro Agrônomo com mais de 10 anos de experiência em insumos agrícolas,
+            com foco em assistência técnica, posicionamento de produtos, relação com produtores
+            e planejamento de vendas. Perfil voltado à geração de demanda no campo, com atuação
+            direta nas culturas de soja e milho.
+        </p>
 
-    <!-- Resumo Profissional -->
-    <div class="section-title">Resumo Profissional</div>
+        <!-- Botões -->
+        <a class="btn" href="https://wa.me/55XXXXXXXXXX" target="_blank">
+            <span class="btn-icon">💬</span> WhatsApp
+        </a>
 
-    <p class="resume">
-        Engenheiro Agrônomo com mais de 10 anos de experiência em insumos agrícolas, com foco em assistência técnica,
-        posicionamento de produtos, relação com produtores e planejamento de vendas. Perfil voltado à geração de demanda no campo,
-        com atuação direta nas culturas de soja e milho.
-    </p>
+        <a class="btn" href="mailto:seudemail@provedor.com">
+            <span class="btn-icon">✉️</span> E-mail
+        </a>
 
-    <!-- Botões -->
-    <a class="button" href="https://wa.me/5563984376572" target="_blank">WhatsApp</a>
-    <a class="button" href="mailto:raudynyey@hotmail.com">E-mail</a>
-    <a class="button" href="https://www.linkedin.com/in/raudinei" target="_blank">LinkedIn</a>
-    <a class="button" href="https://instagram.com/raudineiafonsosilva" target="_blank">Instagram</a>
+        <a class="btn" href="https://www.linkedin.com/in/XXXXXXXX" target="_blank">
+            <span class="btn-icon">🔗</span> LinkedIn
+        </a>
 
-</div>
+        <a class="btn" href="https://instagram.com/XXXXXXXX" target="_blank">
+            <span class="btn-icon">📸</span> Instagram
+        </a>
 
+    </div>
 </body>
 </html>
