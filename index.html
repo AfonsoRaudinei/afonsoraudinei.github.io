@@ -1,167 +1,176 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raudinei Afonso</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raudinei Afonso</title>
 
-    <!-- Fonte iOS-style -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<!-- Fonte Inter -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap">
 
-    <style>
-        :root {
-            --petroleo: #23424A;
-            --glass-light: rgba(255, 255, 255, 0.55);
-            --glass-dark: rgba(0, 0, 0, 0.45);
-            --shadow: rgba(0, 0, 0, 0.15);
-        }
+<style>
+    :root {
+        --azul-petroleo: #1d4451;
+        --fundo-claro: #ffffff;
+        --fundo-dark: #0f0f0f;
+        --card-claro: rgba(255,255,255,0.6);
+        --card-dark: rgba(255,255,255,0.12);
+        --shadow-claro: rgba(0,0,0,0.08);
+        --shadow-dark: rgba(0,0,0,0.3);
+    }
 
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Inter', sans-serif;
+        text-align: center;
+        background: linear-gradient(180deg, #f8fbfc, #eef3f5);
+        color: var(--azul-petroleo);
+        transition: 0.4s ease;
+    }
+
+    /* 🌙 DARK MODE AUTOMÁTICO */
+    @media (prefers-color-scheme: dark) {
         body {
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            color: #333;
-            background: #f4f4f4;
-            transition: background 0.3s ease, color 0.3s ease;
+            background: linear-gradient(180deg, #0a0f10, #1a1f21);
+            color: #e8e8e8;
         }
-
-        /* 🌙 MODO ESCURO AUTOMÁTICO */
-        @media (prefers-color-scheme: dark) {
-            body {
-                background: #0f0f0f;
-                color: #eaeaea;
-            }
-
-            .card {
-                background: var(--glass-dark);
-                backdrop-filter: blur(18px);
-            }
-
-            h1, h2, h3 {
-                color: #cde6ec;
-            }
-        }
-
-        /* LOGO COM ANIMAÇÃO */
-        .logo {
-            width: 140px;
-            margin: 40px auto 10px auto;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-            100% { transform: translateY(0px); }
-        }
-
-        h1 {
-            font-size: 28px;
-            margin-top: 10px;
-            color: var(--petroleo);
-        }
-
-        h2 {
-            color: var(--petroleo);
-            font-weight: 400;
-            margin-top: -5px;
-            margin-bottom: 25px;
-        }
-
-        .subtitulo {
-            font-weight: 600;
-            color: var(--petroleo);
-            margin-top: 40px;
-        }
-
         .card {
-            width: 82%;
-            max-width: 420px;
-            padding: 16px;
-            margin: 12px auto;
-            border-radius: 18px;
-            background: var(--glass-light);
-            backdrop-filter: blur(18px);
-            box-shadow: 0px 4px 18px var(--shadow);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            font-size: 17px;
-            cursor: pointer;
-            transition: 0.25s;
+            background: var(--card-dark);
+            box-shadow: 0 4px 20px var(--shadow-dark);
+            backdrop-filter: blur(10px);
+            color: #e8e8e8;
         }
-
-        .card:hover {
-            transform: scale(1.03);
+        h1, h2 {
+            color: #bcd9e0;
         }
+    }
 
-        .icon {
-            font-size: 20px;
-        }
+    /* LOGO ANIMADA */
+    .logo {
+        width: 150px;
+        margin-top: 40px;
+        animation: bounce 2s infinite ease-in-out;
+    }
 
-        /* BOTÃO FLUTUANTE WHATSAPP */
-        .zap-float {
-            position: fixed;
-            bottom: 22px;
-            right: 22px;
-            background: #25D366;
-            color: white;
-            width: 62px;
-            height: 62px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 32px;
-            text-decoration: none;
-            box-shadow: 0px 4px 18px rgba(0,0,0,0.22);
-            animation: pulse 2.6s infinite;
-        }
+    @keyframes bounce {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-6px); }
+        100% { transform: translateY(0); }
+    }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.08); }
-            100% { transform: scale(1); }
-        }
+    h1 {
+        font-size: 28px;
+        margin-top: 20px;
+        color: var(--azul-petroleo);
+        font-weight: 700;
+    }
 
-    </style>
+    h2 {
+        font-size: 16px;
+        margin-top: -10px;
+        color: var(--azul-petroleo);
+        opacity: 0.8;
+    }
+
+    /* TÍTULO INTERNO */
+    .titulo-box {
+        font-size: 18px;
+        font-weight: 600;
+        margin-top: 40px;
+        border-left: 4px solid var(--azul-petroleo);
+        padding-left: 10px;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* TEXTO ALINHADO À ESQUERDA */
+    .texto-resumo {
+        max-width: 600px;
+        margin: 20px auto 40px auto;
+        text-align: left;
+        line-height: 1.55;
+        font-size: 15px;
+        color: #3b4b52;
+    }
+
+    /* CARTÕES iOS / GLASS */
+    .card {
+        width: 70%;
+        max-width: 420px;
+        margin: 12px auto;
+        padding: 16px;
+        border-radius: 16px;
+        background: var(--card-claro);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        box-shadow: 0 4px 20px var(--shadow-claro);
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        transition: 0.25s;
+    }
+
+    .card:hover {
+        transform: scale(1.03);
+        cursor: pointer;
+    }
+
+    .icon {
+        font-size: 18px;
+        opacity: 0.9;
+    }
+
+    /* BOTÃO FLUTUANTE WHATSAPP */
+    .zap-btn {
+        position: fixed;
+        bottom: 22px;
+        right: 22px;
+        background: #25D366;
+        color: #fff;
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 32px;
+        text-decoration: none;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+        transition: 0.3s;
+    }
+    .zap-btn:hover {
+        transform: scale(1.1);
+    }
+
+</style>
 </head>
+
 <body>
 
-    <img src="logo.png" alt="Logo" class="logo">
+<img src="logo.png" class="logo" alt="Logo">
 
-    <h1>Raudinei Afonso</h1>
-    <h2>Estratégia e Planejamento Agrícola</h2>
+<h1>Raudinei Afonso</h1>
+<h2>Estratégia e Planejamento Agrícola</h2>
 
-    <h3 class="subtitulo">| Resumo Profissional</h3>
+<div class="titulo-box">Resumo Profissional</div>
 
-    <p style="width:80%; max-width:620px; margin:auto; font-size:16px; line-height:1.6;">
-        Engenheiro Agrônomo com mais de 10 anos de experiência em insumos agrícolas, com foco em assistência técnica,
-        posicionamento de produtos, relação com produtores e planejamento de vendas. Perfil voltado à geração de demanda
-        no campo, com atuação direta nas culturas de soja e milho.
-    </p>
+<p class="texto-resumo">
+    Engenheiro Agrônomo com mais de 10 anos de experiência em insumos agrícolas, com foco em assistência técnica, posicionamento de produtos, relação com produtores e planejamento de vendas. Perfil voltado à geração de demanda no campo, com atuação direta nas culturas de soja e milho.
+</p>
 
-    <!-- BOTÕES iOS -->
-    <a href="https://wa.me/5563992071640" class="card">
-        <span class="icon">💬</span> WhatsApp
-    </a>
+<!-- CARDS -->
+<div class="card"><span class="icon">💬</span> WhatsApp</div>
+<div class="card"><span class="icon">✉️</span> E-mail</div>
+<div class="card"><span class="icon">🔗</span> LinkedIn</div>
+<div class="card"><span class="icon">📸</span> Instagram</div>
 
-    <a href="mailto:seudominio@email.com" class="card">
-        <span class="icon">✉️</span> E-mail
-    </a>
-
-    <a href="https://www.linkedin.com" class="card">
-        <span class="icon">🔗</span> LinkedIn
-    </a>
-
-    <a href="https://instagram.com" class="card">
-        <span class="icon">📸</span> Instagram
-    </a>
-
-    <!-- BOTÃO FLUTUANTE WHATSAPP -->
-    <a class="zap-float" href="https://wa.me/5563992071640">💬</a>
+<!-- BOTÃO FLUTUANTE -->
+<a class="zap-btn" href="https://wa.me/55SEUNUMERO" target="_blank">💬</a>
 
 </body>
 </html>
