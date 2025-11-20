@@ -5,139 +5,163 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raudinei Afonso</title>
 
-    <!-- Fonte Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Fonte iOS-style -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
+        :root {
+            --petroleo: #23424A;
+            --glass-light: rgba(255, 255, 255, 0.55);
+            --glass-dark: rgba(0, 0, 0, 0.45);
+            --shadow: rgba(0, 0, 0, 0.15);
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #ffffff;
-            color: #1d2b45;
             text-align: center;
+            color: #333;
+            background: #f4f4f4;
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
-        .container {
-            max-width: 600px;
-            margin: auto;
-            padding: 40px 20px;
+        /* 🌙 MODO ESCURO AUTOMÁTICO */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #0f0f0f;
+                color: #eaeaea;
+            }
+
+            .card {
+                background: var(--glass-dark);
+                backdrop-filter: blur(18px);
+            }
+
+            h1, h2, h3 {
+                color: #cde6ec;
+            }
         }
 
-        /* Logo */
+        /* LOGO COM ANIMAÇÃO */
         .logo {
-            width: 120px;
-            margin-bottom: 20px;
+            width: 140px;
+            margin: 40px auto 10px auto;
+            animation: float 3s ease-in-out infinite;
         }
 
-        /* Título */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
         h1 {
             font-size: 28px;
-            margin: 10px 0 0 0;
-            color: #1f4a57; /* azul petróleo */
+            margin-top: 10px;
+            color: var(--petroleo);
         }
 
-        .subtitle {
-            font-size: 16px;
-            color: #4a5b68;
-            margin-bottom: 28px;
+        h2 {
+            color: var(--petroleo);
+            font-weight: 400;
+            margin-top: -5px;
+            margin-bottom: 25px;
         }
 
-        /* Títulos de seção */
-        .section-title {
+        .subtitulo {
             font-weight: 600;
-            font-size: 18px;
-            margin-bottom: 10px;
-            border-left: 4px solid #1f4a57;
-            padding-left: 10px;
-            display: inline-block;
-            color: #1f4a57;
-            margin-top: 30px;
+            color: var(--petroleo);
+            margin-top: 40px;
         }
 
-        /* Texto do resumo */
-        .resume-text {
-            max-width: 480px;
-            margin: 0 auto 35px auto;
-            line-height: 1.6;
-            color: #3b4751;
-        }
-
-        /* Botões */
-        .btn {
+        .card {
+            width: 82%;
+            max-width: 420px;
+            padding: 16px;
+            margin: 12px auto;
+            border-radius: 18px;
+            background: var(--glass-light);
+            backdrop-filter: blur(18px);
+            box-shadow: 0px 4px 18px var(--shadow);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            width: 100%;
-            max-width: 340px;
-            background-color: #f2f4f7;
-            padding: 15px;
-            margin: 10px auto;
-            border-radius: 12px;
-            color: #1d2b45;
-            font-size: 16px;
-            font-weight: 500;
-            text-decoration: none;
+            gap: 12px;
+            font-size: 17px;
+            cursor: pointer;
             transition: 0.25s;
         }
 
-        .btn-icon {
-            font-size: 18px;
-            display: inline-block;
-            transform: translateX(-4px);
-            opacity: 0.9;
-            transition: 0.25s ease;
+        .card:hover {
+            transform: scale(1.03);
         }
 
-        .btn:hover .btn-icon {
-            transform: translateX(2px);
-            opacity: 1;
+        .icon {
+            font-size: 20px;
         }
 
-        .btn:hover {
-            background-color: #e4e7eb;
+        /* BOTÃO FLUTUANTE WHATSAPP */
+        .zap-float {
+            position: fixed;
+            bottom: 22px;
+            right: 22px;
+            background: #25D366;
+            color: white;
+            width: 62px;
+            height: 62px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 32px;
+            text-decoration: none;
+            box-shadow: 0px 4px 18px rgba(0,0,0,0.22);
+            animation: pulse 2.6s infinite;
         }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+            100% { transform: scale(1); }
+        }
+
     </style>
 </head>
-
 <body>
-    <div class="container">
 
-        <!-- Logo -->
-        <img src="logo.png" alt="Logo" class="logo">
+    <img src="logo.png" alt="Logo" class="logo">
 
-        <h1>Raudinei Afonso</h1>
-        <div class="subtitle">Estratégia e Planejamento Agrícola</div>
+    <h1>Raudinei Afonso</h1>
+    <h2>Estratégia e Planejamento Agrícola</h2>
 
-        <!-- Resumo -->
-        <div class="section-title">Resumo Profissional</div>
-        <p class="resume-text">
-            Engenheiro Agrônomo com mais de 10 anos de experiência em insumos agrícolas,
-            com foco em assistência técnica, posicionamento de produtos, relação com produtores
-            e planejamento de vendas. Perfil voltado à geração de demanda no campo, com atuação
-            direta nas culturas de soja e milho.
-        </p>
+    <h3 class="subtitulo">| Resumo Profissional</h3>
 
-        <!-- Botões -->
-        <a class="btn" href="https://wa.me/55XXXXXXXXXX" target="_blank">
-            <span class="btn-icon">💬</span> WhatsApp
-        </a>
+    <p style="width:80%; max-width:620px; margin:auto; font-size:16px; line-height:1.6;">
+        Engenheiro Agrônomo com mais de 10 anos de experiência em insumos agrícolas, com foco em assistência técnica,
+        posicionamento de produtos, relação com produtores e planejamento de vendas. Perfil voltado à geração de demanda
+        no campo, com atuação direta nas culturas de soja e milho.
+    </p>
 
-        <a class="btn" href="mailto:seudemail@provedor.com">
-            <span class="btn-icon">✉️</span> E-mail
-        </a>
+    <!-- BOTÕES iOS -->
+    <a href="https://wa.me/5563992071640" class="card">
+        <span class="icon">💬</span> WhatsApp
+    </a>
 
-        <a class="btn" href="https://www.linkedin.com/in/XXXXXXXX" target="_blank">
-            <span class="btn-icon">🔗</span> LinkedIn
-        </a>
+    <a href="mailto:seudominio@email.com" class="card">
+        <span class="icon">✉️</span> E-mail
+    </a>
 
-        <a class="btn" href="https://instagram.com/XXXXXXXX" target="_blank">
-            <span class="btn-icon">📸</span> Instagram
-        </a>
+    <a href="https://www.linkedin.com" class="card">
+        <span class="icon">🔗</span> LinkedIn
+    </a>
 
-    </div>
+    <a href="https://instagram.com" class="card">
+        <span class="icon">📸</span> Instagram
+    </a>
+
+    <!-- BOTÃO FLUTUANTE WHATSAPP -->
+    <a class="zap-float" href="https://wa.me/5563992071640">💬</a>
+
 </body>
 </html>
