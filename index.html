@@ -86,7 +86,7 @@
         color: var(--texto);
     }
 
-    /* ====== CARTÕES PREMIUM ====== */
+    /* ====== CARTÕES ====== */
     .card {
         width: 92%;
         max-width: 520px;
@@ -98,7 +98,7 @@
         -webkit-backdrop-filter: blur(12px);
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 14px;
         box-shadow: 0 4px 16px var(--shadow-light);
         transition: transform 0.18s ease, background 0.3s ease;
         border: 1px solid rgba(255,255,255,0.55);
@@ -111,8 +111,8 @@
 
     /* Ícones SVG */
     .icon {
-        width: 24px;
-        height: 24px;
+        width: 26px;
+        height: 26px;
         stroke: var(--samsung-blue);
         stroke-width: 2;
         stroke-linecap: round;
@@ -143,72 +143,84 @@
     Engenheiro Agrônomo com mais de 10 anos de experiência em insumos agrícolas, com foco em assistência técnica, posicionamento de produtos, relação com produtores e planejamento de vendas. Perfil voltado à geração de demanda no campo, com atuação direta nas culturas de soja e milho.
 </p>
 
-<!-- ====== WHATSAPP ====== -->
+<!-- ====== WHATSAPP (lucide: phone-call) ====== -->
 <div class="card">
     <svg class="icon" viewBox="0 0 24 24">
-        <path d="M20 11.5c0 4.7-3.8 8.5-8.5 8.5-1.5 0-3-.4-4.2-1.1L4 21l1.2-3.3C4.5 16.5 4 15 4 13.5 4 8.8 7.8 5 12.5 5S20 8.8 20 13.5z"/>
+        <path d="M15.05 5A5 5 0 0 1 19 8.95" />
+        <path d="M15.05 9A1 1 0 0 1 16 10" />
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.11 4.18 2 2 0 0 1 4.08 2h3a2 2 0 0 1 2 1.72 12.8 12.8 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.12 10a16 16 0 0 0 6 6l1.36-1.36a2 2 0 0 1 2.11-.45 12.8 12.8 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z"/>
     </svg>
     <a href="https://wa.me/5563984376572" target="_blank">WhatsApp</a>
 </div>
 
-<!-- ====== EMAIL ====== -->
+<!-- ====== EMAIL (lucide: mail) ====== -->
 <div class="card">
     <svg class="icon" viewBox="0 0 24 24">
-        <path d="M4 6h16v12H4z"/>
-        <path d="M4 6l8 6 8-6"/>
+        <rect x="2" y="4" width="20" height="16" rx="2"/>
+        <path d="M22 6l-10 7L2 6"/>
     </svg>
     <a href="mailto:raudnyneyb@icloud.com">E-mail</a>
 </div>
 
-<!-- ====== LINKEDIN ====== -->
+<!-- ====== LINKEDIN (lucide: linkedin) ====== -->
 <div class="card">
     <svg class="icon" viewBox="0 0 24 24">
-        <path d="M4 4h4v16H4z"/>
-        <circle cx="6" cy="7" r="1"/>
-        <path d="M10 10h4v2m0 0v6h4v-6a4 4 0 0 0-8 0"/>
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
+        <rect x="2" y="9" width="4" height="12"/>
+        <circle cx="4" cy="4" r="2"/>
     </svg>
     <a href="https://www.linkedin.com/in/raudinei" target="_blank">LinkedIn</a>
 </div>
 
-<!-- ====== INSTAGRAM ====== -->
+<!-- ====== INSTAGRAM (lucide: instagram) ====== -->
 <div class="card">
     <svg class="icon" viewBox="0 0 24 24">
-        <rect x="3" y="3" width="18" height="18" rx="5"/>
-        <circle cx="12" cy="12" r="3.2"/>
-        <circle cx="17" cy="7" r="1"/>
+        <rect x="3" y="3" width="18" height="18" rx="4"/>
+        <circle cx="12" cy="12" r="3.5"/>
+        <circle cx="17" cy="7" r="1.2"/>
     </svg>
     <a href="https://www.instagram.com/raudineiafonsosilva/?igsh=MTA5ZXBnODBwamxvMw%3D%3D&utm_source=qr" target="_blank">Instagram</a>
 </div>
-<!-- ====== ESTÁDIOS FENOLÓGICOS DA SOJA ====== -->
+
+<!-- ====== ESTÁDIOS FENOLÓGICOS (lucide: sprout) ====== -->
 <div class="card">
     <svg class="icon" viewBox="0 0 24 24">
-        <path d="M12 2v20M2 12h20" />
+        <path d="M7 20V4a5 5 0 0 1 10 0v16"/>
+        <path d="M5 20h14"/>
     </svg>
     <a href="https://afonsoraudinei.github.io/EstadioSoja/" target="_blank">Estádios Fenológicos da Soja</a>
 </div>
 
-<!-- ====== PRAGAS DA SOJA ====== -->
+<!-- ====== PRAGAS (lucide: bug) ====== -->
 <div class="card">
     <svg class="icon" viewBox="0 0 24 24">
-        <path d="M12 2c2 2 4 2 6 4s2 4 4 6-2 4-4 6-4 2-6 4-4-2-6-4-2-4-4-6 2-4 4-6 4-2 6-4z" />
+        <rect width="8" height="14" x="8" y="6" rx="4"/>
+        <path d="M19 7l-3 2"/>
+        <path d="M5 7l3 2"/>
+        <path d="M19 14l-3-2"/>
+        <path d="M5 14l3-2"/>
+        <path d="M12 20v-6"/>
+        <path d="M7 20h10"/>
     </svg>
     <a href="https://afonsoraudinei.github.io/insetossoja/" target="_blank">Pragas da Soja</a>
 </div>
 
-<!-- ====== NUTRIENTES NA SOJA ====== -->
+<!-- ====== NUTRIENTES (lucide: flask-conical) ====== -->
 <div class="card">
     <svg class="icon" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="9" />
-        <path d="M12 7v5l3 3" />
+        <path d="M10 2h4L8.5 8.5A5 5 0 1 0 15 14"/>
+        <path d="M10 2v8"/>
+        <path d="M14 2v8"/>
     </svg>
     <a href="https://afonsoraudinei.github.io/Nutricionais/" target="_blank">Nutrientes na Soja</a>
 </div>
 
-<!-- ====== DOENÇAS DA SOJA ====== -->
+<!-- ====== DOENÇAS (lucide: shield-alert) ====== -->
 <div class="card">
     <svg class="icon" viewBox="0 0 24 24">
-        <path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7z" />
-        <circle cx="12" cy="9" r="2.5" />
+        <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
+        <path d="M12 8v4"/>
+        <path d="M12 16h.01"/>
     </svg>
     <a href="https://afonsoraudinei.github.io/Doencassoja/" target="_blank">Doenças da Soja</a>
 </div>
