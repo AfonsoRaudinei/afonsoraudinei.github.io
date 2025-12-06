@@ -98,7 +98,7 @@
         .logo {
             width: 180px;
             height: 180px;
-            background: linear-gradient(135deg, var(--verde-positivo), var(--verde-claro));
+            background: transparent;
             border-radius: 50%;
             padding: 0;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -109,9 +109,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 80px;
-            color: white;
-            font-weight: 700;
+            object-fit: cover;
         }
 
         .logo-container:hover .logo {
@@ -507,7 +505,6 @@
             .logo {
                 width: 150px;
                 height: 150px;
-                font-size: 60px;
             }
 
             .card {
@@ -564,7 +561,7 @@
 <div class="container">
     <div class="header">
         <div class="logo-container">
-            <div class="logo">RA</div>
+            <img src="imagens/logo.png" alt="Logo Raudinei Afonso" class="logo">
         </div>
         <h1>Raudinei Afonso</h1>
         <h2>Engenheiro Agrônomo - Fertilidade do Solo e Nutrição de Plantas</h2>
@@ -572,54 +569,74 @@
 
     <div class="contacts-section">
         <a href="https://wa.me/5563984376572" class="contact-card" target="_blank">
-            <div class="icon-wrapper">📱</div>
+            <div class="icon-wrapper">
+                <img src="imagens/whatsapp.png" alt="WhatsApp">
+            </div>
             <span>WhatsApp</span>
         </a>
 
         <a href="mailto:raudinei@gmail.com" class="contact-card">
-            <div class="icon-wrapper">✉️</div>
+            <div class="icon-wrapper">
+                <img src="imagens/email.png" alt="E-mail">
+            </div>
             <span>E-mail</span>
         </a>
 
         <a href="https://www.linkedin.com/in/raudinei" class="contact-card" target="_blank">
-            <div class="icon-wrapper">💼</div>
+            <div class="icon-wrapper">
+                <img src="imagens/linkedin.png" alt="LinkedIn">
+            </div>
             <span>LinkedIn</span>
         </a>
 
         <a href="#perfil" class="contact-card">
-            <div class="icon-wrapper">👤</div>
+            <div class="icon-wrapper">
+                <img src="imagens/perfil.png" alt="Perfil">
+            </div>
             <span>Perfil</span>
         </a>
 
         <a href="https://www.instagram.com/raudineiafonsosilva/" class="contact-card" target="_blank">
-            <div class="icon-wrapper">📸</div>
+            <div class="icon-wrapper">
+                <img src="imagens/instagram.png" alt="Instagram">
+            </div>
             <span>Instagram</span>
         </a>
     </div>
 
     <div class="links-container">
         <a href="https://t.me/seu_bot_username" class="card" target="_blank">
-            <div class="icon-wrapper">🤖</div>
+            <div class="icon-wrapper">
+                <img src="imagens/telegram.png" alt="Chatbot Solo Agro">
+            </div>
             <span>Chatbot Solo Agro</span>
         </a>
 
         <a href="https://afonsoraudinei.github.io/EstadioSoja/" class="card" target="_blank">
-            <div class="icon-wrapper">🌱</div>
+            <div class="icon-wrapper">
+                <img src="imagens/estadios.png" alt="Estádios Fenológicos da Soja">
+            </div>
             <span>Estádios Fenológicos da Soja</span>
         </a>
 
         <a href="https://afonsoraudinei.github.io/insetossoja/" class="card" target="_blank">
-            <div class="icon-wrapper">🐛</div>
+            <div class="icon-wrapper">
+                <img src="imagens/pragas.png" alt="Pragas da Soja">
+            </div>
             <span>Pragas da Soja</span>
         </a>
 
         <a href="https://afonsoraudinei.github.io/EXPNUTRIENTE/" class="card" target="_blank">
-            <div class="icon-wrapper">⚗️</div>
+            <div class="icon-wrapper">
+                <img src="imagens/nutrientes.png" alt="Nutrientes na Soja">
+            </div>
             <span>Nutrientes na Soja</span>
         </a>
 
         <a href="https://afonsoraudinei.github.io/Doencassoja/" class="card" target="_blank">
-            <div class="icon-wrapper">🦠</div>
+            <div class="icon-wrapper">
+                <img src="imagens/doencas.png" alt="Doenças da Soja">
+            </div>
             <span>Doenças da Soja</span>
         </a>
     </div>
