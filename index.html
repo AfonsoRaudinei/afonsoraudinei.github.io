@@ -226,141 +226,302 @@
             transform: scale(1.08);
         }
 
-        /* CARDS PRINCIPAIS - ESTILO iOS COMPACTO */
-        .links-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 16px;
+        /* CARROSSEL */
+        .carousel-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            padding: 80px 0;
+            overflow: hidden;
         }
 
-        .card {
+        .carousel-wrapper {
+            width: 100%;
+            overflow: visible;
             position: relative;
+        }
+
+        .carousel-track {
             display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: flex-start;
-            gap: 16px;
-            padding: 20px 24px;
+            gap: 40px;
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            padding: 30px 0;
+            cursor: grab;
+        }
+
+        .carousel-card {
+            flex: 0 0 380px;
+            height: 280px;
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 249, 250, 0.95));
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            overflow: hidden;
+            border-radius: 28px;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             box-shadow: 
-                0 4px 12px rgba(31, 60, 69, 0.08),
-                0 2px 4px rgba(31, 60, 69, 0.04),
-                inset 0 1px 0 rgba(255, 255, 255, 0.9),
-                inset 0 -1px 0 rgba(0, 0, 0, 0.02);
+                0 8px 24px rgba(31, 60, 69, 0.1),
+                0 2px 8px rgba(31, 60, 69, 0.05);
             border: 1px solid rgba(232, 234, 237, 0.6);
-            min-height: auto;
-            text-align: left;
-            animation: fadeInUp 0.6s ease-out backwards;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            opacity: 0.5;
+            transform: scale(0.88);
+            position: relative;
+            overflow: hidden;
         }
 
-        .card::after {
+        .carousel-card::before {
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
+            left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
-            transition: all 0.6s ease;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.02), rgba(0, 132, 61, 0.02));
             opacity: 0;
+            transition: opacity 0.6s ease;
         }
 
-        .card:hover::after {
-            left: 0;
+        .carousel-card.active::before {
             opacity: 1;
         }
 
-        .card:nth-child(1) {
-            animation-delay: 0.1s;
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.04) 0%, rgba(52, 211, 153, 0.02) 100%);
-        }
-
-        .card:nth-child(1):hover {
-            transform: translateX(8px) scale(1.02);
-        }
-
-        .card:nth-child(2) {
-            animation-delay: 0.15s;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.04) 0%, rgba(147, 197, 253, 0.02) 100%);
-        }
-
-        .card:nth-child(2):hover {
-            transform: translateX(8px) scale(1.02);
-        }
-
-        .card:nth-child(3) {
-            animation-delay: 0.2s;
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.04) 0%, rgba(196, 181, 253, 0.02) 100%);
-        }
-
-        .card:nth-child(3):hover {
-            transform: translateX(8px) scale(1.02);
-        }
-
-        .card:nth-child(4) {
-            animation-delay: 0.25s;
-            background: linear-gradient(135deg, rgba(249, 115, 22, 0.04) 0%, rgba(254, 215, 170, 0.02) 100%);
-        }
-
-        .card:nth-child(4):hover {
-            transform: translateX(8px) scale(1.02);
-        }
-
-        .card:nth-child(5) {
-            animation-delay: 0.3s;
-            background: linear-gradient(135deg, rgba(236, 72, 153, 0.04) 0%, rgba(244, 194, 213, 0.02) 100%);
-        }
-
-        .card:nth-child(5):hover {
-            transform: translateX(8px) scale(1.02);
-        }
-
-        .card:nth-child(6) {
-            animation-delay: 0.35s;
-            background: linear-gradient(135deg, rgba(6, 182, 212, 0.04) 0%, rgba(165, 243, 252, 0.02) 100%);
-        }
-
-        .card:nth-child(6):hover {
-            transform: translateX(8px) scale(1.02);
-        }
-
-        .card:nth-child(7) {
-            animation-delay: 0.4s;
-            background: linear-gradient(135deg, rgba(34, 197, 94, 0.04) 0%, rgba(187, 247, 208, 0.02) 100%);
-        }
-
-        .card:nth-child(7):hover {
-            transform: translateX(8px) scale(1.02);
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            background: rgba(16, 185, 129, 0.06);
-            transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            border-radius: 20px;
-            z-index: -1;
-        }
-
-        .card:hover::before {
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
             width: 100%;
+            height: 100%;
+            padding: 40px 30px;
         }
 
-        .card:active {
-            transform: scale(0.98);
-            transition: all 0.1s ease;
+        .carousel-card.active {
+            opacity: 1;
+            transform: scale(1);
+            box-shadow: 
+                0 24px 48px rgba(0, 102, 255, 0.18),
+                0 12px 24px rgba(0, 132, 61, 0.12);
+            border-color: rgba(0, 102, 255, 0.4);
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
         }
+
+        .carousel-card .icon-wrapper {
+            width: 110px;
+            height: 110px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+
+        .carousel-card.active .icon-wrapper {
+            width: 140px;
+            height: 140px;
+            animation: iconPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .carousel-card .icon-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.12));
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .carousel-card.active .icon-wrapper img {
+            filter: drop-shadow(0 8px 16px rgba(0, 102, 255, 0.25));
+        }
+
+        .carousel-card span {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--petroleo);
+            text-align: center;
+            line-height: 1.4;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            max-width: 90%;
+            opacity: 0.7;
+        }
+
+        .carousel-card.active span {
+            font-size: 20px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #0066FF, #00843D);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 1;
+            animation: textGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes textGlow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.85; }
+        }
+
+        .carousel-card:hover {
+            transform: scale(0.92);
+        }
+
+        .carousel-card.active:hover {
+            transform: scale(1.03);
+            box-shadow: 
+                0 28px 56px rgba(0, 102, 255, 0.22),
+                0 14px 28px rgba(0, 132, 61, 0.16);
+        }
+
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none;
+            padding: 0 30px;
+            z-index: 10;
+        }
+
+        .carousel-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0066FF, #0052CC);
+            border: none;
+            color: white;
+            font-size: 32px;
+            cursor: pointer;
+            pointer-events: all;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 
+                0 6px 16px rgba(0, 102, 255, 0.35),
+                0 2px 8px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            animation: btnFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes btnFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+
+        .carousel-btn:hover {
+            background: linear-gradient(135deg, #00843D, #006930);
+            transform: scale(1.15) translateY(-2px);
+            box-shadow: 
+                0 8px 20px rgba(0, 132, 61, 0.45),
+                0 4px 12px rgba(0, 0, 0, 0.2);
+            animation: none;
+        }
+
+        .carousel-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* RESPONSIVO CARROSSEL */
+        @media (max-width: 768px) {
+            .carousel-card {
+                flex: 0 0 320px;
+                height: 240px;
+            }
+
+            .card-content {
+                gap: 20px;
+                padding: 30px 24px;
+            }
+
+            .carousel-card .icon-wrapper {
+                width: 90px;
+                height: 90px;
+            }
+
+            .carousel-card.active .icon-wrapper {
+                width: 120px;
+                height: 120px;
+            }
+
+            .carousel-card span {
+                font-size: 16px;
+            }
+
+            .carousel-card.active span {
+                font-size: 18px;
+            }
+
+            .carousel-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 28px;
+            }
+
+            .carousel-controls {
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .carousel-container {
+                padding: 60px 0;
+            }
+
+            .carousel-card {
+                flex: 0 0 280px;
+                height: 220px;
+            }
+
+            .card-content {
+                gap: 18px;
+                padding: 24px 20px;
+            }
+
+            .carousel-card .icon-wrapper {
+                width: 80px;
+                height: 80px;
+            }
+
+            .carousel-card.active .icon-wrapper {
+                width: 110px;
+                height: 110px;
+            }
+
+            .carousel-card span {
+                font-size: 15px;
+            }
+
+            .carousel-card.active span {
+                font-size: 17px;
+            }
+
+            .carousel-btn {
+                width: 46px;
+                height: 46px;
+                font-size: 26px;
+            }
+
+            .carousel-controls {
+                padding: 0 15px;
+            }
+
+            .carousel-track {
+                gap: 30px;
+            }
+        }
+
+        /* Estilos dos ícones dentro dos cards do carrossel já definidos acima */
 
         .icon-wrapper {
             width: 68px;
@@ -569,7 +730,7 @@
             <span>LinkedIn</span>
         </a>
 
-        <a href="https://afonsoraudinei.github.io/Jornadaagronomica/" class="contact-card">
+        <a href="#perfil" class="contact-card">
             <div class="icon-wrapper">
                 <img src="imagens/perfil.png" alt="Perfil">
             </div>
@@ -584,43 +745,245 @@
         </a>
     </div>
 
-    <div class="links-container">
-        <a href="https://t.me/seu_bot_username" class="card" target="_blank">
-            <div class="icon-wrapper">
-                <img src="imagens/telegram.png" alt="Chatbot Solo Agro">
-            </div>
-            <span>Chatbot Solo Agro</span>
-        </a>
+    <div class="carousel-container">
+        <div class="carousel-wrapper">
+            <div class="carousel-track">
+                <!-- Cards duplicados para efeito infinito -->
+                <a href="https://afonsoraudinei.github.io/EstadioSoja/" class="carousel-card" data-index="0">
+                    <div class="card-content">
+                        <div class="icon-wrapper">
+                            <img src="imagens/estadios.png" alt="Estádios Fenológicos da Soja">
+                        </div>
+                        <span>Estádios Fenológicos da Soja</span>
+                    </div>
+                </a>
 
-        <a href="https://afonsoraudinei.github.io/EstadioSoja/" class="card" target="_blank">
-            <div class="icon-wrapper">
-                <img src="imagens/estadios.png" alt="Estádios Fenológicos da Soja">
-            </div>
-            <span>Estádios Fenológicos da Soja</span>
-        </a>
+                <a href="https://afonsoraudinei.github.io/insetossoja/" class="carousel-card" data-index="1">
+                    <div class="card-content">
+                        <div class="icon-wrapper">
+                            <img src="imagens/pragas.png" alt="Pragas da Soja">
+                        </div>
+                        <span>Pragas da Soja</span>
+                    </div>
+                </a>
 
-        <a href="https://afonsoraudinei.github.io/insetossoja/" class="card" target="_blank">
-            <div class="icon-wrapper">
-                <img src="imagens/pragas.png" alt="Pragas da Soja">
-            </div>
-            <span>Pragas da Soja</span>
-        </a>
+                <a href="https://afonsoraudinei.github.io/EXPNUTRIENTE/" class="carousel-card" data-index="2">
+                    <div class="card-content">
+                        <div class="icon-wrapper">
+                            <img src="imagens/nutrientes.png" alt="Nutrientes na Soja">
+                        </div>
+                        <span>Nutrientes na Soja</span>
+                    </div>
+                </a>
 
-        <a href="https://afonsoraudinei.github.io/EXPNUTRIENTE/" class="card" target="_blank">
-            <div class="icon-wrapper">
-                <img src="imagens/nutrientes.png" alt="Nutrientes na Soja">
-            </div>
-            <span>Nutrientes na Soja</span>
-        </a>
+                <a href="https://afonsoraudinei.github.io/Doencassoja/" class="carousel-card" data-index="3">
+                    <div class="card-content">
+                        <div class="icon-wrapper">
+                            <img src="imagens/doencas.png" alt="Doenças da Soja">
+                        </div>
+                        <span>Doenças da Soja</span>
+                    </div>
+                </a>
 
-        <a href="https://afonsoraudinei.github.io/Doencassoja/" class="card" target="_blank">
-            <div class="icon-wrapper">
-                <img src="imagens/doencas.png" alt="Doenças da Soja">
+                <a href="https://afonsoraudinei.github.io/hormonios/" class="carousel-card" data-index="4">
+                    <div class="card-content">
+                        <div class="icon-wrapper">
+                            <img src="imagens/hormonios.png" alt="Hormônios Vegetais">
+                        </div>
+                        <span>Hormônios Vegetais</span>
+                    </div>
+                </a>
+
+                <!-- Duplicatas para loop infinito -->
+                <a href="https://afonsoraudinei.github.io/EstadioSoja/" class="carousel-card" data-index="5">
+                    <div class="card-content">
+                        <div class="icon-wrapper">
+                            <img src="imagens/estadios.png" alt="Estádios Fenológicos da Soja">
+                        </div>
+                        <span>Estádios Fenológicos da Soja</span>
+                    </div>
+                </a>
+
+                <a href="https://afonsoraudinei.github.io/insetossoja/" class="carousel-card" data-index="6">
+                    <div class="card-content">
+                        <div class="icon-wrapper">
+                            <img src="imagens/pragas.png" alt="Pragas da Soja">
+                        </div>
+                        <span>Pragas da Soja</span>
+                    </div>
+                </a>
+
+                <a href="https://afonsoraudinei.github.io/EXPNUTRIENTE/" class="carousel-card" data-index="7">
+                    <div class="card-content">
+                        <div class="icon-wrapper">
+                            <img src="imagens/nutrientes.png" alt="Nutrientes na Soja">
+                        </div>
+                        <span>Nutrientes na Soja</span>
+                    </div>
+                </a>
             </div>
-            <span>Doenças da Soja</span>
-        </a>
+        </div>
+        
+        <div class="carousel-controls">
+            <button class="carousel-btn prev" aria-label="Anterior">‹</button>
+            <button class="carousel-btn next" aria-label="Próximo">›</button>
+        </div>
     </div>
 </div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const track = document.querySelector('.carousel-track');
+    const cards = document.querySelectorAll('.carousel-card');
+    const prevBtn = document.querySelector('.carousel-btn.prev');
+    const nextBtn = document.querySelector('.carousel-btn.next');
+    
+    const totalCards = 5; // número real de cards (sem duplicatas)
+    let currentIndex = 0;
+    let isTransitioning = false;
+    
+    // Centralizar e ativar o card do meio
+    function updateCarousel() {
+        const cardWidth = cards[0].offsetWidth;
+        const gap = 30;
+        const containerWidth = document.querySelector('.carousel-container').offsetWidth;
+        const offset = (containerWidth / 2) - (cardWidth / 2) - currentIndex * (cardWidth + gap);
+        
+        track.style.transform = `translateX(${offset}px)`;
+        
+        // Remover classe active de todos
+        cards.forEach(card => card.classList.remove('active'));
+        
+        // Adicionar classe active ao card central
+        const activeCard = cards[currentIndex % cards.length];
+        if (activeCard) {
+            activeCard.classList.add('active');
+        }
+    }
+    
+    // Navegação
+    function nextSlide() {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        
+        currentIndex++;
+        
+        // Loop infinito
+        if (currentIndex >= totalCards) {
+            currentIndex = 0;
+        }
+        
+        updateCarousel();
+        
+        setTimeout(() => {
+            isTransitioning = false;
+        }, 500);
+    }
+    
+    function prevSlide() {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        
+        currentIndex--;
+        
+        // Loop infinito
+        if (currentIndex < 0) {
+            currentIndex = totalCards - 1;
+        }
+        
+        updateCarousel();
+        
+        setTimeout(() => {
+            isTransitioning = false;
+        }, 500);
+    }
+    
+    // Event listeners
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+    
+    // Suporte para touch/swipe
+    let startX = 0;
+    let currentX = 0;
+    let isDragging = false;
+    
+    track.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        isDragging = true;
+    });
+    
+    track.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        currentX = e.touches[0].clientX;
+    });
+    
+    track.addEventListener('touchend', () => {
+        if (!isDragging) return;
+        isDragging = false;
+        
+        const diff = startX - currentX;
+        
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+        }
+    });
+    
+    // Suporte para mouse drag
+    track.addEventListener('mousedown', (e) => {
+        startX = e.clientX;
+        isDragging = true;
+        track.style.cursor = 'grabbing';
+    });
+    
+    track.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        currentX = e.clientX;
+    });
+    
+    track.addEventListener('mouseup', () => {
+        if (!isDragging) return;
+        isDragging = false;
+        track.style.cursor = 'grab';
+        
+        const diff = startX - currentX;
+        
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+        }
+    });
+    
+    track.addEventListener('mouseleave', () => {
+        if (isDragging) {
+            isDragging = false;
+            track.style.cursor = 'grab';
+        }
+    });
+    
+    // Teclado
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            prevSlide();
+        } else if (e.key === 'ArrowRight') {
+            nextSlide();
+        }
+    });
+    
+    // Inicializar
+    updateCarousel();
+    
+    // Atualizar ao redimensionar
+    window.addEventListener('resize', updateCarousel);
+});
+</script>
 
 </body>
 </html>
