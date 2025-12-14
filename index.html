@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raudinei Afonso - Engenheiro Agrônomo</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,27 +13,22 @@
 
         :root {
             --samsung-blue: #0066FF;
-            --petroleo: #1f3c45;
-            --verde-positivo: #10b981;
-            --verde-escuro: #059669;
-            --verde-claro: #34d399;
-            --azul-ciencia: #3b82f6;
+            --verde-soja: #00843D;
             --prata-brilhante: #f8f9fa;
             --prata: #e8eaed;
             --prata-claro: #ffffff;
+            --petroleo: #1f3c45;
             --prata-escuro: #9ca3af;
         }
 
         body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
             background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #e8eaed 100%);
             background-attachment: fixed;
-            color: var(--petroleo);
             min-height: 100vh;
-            overflow-x: hidden;
+            padding-bottom: 80px;
             position: relative;
+            overflow-x: hidden;
         }
 
         body::before {
@@ -47,7 +41,7 @@
             background: 
                 radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.8) 0%, transparent 50%),
                 radial-gradient(circle at 80% 70%, rgba(232, 234, 237, 0.6) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.03) 0%, transparent 70%);
+                radial-gradient(circle at 50% 50%, rgba(0, 102, 255, 0.03) 0%, transparent 70%);
             pointer-events: none;
             z-index: 0;
             animation: shimmer 8s ease-in-out infinite;
@@ -58,133 +52,246 @@
             50% { opacity: 0.7; }
         }
 
-        body::after {
+        /* Header Bar */
+        .header {
+            background: linear-gradient(135deg, var(--samsung-blue) 0%, #0052CC 100%);
+            padding: 30px 16px;
+            box-shadow: 0 4px 16px rgba(0, 102, 255, 0.25);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
             content: '';
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
-                linear-gradient(rgba(31, 60, 69, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(31, 60, 69, 0.02) 1px, transparent 1px);
-            background-size: 50px 50px;
+            background: radial-gradient(
+                ellipse at var(--x, 50%) var(--y, 50%),
+                rgba(255, 255, 255, 0.3) 0%,
+                rgba(255, 255, 255, 0.15) 25%,
+                transparent 50%
+            );
+            animation: waterLight 8s ease-in-out infinite;
             pointer-events: none;
-            z-index: 0;
         }
 
-        .container {
-            position: relative;
-            z-index: 1;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 120px 30px 80px;
+        .header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(
+                circle at var(--x2, 30%) var(--y2, 70%),
+                rgba(255, 255, 255, 0.2) 0%,
+                rgba(255, 255, 255, 0.1) 30%,
+                transparent 60%
+            );
+            animation: waterLight2 12s ease-in-out infinite;
+            pointer-events: none;
         }
 
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-            animation: fadeInDown 0.8s ease-out;
+        @keyframes waterLight {
+            0% {
+                --x: 20%;
+                --y: 30%;
+                opacity: 0.7;
+            }
+            25% {
+                --x: 80%;
+                --y: 20%;
+                opacity: 1;
+            }
+            50% {
+                --x: 60%;
+                --y: 80%;
+                opacity: 0.6;
+            }
+            75% {
+                --x: 30%;
+                --y: 60%;
+                opacity: 0.9;
+            }
+            100% {
+                --x: 20%;
+                --y: 30%;
+                opacity: 0.7;
+            }
         }
 
-        .logo-container {
-            width: 180px;
-            height: 180px;
-            margin: 0 auto 20px;
-            position: relative;
-            animation: float 3s ease-in-out infinite;
+        @keyframes waterLight2 {
+            0% {
+                --x2: 70%;
+                --y2: 60%;
+                opacity: 0.5;
+            }
+            33% {
+                --x2: 40%;
+                --y2: 30%;
+                opacity: 0.8;
+            }
+            66% {
+                --x2: 85%;
+                --y2: 75%;
+                opacity: 0.4;
+            }
+            100% {
+                --x2: 70%;
+                --y2: 60%;
+                opacity: 0.5;
+            }
         }
 
-        .logo {
-            width: 180px;
-            height: 180px;
-            background: transparent;
-            border-radius: 50%;
-            padding: 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            border: none;
-            transition: all 0.4s ease;
-            position: relative;
-            z-index: 1;
+        .header-content {
             display: flex;
             align-items: center;
             justify-content: center;
-            object-fit: cover;
+            position: relative;
+            z-index: 10;
         }
 
-        .logo-container:hover .logo {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
+        .logo-box {
+            width: 220px;
+            height: 220px;
+            background: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
+        .logo-box img {
+            width: 220px;
+            height: 220px;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.4));
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        h1 {
-            font-size: 42px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--petroleo);
-            letter-spacing: -0.5px;
-            text-shadow: 0 2px 4px rgba(31, 60, 69, 0.1);
-        }
-
-        h2 {
-            font-size: 18px;
-            font-weight: 400;
-            color: var(--prata-escuro);
-            letter-spacing: 0.3px;
-            margin-bottom: 30px;
-        }
-
-        /* CONTATOS NO TOPO - ESTILO iOS */
-        .contacts-section {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 10px;
-            margin-bottom: 40px;
-            max-width: 100%;
-        }
-
-        .contacts-section-title {
+        .title-section {
             display: none;
         }
 
+        /* Container Principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Seções com Sombras Suaves */
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 16px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 
+                        0 4px 16px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(232, 234, 237, 0.8);
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 0.75em;
+            color: var(--samsung-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 20px;
+        }
+
+        .hero h2 {
+            font-size: 2em;
+            color: var(--petroleo);
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.1em;
+            color: #666666;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        /* Contatos no Topo - Estilo iOS */
+        .contacts-section {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 24px 0;
+        }
+
         .contact-card {
-            padding: 12px;
-            min-height: auto;
-            opacity: 1;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 249, 250, 0.92));
-            box-shadow: 0 2px 8px rgba(31, 60, 69, 0.06);
+            padding: 14px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 249, 250, 0.95));
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 8px rgba(0, 102, 255, 0.08);
             border-radius: 16px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
-            border: 1px solid rgba(232, 234, 237, 0.8);
-            animation: none !important;
+            border: 1px solid rgba(0, 102, 255, 0.1);
         }
 
         .contact-card:hover {
-            transform: scale(1.08);
-            box-shadow: 0 6px 16px rgba(16, 185, 129, 0.15);
-            opacity: 1;
+            transform: scale(1.08) translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 102, 255, 0.2);
+            border-color: var(--samsung-blue);
+        }
+
+        .contact-card .icon-wrapper {
+            width: 72px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover .icon-wrapper {
+            transform: scale(1.1) translateY(-3px);
+        }
+
+        .contact-card .icon-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 6px rgba(0, 102, 255, 0.15));
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover .icon-wrapper img {
+            filter: drop-shadow(0 6px 12px rgba(0, 102, 255, 0.3));
         }
 
         .contact-card span {
@@ -194,796 +301,810 @@
             text-align: center;
         }
 
-        .contact-card .icon-wrapper {
-            width: 72px;
-            height: 72px;
-            font-size: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: transparent;
-            border-radius: 0;
-            padding: 0;
-            box-shadow: none;
-            border: none;
-            transition: all 0.3s ease;
-        }
-
-        .contact-card:hover .icon-wrapper {
-            transform: scale(1.08) translateY(-3px);
-        }
-
-        .contact-card .icon-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.12));
-            transition: all 0.3s ease;
-        }
-
-        .contact-card:hover .icon-wrapper img {
-            filter: drop-shadow(0 6px 12px rgba(16, 185, 129, 0.2));
-            transform: scale(1.08);
-        }
-
-        /* CARROSSEL */
+        /* Carrossel Infinito */
         .carousel-container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            padding: 80px 0;
             overflow: hidden;
-        }
-
-        .carousel-wrapper {
-            width: 100%;
-            overflow: visible;
+            margin: 32px 0;
             position: relative;
         }
 
         .carousel-track {
             display: flex;
-            gap: 40px;
-            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            padding: 30px 0;
-            cursor: grab;
+            animation: scroll 40s linear infinite;
+            gap: 16px;
         }
 
-        .carousel-card {
-            flex: 0 0 380px;
+        .carousel-track:hover {
+            animation-play-state: paused;
+        }
+
+        .carousel-item {
+            flex: 0 0 400px;
             height: 280px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 249, 250, 0.95));
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border-radius: 28px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 
-                0 8px 24px rgba(31, 60, 69, 0.1),
-                0 2px 8px rgba(31, 60, 69, 0.05);
-            border: 1px solid rgba(232, 234, 237, 0.6);
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            opacity: 0.5;
-            transform: scale(0.88);
-            position: relative;
+            border-radius: 16px;
             overflow: hidden;
-        }
-
-        .carousel-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0, 102, 255, 0.02), rgba(0, 132, 61, 0.02));
-            opacity: 0;
-            transition: opacity 0.6s ease;
-        }
-
-        .carousel-card.active::before {
-            opacity: 1;
-        }
-
-        .card-content {
+            box-shadow: 0 4px 12px rgba(0, 102, 255, 0.12);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 249, 250, 0.95));
+            backdrop-filter: blur(10px);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 24px;
-            width: 100%;
-            height: 100%;
-            padding: 40px 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 102, 255, 0.15);
+            text-decoration: none;
+            padding: 24px;
+            gap: 16px;
         }
 
-        .carousel-card.active {
-            opacity: 1;
-            transform: scale(1);
-            box-shadow: 
-                0 24px 48px rgba(0, 102, 255, 0.18),
-                0 12px 24px rgba(0, 132, 61, 0.12);
-            border-color: rgba(0, 102, 255, 0.4);
-            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+        .carousel-item:hover {
+            transform: scale(1.05) translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 102, 255, 0.25);
+            border-color: var(--samsung-blue);
         }
 
-        .carousel-card .icon-wrapper {
-            width: 110px;
-            height: 110px;
+        .carousel-item .icon-wrapper {
+            width: 120px;
+            height: 120px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            position: relative;
+            transition: all 0.3s ease;
         }
 
-        .carousel-card.active .icon-wrapper {
-            width: 140px;
-            height: 140px;
-            animation: iconPulse 2s ease-in-out infinite;
+        .carousel-item:hover .icon-wrapper {
+            transform: scale(1.1);
         }
 
-        @keyframes iconPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .carousel-card .icon-wrapper img {
+        .carousel-item .icon-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.12));
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            filter: drop-shadow(0 4px 8px rgba(0, 102, 255, 0.2));
+            transition: all 0.3s ease;
         }
 
-        .carousel-card.active .icon-wrapper img {
-            filter: drop-shadow(0 8px 16px rgba(0, 102, 255, 0.25));
+        .carousel-item:hover .icon-wrapper img {
+            filter: drop-shadow(0 8px 16px rgba(0, 102, 255, 0.35));
         }
 
-        .carousel-card span {
-            font-size: 17px;
-            font-weight: 600;
+        .carousel-item span {
+            font-size: 18px;
+            font-weight: 700;
             color: var(--petroleo);
             text-align: center;
-            line-height: 1.4;
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            max-width: 90%;
-            opacity: 0.7;
+            line-height: 1.3;
+            transition: all 0.3s ease;
         }
 
-        .carousel-card.active span {
-            font-size: 20px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #0066FF, #00843D);
+        .carousel-item:hover span {
+            background: linear-gradient(135deg, var(--samsung-blue), var(--verde-soja));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            opacity: 1;
-            animation: textGlow 2s ease-in-out infinite;
         }
 
-        @keyframes textGlow {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.85; }
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-416px * 5));
+            }
         }
 
-        .carousel-card:hover {
-            transform: scale(0.92);
+        /* Features */
+        .feature-card {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 102, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 16px 0;
+            box-shadow: 0 2px 8px rgba(0, 102, 255, 0.08);
         }
 
-        .carousel-card.active:hover {
-            transform: scale(1.03);
-            box-shadow: 
-                0 28px 56px rgba(0, 102, 255, 0.22),
-                0 14px 28px rgba(0, 132, 61, 0.16);
+        .feature-card h3 {
+            font-size: 1.4em;
+            color: var(--petroleo);
+            margin-bottom: 16px;
+            font-weight: 700;
         }
 
-        .carousel-controls {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            transform: translateY(-50%);
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(232, 234, 237, 0.5);
             display: flex;
-            justify-content: space-between;
-            pointer-events: none;
-            padding: 0 30px;
-            z-index: 10;
+            align-items: center;
+            gap: 12px;
+            color: #666666;
         }
 
-        .carousel-btn {
-            width: 56px;
-            height: 56px;
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--samsung-blue) 0%, #0052CC 100%);
             border-radius: 50%;
-            background: linear-gradient(135deg, #0066FF, #0052CC);
-            border: none;
-            color: white;
-            font-size: 32px;
-            cursor: pointer;
-            pointer-events: all;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 
-                0 6px 16px rgba(0, 102, 255, 0.35),
-                0 2px 8px rgba(0, 0, 0, 0.15);
             display: flex;
             align-items: center;
             justify-content: center;
-            line-height: 1;
-            animation: btnFloat 3s ease-in-out infinite;
+            color: white;
+            font-size: 1em;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(0, 102, 255, 0.25);
         }
 
-        @keyframes btnFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-4px); }
+        /* Attention Points */
+        .attention-box {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.05), rgba(0, 132, 61, 0.05));
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--samsung-blue);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 16px 0;
+            box-shadow: 0 4px 12px rgba(0, 102, 255, 0.15);
         }
 
-        .carousel-btn:hover {
-            background: linear-gradient(135deg, #00843D, #006930);
-            transform: scale(1.15) translateY(-2px);
-            box-shadow: 
-                0 8px 20px rgba(0, 132, 61, 0.45),
-                0 4px 12px rgba(0, 0, 0, 0.2);
+        .attention-box h4 {
+            color: var(--samsung-blue);
+            font-size: 1.2em;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .attention-item {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 14px 16px;
+            margin: 10px 0;
+            border-left: 4px solid var(--samsung-blue);
+            border-radius: 8px;
+            color: #666666;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Floating Buttons Container */
+        .floating-buttons-container {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            z-index: 999;
+            align-items: flex-end;
+        }
+
+        /* Floating Button */
+        .floating-btn {
+            width: 75px;
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            background: transparent;
+            animation: floatBtn 3s ease-in-out infinite;
+        }
+
+        /* WhatsApp maior */
+        .floating-btn.whatsapp {
+            width: 90px;
+            height: 90px;
+        }
+
+        @keyframes floatBtn {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .floating-btn img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 6px 20px rgba(0, 102, 255, 0.4));
+            transition: all 0.3s ease;
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.15);
             animation: none;
         }
 
-        .carousel-btn:active {
-            transform: scale(0.98);
+        .floating-btn:hover img {
+            filter: drop-shadow(0 8px 24px rgba(0, 102, 255, 0.6));
         }
 
-        /* RESPONSIVO CARROSSEL */
+        /* Animação de entrada em cascata */
+        .floating-btn:nth-child(1) {
+            animation-delay: 0s;
+        }
+        .floating-btn:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+        .floating-btn:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+        .floating-btn:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+        .floating-btn:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(31, 60, 69, 0.96);
+            backdrop-filter: blur(12px);
+            animation: fadeIn 0.3s;
+        }
+
+        .lightbox.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 16px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+            animation: zoomIn 0.3s;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 24px;
+            right: 32px;
+            color: #ffffff;
+            font-size: 42px;
+            font-weight: bold;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            width: 56px;
+            height: 56px;
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            from { 
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to { 
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Footer discreto */
+        .footer-credit {
+            font-size: 0.7em;
+            color: #999999;
+            opacity: 0.4;
+            margin-top: 8px;
+            transition: opacity 0.2s;
+        }
+
+        .footer-credit:hover {
+            opacity: 0.7;
+        }
+
+        .footer-credit a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .carousel-card {
+            .header-content {
+                flex-direction: column;
+            }
+
+            .logo-box {
+                width: 180px;
+                height: 180px;
+            }
+
+            .logo-box img {
+                width: 180px;
+                height: 180px;
+            }
+
+            .hero h2 {
+                font-size: 1.6em;
+            }
+
+            .carousel-item {
                 flex: 0 0 320px;
                 height: 240px;
             }
 
-            .card-content {
-                gap: 20px;
-                padding: 30px 24px;
+            /* Botões flutuantes menores em tablet */
+            .floating-btn {
+                width: 65px;
+                height: 65px;
             }
 
-            .carousel-card .icon-wrapper {
-                width: 90px;
-                height: 90px;
-            }
-
-            .carousel-card.active .icon-wrapper {
-                width: 120px;
-                height: 120px;
-            }
-
-            .carousel-card span {
-                font-size: 16px;
-            }
-
-            .carousel-card.active span {
-                font-size: 18px;
-            }
-
-            .carousel-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 28px;
-            }
-
-            .carousel-controls {
-                padding: 0 20px;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .carousel-container {
-                padding: 60px 0;
-            }
-
-            .carousel-card {
-                flex: 0 0 280px;
-                height: 220px;
-            }
-
-            .card-content {
-                gap: 18px;
-                padding: 24px 20px;
-            }
-
-            .carousel-card .icon-wrapper {
+            .floating-btn.whatsapp {
                 width: 80px;
                 height: 80px;
             }
 
-            .carousel-card.active .icon-wrapper {
-                width: 110px;
-                height: 110px;
-            }
-
-            .carousel-card span {
-                font-size: 15px;
-            }
-
-            .carousel-card.active span {
-                font-size: 17px;
-            }
-
-            .carousel-btn {
-                width: 46px;
-                height: 46px;
-                font-size: 26px;
-            }
-
-            .carousel-controls {
-                padding: 0 15px;
-            }
-
-            .carousel-track {
-                gap: 30px;
-            }
-        }
-
-        /* Estilos dos ícones dentro dos cards do carrossel já definidos acima */
-
-        .icon-wrapper {
-            width: 68px;
-            height: 68px;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            position: relative;
-            font-size: 48px;
-            opacity: 1;
-            background: transparent;
-            border-radius: 0;
-            padding: 0;
-            box-shadow: none;
-            border: none;
-        }
-
-        .card .icon-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            opacity: 1;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.15));
-        }
-
-        .card:hover .icon-wrapper {
-            transform: scale(1.1) translateY(-4px);
-        }
-
-        .card:hover .icon-wrapper img {
-            opacity: 1;
-            transform: scale(1.08);
-            filter: drop-shadow(0 6px 12px rgba(16, 185, 129, 0.25));
-        }
-
-        .card span {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--petroleo);
-            transition: all 0.3s ease;
-            line-height: 1.3;
-            flex: 1;
-        }
-
-        .card:hover span {
-            color: var(--verde-positivo);
-        }
-
-        /* RESPONSIVO */
-        @media (max-width: 768px) {
-            .links-container {
-                grid-template-columns: 1fr;
+            .floating-buttons-container {
+                bottom: 20px;
+                right: 20px;
                 gap: 14px;
             }
 
-            .card {
-                padding: 18px 20px;
-                gap: 14px;
-            }
-
-            .icon-wrapper {
-                width: 64px;
-                height: 64px;
-                font-size: 44px;
-            }
-
-            .card span {
-                font-size: 18px;
-            }
-
-            .contacts-section {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 10px;
-                margin-bottom: 30px;
-            }
-
-            .contact-card:nth-child(4),
-            .contact-card:nth-child(5) {
-                grid-column: span 1;
-            }
-
-            .contact-card {
-                padding: 12px;
-            }
-
-            .contact-card span {
-                font-size: 11px;
-            }
-
-            .contact-card .icon-wrapper {
-                width: 68px;
-                height: 68px;
-                font-size: 40px;
-                position: relative;
-                top: auto;
-                right: auto;
+            @keyframes scroll {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(calc(-336px * 5));
+                }
             }
         }
 
         @media (max-width: 640px) {
             .container {
-                padding: 140px 16px 60px;
+                padding: 0 12px;
             }
 
-            h1 {
-                font-size: 34px;
+            .header {
+                padding: 24px 12px;
             }
 
-            h2 {
+            .logo-box {
+                width: 150px;
+                height: 150px;
+            }
+
+            .logo-box img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .hero h2 {
+                font-size: 1.4em;
+            }
+
+            .hero p {
+                font-size: 1em;
+            }
+
+            .carousel-item {
+                flex: 0 0 280px;
+                height: 220px;
+            }
+
+            .carousel-item .icon-wrapper {
+                width: 100px;
+                height: 100px;
+            }
+
+            .carousel-item span {
                 font-size: 16px;
-                margin-bottom: 24px;
             }
 
-            .logo-container {
-                width: 150px;
-                height: 150px;
+            /* Botões flutuantes ainda menores em mobile */
+            .floating-btn {
+                width: 60px;
+                height: 60px;
             }
 
-            .logo {
-                width: 150px;
-                height: 150px;
+            .floating-btn.whatsapp {
+                width: 75px;
+                height: 75px;
             }
 
-            .card {
-                padding: 16px 18px;
+            .floating-buttons-container {
+                bottom: 16px;
+                right: 16px;
                 gap: 12px;
             }
 
-            .icon-wrapper {
-                width: 60px;
-                height: 60px;
-                font-size: 40px;
-            }
-
-            .card span {
-                font-size: 16px;
-            }
-
-            .contacts-section {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 8px;
-                margin-bottom: 24px;
-            }
-
-            .contact-card:nth-child(4) {
-                grid-column: 1 / 2;
-                margin-left: auto;
-                margin-right: 4px;
-            }
-
-            .contact-card:nth-child(5) {
-                grid-column: 2 / 3;
-                margin-left: 4px;
-                margin-right: auto;
-            }
-
-            .contact-card {
-                padding: 10px;
-            }
-
-            .contact-card span {
-                font-size: 10px;
-            }
-
-            .contact-card .icon-wrapper {
-                width: 64px;
-                height: 64px;
-                font-size: 36px;
+            @keyframes scroll {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(calc(-296px * 5));
+                }
             }
         }
     </style>
 </head>
 <body>
-
-<div class="container">
-    <div class="header">
-        <div class="logo-container">
-            <img src="logo.png" alt="Logo Raudinei Afonso" class="logo">
+    <!-- Header Bar -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-box">
+                    <img src="logo.png" alt="Raudinei Afonso">
+                </div>
+                <div class="title-section">
+                    <h1>Raudinei Afonso</h1>
+                    <p>Engenheiro Agrônomo</p>
+                </div>
+            </div>
         </div>
-        <h1>Raudinei Afonso</h1>
-        <h2>Engenheiro Agrônomo - Fertilidade do Solo e Nutrição de Plantas</h2>
-    </div>
+    </header>
 
-    <div class="contacts-section">
-        <a href="https://wa.me/5563984376572" class="contact-card" target="_blank">
-            <div class="icon-wrapper">
-                <img src="imagens/whatsapp.png" alt="WhatsApp">
-            </div>
-            <span>WhatsApp</span>
-        </a>
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="section hero">
+            <h2>Fertilidade do Solo e Nutrição de Plantas</h2>
+            <p>Especialista em agricultura de precisão com mais de 10 anos de experiência. Soluções profissionais para maximizar a produtividade da sua lavoura com tecnologia e conhecimento técnico.</p>
+        </section>
 
-        <a href="mailto:raudinei@gmail.com" class="contact-card">
-            <div class="icon-wrapper">
-                <img src="imagens/email.png" alt="E-mail">
-            </div>
-            <span>E-mail</span>
-        </a>
-
-        <a href="https://www.linkedin.com/in/raudinei" class="contact-card" target="_blank">
-            <div class="icon-wrapper">
-                <img src="imagens/linkedin.png" alt="LinkedIn">
-            </div>
-            <span>LinkedIn</span>
-        </a>
-
-        <a href="https://afonsoraudinei.github.io/Jornadaagronomica/" class="contact-card">
-            <div class="icon-wrapper">
-                <img src="imagens/perfil.png" alt="Perfil">
-            </div>
-            <span>Perfil</span>
-        </a>
-
-        <a href="https://www.instagram.com/raudineiafonsosilva/" class="contact-card" target="_blank">
-            <div class="icon-wrapper">
-                <img src="imagens/instagram.png" alt="Instagram">
-            </div>
-            <span>Instagram</span>
-        </a>
-    </div>
-
-    <div class="carousel-container">
-        <div class="carousel-wrapper">
+        <!-- Carrossel 1: SOJA -->
+        <div class="section-title" style="margin-top: 32px;">🌱 CULTURA DA SOJA</div>
+        <div class="carousel-container">
             <div class="carousel-track">
-                <!-- Cards duplicados para efeito infinito -->
-                <a href="https://afonsoraudinei.github.io/EstadioSoja/" class="carousel-card" data-index="0">
-                    <div class="card-content">
-                        <div class="icon-wrapper">
-                            <img src="imagens/estadios.png" alt="Estádios Fenológicos da Soja">
-                        </div>
-                        <span>Estádios Fenológicos da Soja</span>
+                <a href="https://afonsoraudinei.github.io/EstadioSoja/" class="carousel-item">
+                    <div class="icon-wrapper">
+                        <img src="imagens/estadios.png" alt="Estádios Fenológicos da Soja">
                     </div>
+                    <span>Estádios Fenológicos da Soja</span>
                 </a>
 
-                <a href="https://afonsoraudinei.github.io/insetossoja/" class="carousel-card" data-index="1">
-                    <div class="card-content">
-                        <div class="icon-wrapper">
-                            <img src="imagens/pragas.png" alt="Pragas da Soja">
-                        </div>
-                        <span>Pragas da Soja</span>
+                <a href="https://afonsoraudinei.github.io/insetossoja/" class="carousel-item">
+                    <div class="icon-wrapper">
+                        <img src="imagens/pragas.png" alt="Pragas da Soja">
                     </div>
+                    <span>Pragas da Soja</span>
                 </a>
 
-                <a href="https://afonsoraudinei.github.io/EXPNUTRIENTE/" class="carousel-card" data-index="2">
-                    <div class="card-content">
-                        <div class="icon-wrapper">
-                            <img src="imagens/nutrientes.png" alt="Nutrientes na Soja">
-                        </div>
-                        <span>Nutrientes na Soja</span>
+                <a href="https://afonsoraudinei.github.io/EXPNUTRIENTE/" class="carousel-item">
+                    <div class="icon-wrapper">
+                        <img src="imagens/nutrientes.png" alt="Nutrientes na Soja">
                     </div>
+                    <span>Nutrientes na Soja</span>
                 </a>
 
-                <a href="https://afonsoraudinei.github.io/Doencassoja/" class="carousel-card" data-index="3">
-                    <div class="card-content">
-                        <div class="icon-wrapper">
-                            <img src="imagens/doencas.png" alt="Doenças da Soja">
-                        </div>
-                        <span>Doenças da Soja</span>
+                <a href="https://afonsoraudinei.github.io/Doencassoja/" class="carousel-item">
+                    <div class="icon-wrapper">
+                        <img src="imagens/doencas.png" alt="Doenças da Soja">
                     </div>
+                    <span>Doenças da Soja</span>
                 </a>
 
-                <a href="https://afonsoraudinei.github.io/hormonios/" class="carousel-card" data-index="4">
-                    <div class="card-content">
-                        <div class="icon-wrapper">
-                            <img src="imagens/hormonios.png" alt="Hormônios Vegetais">
-                        </div>
-                        <span>Hormônios Vegetais</span>
+                <a href="https://afonsoraudinei.github.io/hormonios/" class="carousel-item">
+                    <div class="icon-wrapper">
+                        <img src="imagens/hormonios.png" alt="Hormônios Vegetais">
                     </div>
+                    <span>Hormônios Vegetais</span>
                 </a>
 
                 <!-- Duplicatas para loop infinito -->
-                <a href="https://afonsoraudinei.github.io/EstadioSoja/" class="carousel-card" data-index="5">
-                    <div class="card-content">
-                        <div class="icon-wrapper">
-                            <img src="imagens/estadios.png" alt="Estádios Fenológicos da Soja">
-                        </div>
-                        <span>Estádios Fenológicos da Soja</span>
+                <a href="https://afonsoraudinei.github.io/EstadioSoja/" class="carousel-item">
+                    <div class="icon-wrapper">
+                        <img src="imagens/estadios.png" alt="Estádios Fenológicos da Soja">
                     </div>
+                    <span>Estádios Fenológicos da Soja</span>
                 </a>
 
-                <a href="https://afonsoraudinei.github.io/insetossoja/" class="carousel-card" data-index="6">
-                    <div class="card-content">
-                        <div class="icon-wrapper">
-                            <img src="imagens/pragas.png" alt="Pragas da Soja">
-                        </div>
-                        <span>Pragas da Soja</span>
+                <a href="https://afonsoraudinei.github.io/insetossoja/" class="carousel-item">
+                    <div class="icon-wrapper">
+                        <img src="imagens/pragas.png" alt="Pragas da Soja">
                     </div>
+                    <span>Pragas da Soja</span>
                 </a>
 
-                <a href="https://afonsoraudinei.github.io/EXPNUTRIENTE/" class="carousel-card" data-index="7">
-                    <div class="card-content">
-                        <div class="icon-wrapper">
-                            <img src="imagens/nutrientes.png" alt="Nutrientes na Soja">
-                        </div>
-                        <span>Nutrientes na Soja</span>
+                <a href="https://afonsoraudinei.github.io/EXPNUTRIENTE/" class="carousel-item">
+                    <div class="icon-wrapper">
+                        <img src="imagens/nutrientes.png" alt="Nutrientes na Soja">
                     </div>
+                    <span>Nutrientes na Soja</span>
+                </a>
+
+                <a href="https://afonsoraudinei.github.io/Doencassoja/" class="carousel-item">
+                    <div class="icon-wrapper">
+                        <img src="imagens/doencas.png" alt="Doenças da Soja">
+                    </div>
+                    <span>Doenças da Soja</span>
+                </a>
+
+                <a href="https://afonsoraudinei.github.io/hormonios/" class="carousel-item">
+                    <div class="icon-wrapper">
+                        <img src="imagens/hormonios.png" alt="Hormônios Vegetais">
+                    </div>
+                    <span>Hormônios Vegetais</span>
                 </a>
             </div>
         </div>
-        
-        <div class="carousel-controls">
-            <button class="carousel-btn prev" aria-label="Anterior">‹</button>
-            <button class="carousel-btn next" aria-label="Próximo">›</button>
+
+        <!-- Carrossel 2: MILHO -->
+        <div class="section-title" style="margin-top: 48px;">🌽 CULTURA DO MILHO</div>
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <a href="https://afonsoraudinei.github.io/milho/" class="carousel-item">
+                    <div class="icon-wrapper">
+                        <img src="imagens/milho.png" alt="Estádios do Milho">
+                    </div>
+                    <span>Estádios Fenológicos do Milho</span>
+                </a>
+
+                <a href="https://afonsoraudinei.github.io/milho-pragas/" class="carousel-item">
+                    <div class="icon-wrapper">
+                        <img src="imagens/milho-pragas.png" alt="Pragas do Milho">
+                    </div>
+                    <span>Pragas do Milho</span>
+                </a>
+
+                <a href="https://afonsoraudinei.github.io/milho-nutricao/" class="carousel-item">
+                    <div class="icon-wrapper">
+                        <img src="imagens/milho-nutricao.png" alt="Nutrição do Milho">
+                    </div>
+                    <span>Nutrição do Milho</span>
+                </a>
+
+                <a href="https://afonsoraudinei.github.io/milho-doencas/" class="carousel-item">
+                    <div class="icon-wrapper">
+                        <img src="imagens/milho-doencas.png" alt="Doenças do Milho">
+                    </div>
+                    <span>Doenças do Milho</span>
+                </a>
+
+                <a href="https://afonsoraudinei.github.io/milho-manejo/" class="carousel-item">
+                    <div class="icon-wrapper">
+                        <img src="imagens/milho-manejo.png" alt="Manejo do Milho">
+                    </div>
+                    <span>Manejo Técnico do Milho</span>
+                </a>
+
+                <!-- Duplicatas para loop infinito -->
+                <a href="https://afonsoraudinei.github.io/milho/" class="carousel-item">
+                    <div class="icon-wrapper">
+                        <img src="imagens/milho.png" alt="Estádios do Milho">
+                    </div>
+                    <span>Estádios Fenológicos do Milho</span>
+                </a>
+
+                <a href="https://afonsoraudinei.github.io/milho-pragas/" class="carousel-item">
+                    <div class="icon-wrapper">
+                        <img src="imagens/milho-pragas.png" alt="Pragas do Milho">
+                    </div>
+                    <span>Pragas do Milho</span>
+                </a>
+
+                <a href="https://afonsoraudinei.github.io/milho-nutricao/" class="carousel-item">
+                    <div class="icon-wrapper">
+                        <img src="imagens/milho-nutricao.png" alt="Nutrição do Milho">
+                    </div>
+                    <span>Nutrição do Milho</span>
+                </a>
+
+                <a href="https://afonsoraudinei.github.io/milho-doencas/" class="carousel-item">
+                    <div class="icon-wrapper">
+                        <img src="imagens/milho-doencas.png" alt="Doenças do Milho">
+                    </div>
+                    <span>Doenças do Milho</span>
+                </a>
+
+                <a href="https://afonsoraudinei.github.io/milho-manejo/" class="carousel-item">
+                    <div class="icon-wrapper">
+                        <img src="imagens/milho-manejo.png" alt="Manejo do Milho">
+                    </div>
+                    <span>Manejo Técnico do Milho</span>
+                </a>
+            </div>
         </div>
+
+        <!-- Carrossel 3: SOLOFORTE -->
+        <div class="section-title" style="margin-top: 48px;">💪 SOLOFORTE - TECNOLOGIA AGRÍCOLA</div>
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <a href="https://afonsoraudinei.github.io/soloforte-analise/" class="carousel-item">
+                    <div class="icon-wrapper">
+                        <img src="imagens/soloforte-analise.png" alt="Análise de Solo">
+                    </div>
+                    <span>Análise de Solo Profissional</span>
+                </a>
+
+                <a href="https://afonsoraudinei.github.io/soloforte-calagem/" class="carousel-item">
+                    <div class="icon-wrapper">
+                        <img src="imagens/soloforte-calagem.png" alt="Calagem">
+                    </div>
+                    <span>Calculadora de Calagem</span>
+                </a>
+
+                <a href="https://afonsoraudinei.github.io/soloforte-gesso/" class="carousel-item">
+                    <div class="icon-wrapper">
+                        <img src="imagens/soloforte-gesso.png" alt="Gesso Agrícola">
+                    </div>
+                    <span>Gesso Agrícola</span>
+                </a>
+
+                <a href="https://afonsoraudinei.github.io/soloforte-fertilizacao/" class="carousel-item">
+                    <div class="icon-wrapper">
+                        <img src="imagens/soloforte-fertilizacao.png" alt="Fertilização">
+                    </div>
+                    <span>Planejamento de Fertilização</span>
+                </a>
+
+                <a href="https://afonsoraudinei.github.io/soloforte-produtividade/" class="carousel-item">
+                    <div class="icon-wrapper">
+                        <img src="imagens/soloforte-produtividade.png" alt="Produtividade">
+                    </div>
+                    <span>Estimativa de Produtividade</span>
+                </a>
+
+                <!-- Duplicatas para loop infinito -->
+                <a href="https://afonsoraudinei.github.io/soloforte-analise/" class="carousel-item">
+                    <div class="icon-wrapper">
+                        <img src="imagens/soloforte-analise.png" alt="Análise de Solo">
+                    </div>
+                    <span>Análise de Solo Profissional</span>
+                </a>
+
+                <a href="https://afonsoraudinei.github.io/soloforte-calagem/" class="carousel-item">
+                    <div class="icon-wrapper">
+                        <img src="imagens/soloforte-calagem.png" alt="Calagem">
+                    </div>
+                    <span>Calculadora de Calagem</span>
+                </a>
+
+                <a href="https://afonsoraudinei.github.io/soloforte-gesso/" class="carousel-item">
+                    <div class="icon-wrapper">
+                        <img src="imagens/soloforte-gesso.png" alt="Gesso Agrícola">
+                    </div>
+                    <span>Gesso Agrícola</span>
+                </a>
+
+                <a href="https://afonsoraudinei.github.io/soloforte-fertilizacao/" class="carousel-item">
+                    <div class="icon-wrapper">
+                        <img src="imagens/soloforte-fertilizacao.png" alt="Fertilização">
+                    </div>
+                    <span>Planejamento de Fertilização</span>
+                </a>
+
+                <a href="https://afonsoraudinei.github.io/soloforte-produtividade/" class="carousel-item">
+                    <div class="icon-wrapper">
+                        <img src="imagens/soloforte-produtividade.png" alt="Produtividade">
+                    </div>
+                    <span>Estimativa de Produtividade</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="section-title">ÁREAS DE ATUAÇÃO</div>
+        <div class="feature-card">
+            <h3>Expertise Profissional</h3>
+            <ul class="feature-list">
+                <li>
+                    <span class="feature-icon">✓</span>
+                    <span><strong>Análise de Solo:</strong> Interpretação profissional e recomendações técnicas precisas</span>
+                </li>
+                <li>
+                    <span class="feature-icon">✓</span>
+                    <span><strong>Corretivos:</strong> Especialista em calcário, gesso e nutrição equilibrada</span>
+                </li>
+                <li>
+                    <span class="feature-icon">✓</span>
+                    <span><strong>Fertilização:</strong> Macro e micronutrientes para solo e foliar</span>
+                </li>
+                <li>
+                    <span class="feature-icon">✓</span>
+                    <span><strong>Cultura da Soja:</strong> Manejo técnico e maximização de produtividade</span>
+                </li>
+                <li>
+                    <span class="feature-icon">✓</span>
+                    <span><strong>Tecnologia Agrícola:</strong> Ferramentas digitais para agricultura de precisão</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Attention Box -->
+        <div class="attention-box">
+            <h4>🌱 Assessoria Técnica Personalizada</h4>
+            <div class="attention-item">
+                📊 Análise detalhada de solo e recomendação de corretivos
+            </div>
+            <div class="attention-item">
+                🎯 Planejamento nutricional para máxima produtividade
+            </div>
+            <div class="attention-item">
+                💻 Acesso a ferramentas digitais exclusivas para agricultura
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <section class="section" style="text-align: center; color: #999999; font-size: 0.9em;">
+            <p>&copy; 2024 Raudinei Afonso. Todos os direitos reservados.</p>
+            <p style="margin-top: 8px;">Engenheiro Agrônomo - CREA-TO</p>
+            <p class="footer-credit"><a href="https://afonsoraudinei.github.io/" target="_blank">Soloforte</a></p>
+        </section>
     </div>
-</div>
 
+    <!-- Floating Buttons Container -->
+    <div class="floating-buttons-container">
+        <a href="https://www.instagram.com/raudineiafonsosilva/" class="floating-btn" target="_blank" title="Instagram">
+            <img src="imagens/instagram.png" alt="Instagram">
+        </a>
+        
+        <a href="#perfil" class="floating-btn" title="Perfil">
+            <img src="imagens/perfil.png" alt="Perfil">
+        </a>
+        
+        <a href="https://www.linkedin.com/in/raudinei" class="floating-btn" target="_blank" title="LinkedIn">
+            <img src="imagens/linkedin.png" alt="LinkedIn">
+        </a>
+        
+        <a href="/cdn-cgi/l/email-protection#e3918296878a8d868aa3848e828a8fcd808c8e" class="floating-btn" title="E-mail">
+            <img src="imagens/email.png" alt="E-mail">
+        </a>
+        
+        <a href="https://wa.me/5563984376572?text=Olá!%20Gostaria%20de%20falar%20sobre%20assessoria%20agronômica." class="floating-btn whatsapp" title="WhatsApp">
+            <img src="imagens/whatsapp.png" alt="WhatsApp">
+        </a>
+    </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const track = document.querySelector('.carousel-track');
-    const cards = document.querySelectorAll('.carousel-card');
-    const prevBtn = document.querySelector('.carousel-btn.prev');
-    const nextBtn = document.querySelector('.carousel-btn.next');
-    
-    const totalCards = 5; // número real de cards (sem duplicatas)
-    let currentIndex = 0;
-    let isTransitioning = false;
-    
-    // Centralizar e ativar o card do meio
-    function updateCarousel() {
-        const cardWidth = cards[0].offsetWidth;
-        const gap = 30;
-        const containerWidth = document.querySelector('.carousel-container').offsetWidth;
-        const offset = (containerWidth / 2) - (cardWidth / 2) - currentIndex * (cardWidth + gap);
-        
-        track.style.transform = `translateX(${offset}px)`;
-        
-        // Remover classe active de todos
-        cards.forEach(card => card.classList.remove('active'));
-        
-        // Adicionar classe active ao card central
-        const activeCard = cards[currentIndex % cards.length];
-        if (activeCard) {
-            activeCard.classList.add('active');
-        }
-    }
-    
-    // Navegação
-    function nextSlide() {
-        if (isTransitioning) return;
-        isTransitioning = true;
-        
-        currentIndex++;
-        
-        // Loop infinito
-        if (currentIndex >= totalCards) {
-            currentIndex = 0;
-        }
-        
-        updateCarousel();
-        
-        setTimeout(() => {
-            isTransitioning = false;
-        }, 500);
-    }
-    
-    function prevSlide() {
-        if (isTransitioning) return;
-        isTransitioning = true;
-        
-        currentIndex--;
-        
-        // Loop infinito
-        if (currentIndex < 0) {
-            currentIndex = totalCards - 1;
-        }
-        
-        updateCarousel();
-        
-        setTimeout(() => {
-            isTransitioning = false;
-        }, 500);
-    }
-    
-    // Event listeners
-    nextBtn.addEventListener('click', nextSlide);
-    prevBtn.addEventListener('click', prevSlide);
-    
-    // Suporte para touch/swipe
-    let startX = 0;
-    let currentX = 0;
-    let isDragging = false;
-    
-    track.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-        isDragging = true;
-    });
-    
-    track.addEventListener('touchmove', (e) => {
-        if (!isDragging) return;
-        currentX = e.touches[0].clientX;
-    });
-    
-    track.addEventListener('touchend', () => {
-        if (!isDragging) return;
-        isDragging = false;
-        
-        const diff = startX - currentX;
-        
-        if (Math.abs(diff) > 50) {
-            if (diff > 0) {
-                nextSlide();
-            } else {
-                prevSlide();
-            }
-        }
-    });
-    
-    // Suporte para mouse drag
-    track.addEventListener('mousedown', (e) => {
-        startX = e.clientX;
-        isDragging = true;
-        track.style.cursor = 'grabbing';
-    });
-    
-    track.addEventListener('mousemove', (e) => {
-        if (!isDragging) return;
-        currentX = e.clientX;
-    });
-    
-    track.addEventListener('mouseup', () => {
-        if (!isDragging) return;
-        isDragging = false;
-        track.style.cursor = 'grab';
-        
-        const diff = startX - currentX;
-        
-        if (Math.abs(diff) > 50) {
-            if (diff > 0) {
-                nextSlide();
-            } else {
-                prevSlide();
-            }
-        }
-    });
-    
-    track.addEventListener('mouseleave', () => {
-        if (isDragging) {
-            isDragging = false;
-            track.style.cursor = 'grab';
-        }
-    });
-    
-    // Teclado
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') {
-            prevSlide();
-        } else if (e.key === 'ArrowRight') {
-            nextSlide();
-        }
-    });
-    
-    // Inicializar
-    updateCarousel();
-    
-    // Atualizar ao redimensionar
-    window.addEventListener('resize', updateCarousel);
-});
-</script>
+    <!-- Lightbox para ampliar imagens -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" class="lightbox-content" src="" alt="Imagem ampliada">
+    </div>
 
-</body>
-</html>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Função para abrir lightbox
+        function openLightbox(imgSrc) {
+            document.getElementById('lightbox').classList.add('active');
+            document.getElementById('lightbox-img').src = imgSrc;
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Função para fechar lightbox
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Adicionar evento de clique em todas as imagens do carrossel
+        document.addEventListener('DOMContentLoaded', function() {
+            const carouselItems = document.querySelectorAll('.carousel-item img');
+            carouselItems.forEach(function(img) {
+                img.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    openLightbox(this.src);
+                });
+            });
+
+            // Fechar com tecla ESC
+            document.addEventListener('keydown', function(e) {
