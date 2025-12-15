@@ -75,7 +75,7 @@
             width: 100%;
             height: 100%;
             background: radial-gradient(
-                ellipse at var(--x, 50%) var(--y, 50%),
+                ellipse at 50% 50%,
                 rgba(255, 255, 255, 0.3) 0%,
                 rgba(255, 255, 255, 0.15) 25%,
                 transparent 50%
@@ -84,72 +84,9 @@
             pointer-events: none;
         }
 
-        .header::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(
-                circle at var(--x2, 30%) var(--y2, 70%),
-                rgba(255, 255, 255, 0.2) 0%,
-                rgba(255, 255, 255, 0.1) 30%,
-                transparent 60%
-            );
-            animation: waterLight2 12s ease-in-out infinite;
-            pointer-events: none;
-        }
-
         @keyframes waterLight {
-            0% {
-                --x: 20%;
-                --y: 30%;
-                opacity: 0.7;
-            }
-            25% {
-                --x: 80%;
-                --y: 20%;
-                opacity: 1;
-            }
-            50% {
-                --x: 60%;
-                --y: 80%;
-                opacity: 0.6;
-            }
-            75% {
-                --x: 30%;
-                --y: 60%;
-                opacity: 0.9;
-            }
-            100% {
-                --x: 20%;
-                --y: 30%;
-                opacity: 0.7;
-            }
-        }
-
-        @keyframes waterLight2 {
-            0% {
-                --x2: 70%;
-                --y2: 60%;
-                opacity: 0.5;
-            }
-            33% {
-                --x2: 40%;
-                --y2: 30%;
-                opacity: 0.8;
-            }
-            66% {
-                --x2: 85%;
-                --y2: 75%;
-                opacity: 0.4;
-            }
-            100% {
-                --x2: 70%;
-                --y2: 60%;
-                opacity: 0.5;
-            }
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
         }
 
         .header-content {
@@ -161,29 +98,36 @@
         }
 
         .logo-section {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            text-align: center;
         }
 
         .logo-box {
-            width: 220px;
-            height: 220px;
-            background: transparent;
+            width: 180px;
+            height: 180px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 90px;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .logo-box img {
-            width: 220px;
-            height: 220px;
-            object-fit: contain;
-            filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.4));
+            margin: 0 auto;
+            font-size: 80px;
         }
 
         .title-section {
-            display: none;
+            margin-top: 16px;
+            color: white;
+        }
+
+        .title-section h1 {
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .title-section p {
+            font-size: 1em;
+            opacity: 0.9;
         }
 
         /* Container Principal */
@@ -237,85 +181,21 @@
             margin-bottom: 24px;
         }
 
-        /* Contatos no Topo - Estilo iOS */
-        .contacts-section {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            margin: 24px 0;
+        /* Carrossel com Navegação */
+        .carousel-wrapper {
+            position: relative;
+            margin: 32px 0;
         }
 
-        .contact-card {
-            padding: 14px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 249, 250, 0.95));
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 8px rgba(0, 102, 255, 0.08);
-            border-radius: 16px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            border: 1px solid rgba(0, 102, 255, 0.1);
-        }
-
-        .contact-card:hover {
-            transform: scale(1.08) translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0, 102, 255, 0.2);
-            border-color: var(--samsung-blue);
-        }
-
-        .contact-card .icon-wrapper {
-            width: 72px;
-            height: 72px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: transparent;
-            transition: all 0.3s ease;
-        }
-
-        .contact-card:hover .icon-wrapper {
-            transform: scale(1.1) translateY(-3px);
-        }
-
-        .contact-card .icon-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            filter: drop-shadow(0 2px 6px rgba(0, 102, 255, 0.15));
-            transition: all 0.3s ease;
-        }
-
-        .contact-card:hover .icon-wrapper img {
-            filter: drop-shadow(0 6px 12px rgba(0, 102, 255, 0.3));
-        }
-
-        .contact-card span {
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--petroleo);
-            text-align: center;
-        }
-
-        /* Carrossel Infinito */
         .carousel-container {
             overflow: hidden;
-            margin: 32px 0;
             position: relative;
         }
 
         .carousel-track {
             display: flex;
-            animation: scroll 40s linear infinite;
             gap: 16px;
-        }
-
-        .carousel-track:hover {
-            animation-play-state: paused;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .carousel-item {
@@ -345,28 +225,19 @@
         }
 
         .carousel-item .icon-wrapper {
-            width: 160px;
-            height: 160px;
+            width: 140px;
+            height: 140px;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(0, 132, 61, 0.1));
+            border-radius: 70px;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
+            font-size: 70px;
         }
 
         .carousel-item:hover .icon-wrapper {
             transform: scale(1.1);
-        }
-
-        .carousel-item .icon-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            filter: drop-shadow(0 4px 8px rgba(0, 102, 255, 0.2));
-            transition: all 0.3s ease;
-        }
-
-        .carousel-item:hover .icon-wrapper img {
-            filter: drop-shadow(0 8px 16px rgba(0, 102, 255, 0.35));
         }
 
         .carousel-item span {
@@ -385,13 +256,77 @@
             background-clip: text;
         }
 
-        @keyframes scroll {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(calc(-416px * 5));
-            }
+        /* Botões de Navegação */
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 56px;
+            height: 56px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 28px;
+            border: 1px solid rgba(0, 102, 255, 0.2);
+            box-shadow: 0 4px 16px rgba(0, 102, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-nav:hover {
+            background: var(--samsung-blue);
+            border-color: var(--samsung-blue);
+            box-shadow: 0 6px 20px rgba(0, 102, 255, 0.3);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-nav svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--samsung-blue);
+            transition: all 0.3s ease;
+        }
+
+        .carousel-nav:hover svg {
+            fill: white;
+        }
+
+        .carousel-nav.prev {
+            left: -28px;
+        }
+
+        .carousel-nav.next {
+            right: -28px;
+        }
+
+        .carousel-nav:disabled {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        /* Indicadores de Posição */
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 4px;
+            background: rgba(0, 102, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            width: 24px;
+            background: var(--samsung-blue);
         }
 
         /* Features */
@@ -471,234 +406,29 @@
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
         }
 
-        /* Floating Buttons Container */
-        .floating-buttons-container {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            z-index: 999;
-            align-items: flex-end;
-        }
-
-        /* Floating Button */
-        .floating-btn {
-            width: 75px;
-            height: 75px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            background: transparent;
-            animation: floatBtn 3s ease-in-out infinite;
-        }
-
-        /* WhatsApp maior */
-        .floating-btn.whatsapp {
-            width: 90px;
-            height: 90px;
-        }
-
-        @keyframes floatBtn {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-        }
-
-        .floating-btn img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            filter: drop-shadow(0 6px 20px rgba(0, 102, 255, 0.4));
-            transition: all 0.3s ease;
-        }
-
-        .floating-btn:hover {
-            transform: scale(1.15);
-            animation: none;
-        }
-
-        .floating-btn:hover img {
-            filter: drop-shadow(0 8px 24px rgba(0, 102, 255, 0.6));
-        }
-
-        /* Animação de entrada em cascata */
-        .floating-btn:nth-child(1) {
-            animation-delay: 0s;
-        }
-        .floating-btn:nth-child(2) {
-            animation-delay: 0.1s;
-        }
-        .floating-btn:nth-child(3) {
-            animation-delay: 0.2s;
-        }
-        .floating-btn:nth-child(4) {
-            animation-delay: 0.3s;
-        }
-        .floating-btn:nth-child(5) {
-            animation-delay: 0.4s;
-        }
-
-        /* Lightbox */
-        .lightbox {
-            display: none;
-            position: fixed;
-            z-index: 9999;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(31, 60, 69, 0.96);
-            backdrop-filter: blur(12px);
-            animation: fadeIn 0.3s;
-        }
-
-        .lightbox.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .lightbox-content {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-            border-radius: 16px;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
-            animation: zoomIn 0.3s;
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 24px;
-            right: 32px;
-            color: #ffffff;
-            font-size: 42px;
-            font-weight: bold;
-            cursor: pointer;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            width: 56px;
-            height: 56px;
-            border-radius: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s;
-        }
-
-        .lightbox-close:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: scale(1.1);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes zoomIn {
-            from { 
-                transform: scale(0.8);
-                opacity: 0;
-            }
-            to { 
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        /* Footer discreto */
-        .footer-credit {
-            font-size: 0.7em;
-            color: #999999;
-            opacity: 0.4;
-            margin-top: 8px;
-            transition: opacity 0.2s;
-        }
-
-        .footer-credit:hover {
-            opacity: 0.7;
-        }
-
-        .footer-credit a {
-            color: inherit;
-            text-decoration: none;
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-            }
-
-            .logo-box {
-                width: 180px;
-                height: 180px;
-            }
-
-            .logo-box img {
-                width: 180px;
-                height: 180px;
-            }
-
-            .hero h2 {
-                font-size: 1.6em;
-            }
-
             .carousel-item {
                 flex: 0 0 320px;
                 height: 240px;
             }
 
-            /* Botões flutuantes menores em tablet */
-            .floating-btn {
-                width: 65px;
-                height: 65px;
+            .carousel-nav {
+                width: 48px;
+                height: 48px;
+                border-radius: 24px;
             }
 
-            .floating-btn.whatsapp {
-                width: 80px;
-                height: 80px;
+            .carousel-nav.prev {
+                left: -24px;
             }
 
-            .floating-buttons-container {
-                bottom: 20px;
-                right: 20px;
-                gap: 16px;
-            }
-
-            @keyframes scroll {
-                0% {
-                    transform: translateX(0);
-                }
-                100% {
-                    transform: translateX(calc(-336px * 5));
-                }
+            .carousel-nav.next {
+                right: -24px;
             }
         }
 
         @media (max-width: 640px) {
-            .container {
-                padding: 0 12px;
-            }
-
-            .header {
-                padding: 24px 12px;
-            }
-
-            .logo-box {
-                width: 150px;
-                height: 150px;
-            }
-
-            .logo-box img {
-                width: 150px;
-                height: 150px;
-            }
-
             .hero h2 {
                 font-size: 1.4em;
             }
@@ -713,38 +443,32 @@
             }
 
             .carousel-item .icon-wrapper {
-                width: 130px;
-                height: 130px;
+                width: 110px;
+                height: 110px;
+                font-size: 55px;
             }
 
             .carousel-item span {
                 font-size: 16px;
             }
 
-            /* Botões flutuantes ainda menores em mobile */
-            .floating-btn {
-                width: 60px;
-                height: 60px;
+            .carousel-nav {
+                width: 40px;
+                height: 40px;
+                border-radius: 20px;
             }
 
-            .floating-btn.whatsapp {
-                width: 75px;
-                height: 75px;
+            .carousel-nav svg {
+                width: 20px;
+                height: 20px;
             }
 
-            .floating-buttons-container {
-                bottom: 16px;
-                right: 16px;
-                gap: 14px;
+            .carousel-nav.prev {
+                left: -20px;
             }
 
-            @keyframes scroll {
-                0% {
-                    transform: translateX(0);
-                }
-                100% {
-                    transform: translateX(calc(-296px * 5));
-                }
+            .carousel-nav.next {
+                right: -20px;
             }
         }
     </style>
@@ -755,7 +479,7 @@
         <div class="header-content">
             <div class="logo-section">
                 <div class="logo-box">
-                    <img src="logo.png" alt="Raudinei Afonso">
+                    🌱
                 </div>
                 <div class="title-section">
                     <h1>Raudinei Afonso</h1>
@@ -774,233 +498,122 @@
 
         <!-- Carrossel 1: SOJA -->
         <div class="section-title" style="margin-top: 32px;">🌱 CULTURA DA SOJA</div>
-        <div class="carousel-container">
-            <div class="carousel-track">
-                <a href="https://afonsoraudinei.github.io/EstadioSoja/" class="carousel-item">
-                    <div class="icon-wrapper">
-                        <img src="imagens/estadios.png" alt="Estádios Fenológicos da Soja">
-                    </div>
-                    <span>Estádios Fenológicos da Soja</span>
-                </a>
-
-                <a href="https://afonsoraudinei.github.io/insetossoja/" class="carousel-item">
-                    <div class="icon-wrapper">
-                        <img src="imagens/pragas.png" alt="Pragas da Soja">
-                    </div>
-                    <span>Pragas da Soja</span>
-                </a>
-
-                <a href="https://afonsoraudinei.github.io/EXPNUTRIENTE/" class="carousel-item">
-                    <div class="icon-wrapper">
-                        <img src="imagens/nutrientes.png" alt="Nutrientes na Soja">
-                    </div>
-                    <span>Nutrientes na Soja</span>
-                </a>
-
-                <a href="https://afonsoraudinei.github.io/Doencassoja/" class="carousel-item">
-                    <div class="icon-wrapper">
-                        <img src="imagens/doencas.png" alt="Doenças da Soja">
-                    </div>
-                    <span>Doenças da Soja</span>
-                </a>
-
-                <a href="https://afonsoraudinei.github.io/Hormonios-vegetais/" class="carousel-item">
-                    <div class="icon-wrapper">
-                        <img src="imagens/hormonios.png" alt="Hormônios Vegetais">
-                    </div>
-                    <span>Hormônios Vegetais</span>
-                </a>
-
-                <!-- Duplicatas para loop infinito -->
-                <a href="https://afonsoraudinei.github.io/EstadioSoja/" class="carousel-item">
-                    <div class="icon-wrapper">
-                        <img src="imagens/estadios.png" alt="Estádios Fenológicos da Soja">
-                    </div>
-                    <span>Estádios Fenológicos da Soja</span>
-                </a>
-
-                <a href="https://afonsoraudinei.github.io/insetossoja/" class="carousel-item">
-                    <div class="icon-wrapper">
-                        <img src="imagens/pragas.png" alt="Pragas da Soja">
-                    </div>
-                    <span>Pragas da Soja</span>
-                </a>
-
-                <a href="https://afonsoraudinei.github.io/EXPNUTRIENTE/" class="carousel-item">
-                    <div class="icon-wrapper">
-                        <img src="imagens/nutrientes.png" alt="Nutrientes na Soja">
-                    </div>
-                    <span>Nutrientes na Soja</span>
-                </a>
-
-                <a href="https://afonsoraudinei.github.io/Doencassoja/" class="carousel-item">
-                    <div class="icon-wrapper">
-                        <img src="imagens/doencas.png" alt="Doenças da Soja">
-                    </div>
-                    <span>Doenças da Soja</span>
-                </a>
-
-                <a href="https://afonsoraudinei.github.io/hormonios/" class="carousel-item">
-                    <div class="icon-wrapper">
-                        <img src="imagens/hormonios.png" alt="Hormônios Vegetais">
-                    </div>
-                    <span>Hormônios Vegetais</span>
-                </a>
+        <div class="carousel-wrapper" data-carousel="soja">
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <a href="#" class="carousel-item" onclick="event.preventDefault()">
+                        <div class="icon-wrapper">🌿</div>
+                        <span>Estádios Fenológicos da Soja</span>
+                    </a>
+                    <a href="#" class="carousel-item" onclick="event.preventDefault()">
+                        <div class="icon-wrapper">🐛</div>
+                        <span>Pragas da Soja</span>
+                    </a>
+                    <a href="#" class="carousel-item" onclick="event.preventDefault()">
+                        <div class="icon-wrapper">⚗️</div>
+                        <span>Nutrientes na Soja</span>
+                    </a>
+                    <a href="#" class="carousel-item" onclick="event.preventDefault()">
+                        <div class="icon-wrapper">🦠</div>
+                        <span>Doenças da Soja</span>
+                    </a>
+                    <a href="#" class="carousel-item" onclick="event.preventDefault()">
+                        <div class="icon-wrapper">🧬</div>
+                        <span>Hormônios Vegetais</span>
+                    </a>
+                </div>
             </div>
+            <button class="carousel-nav prev" data-dir="prev">
+                <svg viewBox="0 0 24 24">
+                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                </svg>
+            </button>
+            <button class="carousel-nav next" data-dir="next">
+                <svg viewBox="0 0 24 24">
+                    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                </svg>
+            </button>
+            <div class="carousel-dots"></div>
         </div>
 
         <!-- Carrossel 2: MILHO -->
         <div class="section-title" style="margin-top: 48px;">🌽 CULTURA DO MILHO</div>
-        <div class="carousel-container">
-            <div class="carousel-track">
-                <a href="https://afonsoraudinei.github.io/milho/" class="carousel-item">
-                    <div class="icon-wrapper">
-                        <img src="imagens/milho.png" alt="Estádios do Milho">
-                    </div>
-                    <span>Estádios Fenológicos do Milho</span>
-                </a>
-
-                <a href="https://afonsoraudinei.github.io/milho-pragas/" class="carousel-item">
-                    <div class="icon-wrapper">
-                        <img src="imagens/milho-pragas.png" alt="Pragas do Milho">
-                    </div>
-                    <span>Pragas do Milho</span>
-                </a>
-
-                <a href="https://afonsoraudinei.github.io/milho-nutricao/" class="carousel-item">
-                    <div class="icon-wrapper">
-                        <img src="imagens/milho-nutricao.png" alt="Nutrição do Milho">
-                    </div>
-                    <span>Nutrição do Milho</span>
-                </a>
-
-                <a href="https://afonsoraudinei.github.io/milho-doencas/" class="carousel-item">
-                    <div class="icon-wrapper">
-                        <img src="imagens/milho-doencas.png" alt="Doenças do Milho">
-                    </div>
-                    <span>Doenças do Milho</span>
-                </a>
-
-                <a href="https://afonsoraudinei.github.io/milho-manejo/" class="carousel-item">
-                    <div class="icon-wrapper">
-                        <img src="imagens/milho-manejo.png" alt="Manejo do Milho">
-                    </div>
-                    <span>Manejo Técnico do Milho</span>
-                </a>
-
-                <!-- Duplicatas para loop infinito -->
-                <a href="https://afonsoraudinei.github.io/milho/" class="carousel-item">
-                    <div class="icon-wrapper">
-                        <img src="imagens/milho.png" alt="Estádios do Milho">
-                    </div>
-                    <span>Estádios Fenológicos do Milho</span>
-                </a>
-
-                <a href="https://afonsoraudinei.github.io/milho-pragas/" class="carousel-item">
-                    <div class="icon-wrapper">
-                        <img src="imagens/milho-pragas.png" alt="Pragas do Milho">
-                    </div>
-                    <span>Pragas do Milho</span>
-                </a>
-
-                <a href="https://afonsoraudinei.github.io/milho-nutricao/" class="carousel-item">
-                    <div class="icon-wrapper">
-                        <img src="imagens/milho-nutricao.png" alt="Nutrição do Milho">
-                    </div>
-                    <span>Nutrição do Milho</span>
-                </a>
-
-                <a href="https://afonsoraudinei.github.io/milho-doencas/" class="carousel-item">
-                    <div class="icon-wrapper">
-                        <img src="imagens/milho-doencas.png" alt="Doenças do Milho">
-                    </div>
-                    <span>Doenças do Milho</span>
-                </a>
-
-                <a href="https://afonsoraudinei.github.io/milho-manejo/" class="carousel-item">
-                    <div class="icon-wrapper">
-                        <img src="imagens/milho-manejo.png" alt="Manejo do Milho">
-                    </div>
-                    <span>Manejo Técnico do Milho</span>
-                </a>
+        <div class="carousel-wrapper" data-carousel="milho">
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <a href="#" class="carousel-item" onclick="event.preventDefault()">
+                        <div class="icon-wrapper">🌽</div>
+                        <span>Estádios Fenológicos do Milho</span>
+                    </a>
+                    <a href="#" class="carousel-item" onclick="event.preventDefault()">
+                        <div class="icon-wrapper">🐞</div>
+                        <span>Pragas do Milho</span>
+                    </a>
+                    <a href="#" class="carousel-item" onclick="event.preventDefault()">
+                        <div class="icon-wrapper">💊</div>
+                        <span>Nutrição do Milho</span>
+                    </a>
+                    <a href="#" class="carousel-item" onclick="event.preventDefault()">
+                        <div class="icon-wrapper">🍄</div>
+                        <span>Doenças do Milho</span>
+                    </a>
+                    <a href="#" class="carousel-item" onclick="event.preventDefault()">
+                        <div class="icon-wrapper">📊</div>
+                        <span>Manejo Técnico do Milho</span>
+                    </a>
+                </div>
             </div>
+            <button class="carousel-nav prev" data-dir="prev">
+                <svg viewBox="0 0 24 24">
+                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                </svg>
+            </button>
+            <button class="carousel-nav next" data-dir="next">
+                <svg viewBox="0 0 24 24">
+                    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                </svg>
+            </button>
+            <div class="carousel-dots"></div>
         </div>
 
         <!-- Carrossel 3: SOLOFORTE -->
         <div class="section-title" style="margin-top: 48px;">💪 SOLOFORTE - TECNOLOGIA AGRÍCOLA</div>
-        <div class="carousel-container">
-            <div class="carousel-track">
-                <a href="https://afonsoraudinei.github.io/soloforte-analise/" class="carousel-item">
-                    <div class="icon-wrapper">
-                        <img src="imagens/soloforte-analise.png" alt="Análise de Solo">
-                    </div>
-                    <span>Análise de Solo Profissional</span>
-                </a>
-
-                <a href="https://afonsoraudinei.github.io/soloforte-calagem/" class="carousel-item">
-                    <div class="icon-wrapper">
-                        <img src="imagens/soloforte-calagem.png" alt="Calagem">
-                    </div>
-                    <span>Calculadora de Calagem</span>
-                </a>
-
-                <a href="https://afonsoraudinei.github.io/soloforte-gesso/" class="carousel-item">
-                    <div class="icon-wrapper">
-                        <img src="imagens/soloforte-gesso.png" alt="Gesso Agrícola">
-                    </div>
-                    <span>Gesso Agrícola</span>
-                </a>
-
-                <a href="https://afonsoraudinei.github.io/soloforte-fertilizacao/" class="carousel-item">
-                    <div class="icon-wrapper">
-                        <img src="imagens/soloforte-fertilizacao.png" alt="Fertilização">
-                    </div>
-                    <span>Planejamento de Fertilização</span>
-                </a>
-
-                <a href="https://afonsoraudinei.github.io/soloforte-produtividade/" class="carousel-item">
-                    <div class="icon-wrapper">
-                        <img src="imagens/soloforte-produtividade.png" alt="Produtividade">
-                    </div>
-                    <span>Estimativa de Produtividade</span>
-                </a>
-
-                <!-- Duplicatas para loop infinito -->
-                <a href="https://afonsoraudinei.github.io/soloforte-analise/" class="carousel-item">
-                    <div class="icon-wrapper">
-                        <img src="imagens/soloforte-analise.png" alt="Análise de Solo">
-                    </div>
-                    <span>Análise de Solo Profissional</span>
-                </a>
-
-                <a href="https://afonsoraudinei.github.io/soloforte-calagem/" class="carousel-item">
-                    <div class="icon-wrapper">
-                        <img src="imagens/soloforte-calagem.png" alt="Calagem">
-                    </div>
-                    <span>Calculadora de Calagem</span>
-                </a>
-
-                <a href="https://afonsoraudinei.github.io/soloforte-gesso/" class="carousel-item">
-                    <div class="icon-wrapper">
-                        <img src="imagens/soloforte-gesso.png" alt="Gesso Agrícola">
-                    </div>
-                    <span>Gesso Agrícola</span>
-                </a>
-
-                <a href="https://afonsoraudinei.github.io/soloforte-fertilizacao/" class="carousel-item">
-                    <div class="icon-wrapper">
-                        <img src="imagens/soloforte-fertilizacao.png" alt="Fertilização">
-                    </div>
-                    <span>Planejamento de Fertilização</span>
-                </a>
-
-                <a href="https://afonsoraudinei.github.io/soloforte-produtividade/" class="carousel-item">
-                    <div class="icon-wrapper">
-                        <img src="imagens/soloforte-produtividade.png" alt="Produtividade">
-                    </div>
-                    <span>Estimativa de Produtividade</span>
-                </a>
+        <div class="carousel-wrapper" data-carousel="soloforte">
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <a href="#" class="carousel-item" onclick="event.preventDefault()">
+                        <div class="icon-wrapper">🔬</div>
+                        <span>Análise de Solo Profissional</span>
+                    </a>
+                    <a href="#" class="carousel-item" onclick="event.preventDefault()">
+                        <div class="icon-wrapper">🧮</div>
+                        <span>Calculadora de Calagem</span>
+                    </a>
+                    <a href="#" class="carousel-item" onclick="event.preventDefault()">
+                        <div class="icon-wrapper">⚪</div>
+                        <span>Gesso Agrícola</span>
+                    </a>
+                    <a href="#" class="carousel-item" onclick="event.preventDefault()">
+                        <div class="icon-wrapper">🌾</div>
+                        <span>Planejamento de Fertilização</span>
+                    </a>
+                    <a href="#" class="carousel-item" onclick="event.preventDefault()">
+                        <div class="icon-wrapper">📈</div>
+                        <span>Estimativa de Produtividade</span>
+                    </a>
+                </div>
             </div>
+            <button class="carousel-nav prev" data-dir="prev">
+                <svg viewBox="0 0 24 24">
+                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                </svg>
+            </button>
+            <button class="carousel-nav next" data-dir="next">
+                <svg viewBox="0 0 24 24">
+                    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                </svg>
+            </button>
+            <div class="carousel-dots"></div>
         </div>
 
         <!-- Features -->
@@ -1049,62 +662,133 @@
         <section class="section" style="text-align: center; color: #999999; font-size: 0.9em;">
             <p>&copy; 2024 Raudinei Afonso. Todos os direitos reservados.</p>
             <p style="margin-top: 8px;">Engenheiro Agrônomo - CREA-TO</p>
-            <p class="footer-credit"><a href="https://afonsoraudinei.github.io/" target="_blank">Soloforte</a></p>
         </section>
     </div>
 
-    <!-- Floating Buttons Container -->
-    <div class="floating-buttons-container">
-        <a href="https://www.instagram.com/raudineiafonsosilva/" class="floating-btn" target="_blank" title="Instagram">
-            <img src="imagens/instagram.png" alt="Instagram">
-        </a>
-        
-        <a href="https://afonsoraudinei.github.io/Jornadaprofissional/" class="floating-btn" title="Perfil">
-            <img src="imagens/perfil.png" alt="Perfil">
-        </a>
-        
-        <a href="https://www.linkedin.com/in/raudinei" class="floating-btn" target="_blank" title="LinkedIn">
-            <img src="imagens/linkedin.png" alt="LinkedIn">
-        </a>
-        
-        <a href="/cdn-cgi/l/email-protection#e3918296878a8d868aa3848e828a8fcd808c8e" class="floating-btn" title="E-mail">
-            <img src="imagens/email.png" alt="E-mail">
-        </a>
-        
-        <a href="https://wa.me/5563984376572?text=Olá!%20Gostaria%20de%20falar%20sobre%20assessoria%20agronômica." class="floating-btn whatsapp" title="WhatsApp">
-            <img src="imagens/whatsapp.png" alt="WhatsApp">
-        </a>
-    </div>
+    <script>
+        // Sistema de Carrossel com Navegação
+        class Carousel {
+            constructor(wrapper) {
+                this.wrapper = wrapper;
+                this.container = wrapper.querySelector('.carousel-container');
+                this.track = wrapper.querySelector('.carousel-track');
+                this.items = Array.from(wrapper.querySelectorAll('.carousel-item'));
+                this.prevBtn = wrapper.querySelector('.carousel-nav.prev');
+                this.nextBtn = wrapper.querySelector('.carousel-nav.next');
+                this.dotsContainer = wrapper.querySelector('.carousel-dots');
+                
+                this.currentIndex = 0;
+                this.itemsPerView = this.getItemsPerView();
+                this.totalPages = Math.ceil(this.items.length / this.itemsPerView);
+                
+                this.init();
+            }
 
-    <!-- Lightbox para ampliar imagens -->
-    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-        <span class="lightbox-close">&times;</span>
-        <img id="lightbox-img" class="lightbox-content" src="" alt="Imagem ampliada">
-    </div>
+            getItemsPerView() {
+                const width = window.innerWidth;
+                if (width <= 640) return 1;
+                if (width <= 768) return 1;
+                if (width <= 1024) return 2;
+                return 2;
+            }
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Função para abrir lightbox
-        function openLightbox(imgSrc) {
-            document.getElementById('lightbox').classList.add('active');
-            document.getElementById('lightbox-img').src = imgSrc;
-            document.body.style.overflow = 'hidden';
-        }
-
-        // Função para fechar lightbox
-        function closeLightbox() {
-            document.getElementById('lightbox').classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Adicionar evento de clique em todas as imagens do carrossel
-        document.addEventListener('DOMContentLoaded', function() {
-            const carouselItems = document.querySelectorAll('.carousel-item img');
-            carouselItems.forEach(function(img) {
-                img.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    openLightbox(this.src);
+            init() {
+                this.createDots();
+                this.updateCarousel();
+                this.attachEvents();
+                
+                // Resize handler
+                window.addEventListener('resize', () => {
+                    const newItemsPerView = this.getItemsPerView();
+                    if (newItemsPerView !== this.itemsPerView) {
+                        this.itemsPerView = newItemsPerView;
+                        this.totalPages = Math.ceil(this.items.length / this.itemsPerView);
+                        this.currentIndex = Math.min(this.currentIndex, this.totalPages - 1);
+                        this.createDots();
+                        this.updateCarousel();
+                    }
                 });
-            });
+            }
 
-            // Fechar com tecla ESC
-            document.addEventListener('keydown', function(e) {
+            createDots() {
+                this.dotsContainer.innerHTML = '';
+                for (let i = 0; i < this.totalPages; i++) {
+                    const dot = document.createElement('div');
+                    dot.classList.add('carousel-dot');
+                    if (i === this.currentIndex) dot.classList.add('active');
+                    dot.addEventListener('click', () => this.goToPage(i));
+                    this.dotsContainer.appendChild(dot);
+                }
+            }
+
+            updateCarousel() {
+                const itemWidth = this.items[0].offsetWidth;
+                const gap = 16;
+                const offset = -(this.currentIndex * (itemWidth + gap) * this.itemsPerView);
+                this.track.style.transform = `translateX(${offset}px)`;
+                
+                // Update dots
+                const dots = this.dotsContainer.querySelectorAll('.carousel-dot');
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === this.currentIndex);
+                });
+
+                // Update button states
+                this.prevBtn.disabled = this.currentIndex === 0;
+                this.nextBtn.disabled = this.currentIndex === this.totalPages - 1;
+            }
+
+            next() {
+                if (this.currentIndex < this.totalPages - 1) {
+                    this.currentIndex++;
+                    this.updateCarousel();
+                }
+            }
+
+            prev() {
+                if (this.currentIndex > 0) {
+                    this.currentIndex--;
+                    this.updateCarousel();
+                }
+            }
+
+            goToPage(index) {
+                this.currentIndex = index;
+                this.updateCarousel();
+            }
+
+            attachEvents() {
+                this.prevBtn.addEventListener('click', () => this.prev());
+                this.nextBtn.addEventListener('click', () => this.next());
+
+                // Touch swipe
+                let startX = 0;
+                let endX = 0;
+
+                this.container.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                });
+
+                this.container.addEventListener('touchend', (e) => {
+                    endX = e.changedTouches[0].clientX;
+                    const diff = startX - endX;
+                    
+                    if (Math.abs(diff) > 50) {
+                        if (diff > 0) {
+                            this.next();
+                        } else {
+                            this.prev();
+                        }
+                    }
+                });
+            }
+        }
+
+        // Initialize all carousels
+        document.addEventListener('DOMContentLoaded', function() {
+            const carouselWrappers = document.querySelectorAll('.carousel-wrapper');
+            carouselWrappers.forEach(wrapper => new Carousel(wrapper));
+        });
+    </script>
+</body>
+</html>
