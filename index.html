@@ -666,7 +666,7 @@
     </div>
 
     <script>
-        // Sistema de Carrossel com Navegação
+        // Sistema de Carrossel - UM CARD POR VEZ
         class Carousel {
             constructor(wrapper) {
                 this.wrapper = wrapper;
@@ -678,18 +678,9 @@
                 this.dotsContainer = wrapper.querySelector('.carousel-dots');
                 
                 this.currentIndex = 0;
-                this.itemsPerView = this.getItemsPerView();
-                this.totalPages = Math.ceil(this.items.length / this.itemsPerView);
+                this.totalItems = this.items.length;
                 
                 this.init();
-            }
-
-            getItemsPerView() {
-                const width = window.innerWidth;
-                if (width <= 640) return 1;
-                if (width <= 768) return 1;
-                if (width <= 1024) return 2;
-                return 2;
             }
 
             init() {
@@ -697,26 +688,18 @@
                 this.updateCarousel();
                 this.attachEvents();
                 
-                // Resize handler
                 window.addEventListener('resize', () => {
-                    const newItemsPerView = this.getItemsPerView();
-                    if (newItemsPerView !== this.itemsPerView) {
-                        this.itemsPerView = newItemsPerView;
-                        this.totalPages = Math.ceil(this.items.length / this.itemsPerView);
-                        this.currentIndex = Math.min(this.currentIndex, this.totalPages - 1);
-                        this.createDots();
-                        this.updateCarousel();
-                    }
+                    this.updateCarousel();
                 });
             }
 
             createDots() {
                 this.dotsContainer.innerHTML = '';
-                for (let i = 0; i < this.totalPages; i++) {
+                for (let i = 0; i < this.totalItems; i++) {
                     const dot = document.createElement('div');
                     dot.classList.add('carousel-dot');
                     if (i === this.currentIndex) dot.classList.add('active');
-                    dot.addEventListener('click', () => this.goToPage(i));
+                    dot.addEventListener('click', () => this.goToSlide(i));
                     this.dotsContainer.appendChild(dot);
                 }
             }
@@ -724,22 +707,20 @@
             updateCarousel() {
                 const itemWidth = this.items[0].offsetWidth;
                 const gap = 16;
-                const offset = -(this.currentIndex * (itemWidth + gap) * this.itemsPerView);
+                const offset = -(this.currentIndex * (itemWidth + gap));
                 this.track.style.transform = `translateX(${offset}px)`;
                 
-                // Update dots
                 const dots = this.dotsContainer.querySelectorAll('.carousel-dot');
                 dots.forEach((dot, index) => {
                     dot.classList.toggle('active', index === this.currentIndex);
                 });
 
-                // Update button states
                 this.prevBtn.disabled = this.currentIndex === 0;
-                this.nextBtn.disabled = this.currentIndex === this.totalPages - 1;
+                this.nextBtn.disabled = this.currentIndex === this.totalItems - 1;
             }
 
             next() {
-                if (this.currentIndex < this.totalPages - 1) {
+                if (this.currentIndex < this.totalItems - 1) {
                     this.currentIndex++;
                     this.updateCarousel();
                 }
@@ -752,7 +733,7 @@
                 }
             }
 
-            goToPage(index) {
+            goToSlide(index) {
                 this.currentIndex = index;
                 this.updateCarousel();
             }
@@ -761,7 +742,6 @@
                 this.prevBtn.addEventListener('click', () => this.prev());
                 this.nextBtn.addEventListener('click', () => this.next());
 
-                // Touch swipe
                 let startX = 0;
                 let endX = 0;
 
@@ -784,7 +764,6 @@
             }
         }
 
-        // Initialize all carousels
         document.addEventListener('DOMContentLoaded', function() {
             const carouselWrappers = document.querySelectorAll('.carousel-wrapper');
             carouselWrappers.forEach(wrapper => new Carousel(wrapper));
