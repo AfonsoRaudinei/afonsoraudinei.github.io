@@ -9,321 +9,285 @@
 
 <style>
 /* =========================================================
-   1. RESET + DESIGN TOKENS
+   RESET + TOKENS
 ========================================================= */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin:0; padding:0; box-sizing:border-box; }
 
 :root {
-    --blue-ios: #007AFF;
-    --green-tech: #34C759;
-    --text-main: #1f3c45;
-    --text-muted: #86868b;
-    --bg-main: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-    --card-bg: rgba(255,255,255,0.96);
-    --shadow-soft: 0 4px 12px rgba(0,0,0,0.08);
-    --radius-lg: 20px;
+  --blue:#007AFF;
+  --green:#34C759;
+  --text:#1f3c45;
+  --muted:#86868b;
+  --bg:#ffffff;
+  --card:rgba(255,255,255,0.96);
+  --shadow:0 6px 20px rgba(0,0,0,0.08);
 }
 
 /* =========================================================
-   2. BASE GLOBAL
+   BASE
 ========================================================= */
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: var(--bg-main);
-    color: var(--text-main);
-    min-height: 100vh;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
 }
 
 .container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 120px 24px 80px;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 80px 24px;
 }
 
 /* =========================================================
-   3. HEADER / IDENTIDADE
+   HERO (IMAGEM + GRADIENTE)
+========================================================= */
+.hero {
+  height: 60vh;
+  min-height: 420px;
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.65)),
+    url("imagens/hero-placeholder.jpg"); /* <- TROQUE DEPOIS */
+  background-size: cover;
+  background-position: center;
+}
+
+/* =========================================================
+   HEADER
 ========================================================= */
 .header {
-    text-align: center;
-    margin-bottom: 48px;
+  text-align: center;
+  margin-top: -120px;
+  margin-bottom: 60px;
 }
 
 .logo-container {
-    width: 160px;
-    height: 160px;
-    margin: 0 auto 20px;
+  width: 160px;
+  margin: 0 auto 20px;
 }
 
 .logo {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    box-shadow: var(--shadow-soft);
-    object-fit: cover;
+  width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,0.08));
 }
 
 h1 {
-    font-size: 42px;
-    font-weight: 700;
-    margin-bottom: 6px;
+  font-size: 42px;
+  font-weight: 700;
 }
 
 h2 {
-    font-size: 17px;
-    font-weight: 400;
-    color: var(--text-muted);
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--muted);
 }
 
-/* MICRO-FRASE */
 .micro-decisao {
-    margin-top: 10px;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--text-muted);
-    letter-spacing: 0.2px;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted);
 }
 
 /* =========================================================
-   4. CONTATOS (ATALHOS)
+   CONTATOS
 ========================================================= */
 .contacts {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 12px;
-    margin: 40px 0 60px;
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 12px;
+  margin: 50px 0 70px;
 }
 
 .contact {
-    background: var(--card-bg);
-    border-radius: 16px;
-    padding: 12px;
-    text-align: center;
-    box-shadow: var(--shadow-soft);
-    text-decoration: none;
-    color: var(--text-main);
-    transition: transform .2s ease;
-}
-
-.contact:hover {
-    transform: translateY(-2px);
+  background: var(--card);
+  border-radius: 16px;
+  padding: 14px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  text-decoration: none;
+  color: var(--text);
 }
 
 .contact img {
-    width: 56px;
-    height: 56px;
-    object-fit: contain;
-    margin-bottom: 6px;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 6px;
 }
 
 .contact span {
-    font-size: 11px;
-    font-weight: 600;
+  font-size: 11px;
+  font-weight: 600;
 }
 
 /* =========================================================
-   5. SEÇÕES / CARROSSEL
+   SEÇÕES
 ========================================================= */
-.section {
-    margin-bottom: 80px;
-}
+.section { margin-bottom: 90px; }
 
 .section-title {
-    font-size: 0.75em;
-    text-transform: uppercase;
-    letter-spacing: .5px;
-    color: var(--blue-ios);
-    margin-bottom: 6px;
+  font-size: 0.75em;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: var(--blue);
 }
 
 .section-desc {
-    font-size: 14px;
-    color: var(--text-muted);
-    margin-bottom: 24px;
+  margin: 6px 0 24px;
+  font-size: 14px;
+  color: var(--muted);
 }
 
-.carousel-container {
-    position: relative;
-    overflow: hidden;
-}
-
+/* =========================================================
+   CARROSSEL
+========================================================= */
+.carousel-container { position: relative; overflow: hidden; }
 .carousel-track {
-    display: flex;
-    gap: 32px;
-    transition: transform .5s ease;
+  display: flex;
+  gap: 32px;
+  transition: transform .5s ease;
 }
 
 .carousel-card {
-    flex: 0 0 360px;
-    height: 260px;
-    background: var(--card-bg);
-    border-radius: 28px;
-    box-shadow: var(--shadow-soft);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    color: var(--text-main);
-    opacity: .6;
-    transform: scale(.92);
-    transition: all .4s ease;
+  flex: 0 0 360px;
+  height: 260px;
+  background: var(--card);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--text);
+  opacity: .6;
+  transform: scale(.92);
+  transition: all .4s ease;
 }
 
 .carousel-card.active {
-    opacity: 1;
-    transform: scale(1);
-    box-shadow: 0 16px 40px rgba(0,122,255,.18);
+  opacity: 1;
+  transform: scale(1);
+  box-shadow: 0 18px 40px rgba(0,122,255,.2);
 }
 
-.card-content {
-    text-align: center;
-    padding: 24px;
-}
+.card-content { text-align:center; padding:24px; }
 
 .card-content img {
-    width: 110px;
-    height: 110px;
-    object-fit: contain;
-    margin-bottom: 16px;
+  width: 110px;
+  height: 110px;
+  margin-bottom: 14px;
 }
 
 .card-content span {
-    font-size: 17px;
-    font-weight: 600;
+  font-size: 17px;
+  font-weight: 600;
 }
 
-/* BOTÕES */
 .carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    border: none;
-    background: var(--blue-ios);
-    color: #fff;
-    font-size: 28px;
-    cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  background: var(--blue);
+  color: #fff;
+  font-size: 28px;
+  cursor: pointer;
 }
 
 .carousel-btn.prev { left: -10px; }
 .carousel-btn.next { right: -10px; }
 
 /* =========================================================
-   6. FOOTER
+   FOOTER
 ========================================================= */
 footer {
-    margin-top: 80px;
-    text-align: center;
-    font-size: 13px;
-    color: var(--text-muted);
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 80px;
 }
 
 /* =========================================================
-   7. RESPONSIVO
+   RESPONSIVO
 ========================================================= */
-@media (max-width: 768px) {
-    .contacts { grid-template-columns: repeat(3,1fr); }
-    .carousel-card { flex: 0 0 300px; }
+@media (max-width:768px){
+  .contacts{grid-template-columns:repeat(3,1fr)}
+  .carousel-card{flex:0 0 300px}
 }
 </style>
 </head>
 
 <body>
+
+<!-- HERO -->
+<section class="hero"></section>
+
 <div class="container">
 
-    <!-- HEADER -->
-    <div class="header">
-        <div class="logo-container">
-            <img src="logo.png" class="logo" alt="Raudinei Afonso">
-        </div>
-        <h1>Raudinei Afonso</h1>
-        <h2>Engenheiro Agrônomo — Fertilidade do Solo e Nutrição de Plantas</h2>
-        <p class="micro-decisao">
-            Resultado grande nasce de decisões pequenas bem feitas.
-        </p>
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo-container">
+      <img src="logo.png" class="logo" alt="Raudinei Afonso">
     </div>
+    <h1>Raudinei Afonso</h1>
+    <h2>Engenheiro Agrônomo — Fertilidade do Solo e Nutrição de Plantas</h2>
+    <p class="micro-decisao">
+      Resultado grande nasce de decisões pequenas bem feitas.
+    </p>
+  </div>
 
-    <!-- CONTATOS -->
-    <div class="contacts">
-        <a class="contact" href="https://wa.me/5563984376572" target="_blank">
-            <img src="imagens/whatsapp.png"><span>WhatsApp</span>
-        </a>
-        <a class="contact" href="mailto:raudinei@gmail.com">
-            <img src="imagens/email.png"><span>E-mail</span>
-        </a>
-        <a class="contact" href="https://linkedin.com/in/raudinei" target="_blank">
-            <img src="imagens/linkedin.png"><span>LinkedIn</span>
-        </a>
-        <a class="contact" href="#">
-            <img src="imagens/perfil.png"><span>Perfil</span>
-        </a>
-        <a class="contact" href="https://instagram.com/raudineiafonsosilva" target="_blank">
-            <img src="imagens/instagram.png"><span>Instagram</span>
-        </a>
+  <!-- CONTATOS -->
+  <div class="contacts">
+    <a class="contact" href="https://wa.me/5563984376572" target="_blank"><img src="imagens/whatsapp.png"><span>WhatsApp</span></a>
+    <a class="contact" href="mailto:raudinei@gmail.com"><img src="imagens/email.png"><span>E-mail</span></a>
+    <a class="contact" href="https://linkedin.com/in/raudinei" target="_blank"><img src="imagens/linkedin.png"><span>LinkedIn</span></a>
+    <a class="contact" href="#"><img src="imagens/perfil.png"><span>Perfil</span></a>
+    <a class="contact" href="https://instagram.com/raudineiafonsosilva" target="_blank"><img src="imagens/instagram.png"><span>Instagram</span></a>
+  </div>
+
+  <!-- SOJA -->
+  <div class="section">
+    <div class="section-title">🌱 Cultura da Soja</div>
+    <div class="section-desc">Tomada de decisão do plantio à colheita, baseada em fisiologia, solo e manejo.</div>
+
+    <div class="carousel-container" data-carousel>
+      <div class="carousel-track">
+        <a href="https://afonsoraudinei.github.io/EstadioSoja/" class="carousel-card"><div class="card-content"><img src="imagens/estadios-soja.png"><span>Estádios Fenológicos</span></div></a>
+        <a href="https://afonsoraudinei.github.io/insetossoja/" class="carousel-card"><div class="card-content"><img src="imagens/pragas-soja.png"><span>Pragas da Cultura</span></div></a>
+        <a href="https://afonsoraudinei.github.io/EXPNUTRIENTE/" class="carousel-card"><div class="card-content"><img src="imagens/nutrientes-soja.png"><span>Nutrição da Planta</span></div></a>
+      </div>
+      <button class="carousel-btn prev">‹</button>
+      <button class="carousel-btn next">›</button>
     </div>
+  </div>
 
-    <!-- SOJA -->
-    <div class="section">
-        <div class="section-title">🌱 Cultura da Soja</div>
-        <div class="section-desc">
-            Tomada de decisão do plantio à colheita, baseada em fisiologia, solo e manejo.
-        </div>
-        <div class="carousel-container" data-carousel>
-            <div class="carousel-track">
-                <a class="carousel-card"><div class="card-content">
-                    <img src="imagens/estadios-soja.png"><span>Estádios Fenológicos</span>
-                </div></a>
-                <a class="carousel-card"><div class="card-content">
-                    <img src="imagens/pragas-soja.png"><span>Pragas da Cultura</span>
-                </div></a>
-                <a class="carousel-card"><div class="card-content">
-                    <img src="imagens/nutrientes-soja.png"><span>Nutrição da Planta</span>
-                </div></a>
-            </div>
-            <button class="carousel-btn prev">‹</button>
-            <button class="carousel-btn next">›</button>
-        </div>
-    </div>
-
-    <!-- FOOTER -->
-    <footer>
-        © 2024 — Raudinei Afonso · Engenheiro Agrônomo · CREA-TO
-    </footer>
+  <footer>
+    © 2024 — Raudinei Afonso · Engenheiro Agrônomo · CREA-TO
+  </footer>
 
 </div>
 
 <script>
-document.querySelectorAll('[data-carousel]').forEach(carousel => {
-    const track = carousel.querySelector('.carousel-track');
-    const cards = carousel.querySelectorAll('.carousel-card');
-    const prev = carousel.querySelector('.prev');
-    const next = carousel.querySelector('.next');
-    let index = 0;
-
-    function update() {
-        const width = cards[0].offsetWidth + 32;
-        track.style.transform = `translateX(${-(index * width)}px)`;
-        cards.forEach(c => c.classList.remove('active'));
-        cards[index].classList.add('active');
-    }
-
-    next.onclick = () => {
-        index = (index + 1) % cards.length;
-        update();
-    };
-
-    prev.onclick = () => {
-        index = (index - 1 + cards.length) % cards.length;
-        update();
-    };
-
-    update();
+document.querySelectorAll('[data-carousel]').forEach(carousel=>{
+  const track=carousel.querySelector('.carousel-track');
+  const cards=carousel.querySelectorAll('.carousel-card');
+  const prev=carousel.querySelector('.prev');
+  const next=carousel.querySelector('.next');
+  let index=0;
+  function update(){
+    const w=cards[0].offsetWidth+32;
+    track.style.transform=`translateX(${-(index*w)}px)`;
+    cards.forEach(c=>c.classList.remove('active'));
+    cards[index].classList.add('active');
+  }
+  next.onclick=()=>{index=(index+1)%cards.length;update();}
+  prev.onclick=()=>{index=(index-1+cards.length)%cards.length;update();}
+  update();
 });
 </script>
+
 </body>
 </html>
