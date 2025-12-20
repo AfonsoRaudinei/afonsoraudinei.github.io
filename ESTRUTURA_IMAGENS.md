@@ -15,6 +15,9 @@ Este arquivo documenta a estrutura correta de pastas e nomes de arquivos de imag
 ├── logo.png (MANTER NA RAIZ)
 ├── ESTRUTURA_IMAGENS.md (este arquivo)
 └── imagens/
+    ├── header-background.png
+    ├── hero-banner.png
+    ├── topo.png
     ├── doencas.png
     ├── email.png
     ├── estadios.png
