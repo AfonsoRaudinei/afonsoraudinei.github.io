@@ -232,10 +232,6 @@
             transform: translateY(-1px);
         }
 
-        .contact-btn:active {
-            transform: translateY(-2px);
-        }
-
         .contact-icon {
             width: 56px;
             height: 56px;
@@ -605,7 +601,7 @@
             }
 
             .carousel-card {
-                flex: 0 0 280px;
+                flex: 0 0 300px;
                 height: 220px;
             }
 
@@ -659,14 +655,19 @@
                 font-size: 1.25em;
             }
 
-            .carousel-card {
-                flex: 0 0 calc(100vw - 40px);
-                height: 200px;
+            .carousel-container {
+                padding: 40px 0;
             }
 
             .carousel-track {
-                gap: var(--spacing-md);
+                gap: 16px;
                 padding: 20px 0;
+            }
+
+            .carousel-card {
+                flex: 0 0 calc(100vw - 48px);
+                max-width: 420px;
+                height: 200px;
             }
 
             .carousel-btn {
@@ -871,7 +872,7 @@
         <section aria-labelledby="nutrientes-title">
             <div class="section-header">
                 <h2 id="nutrientes-title" class="section-title">⚗️ Nutrientes na Soja</h2>
-                <p class="section-description">Elementos essenciais e beneficiosos para o desenvolvimento e produtividade da cultura.</p>
+            <p class="section-description">Elementos essenciais e beneficiosos para o desenvolvimento e produtividade da cultura.</p>
             </div>
 
             <div class="carousel-wrapper">
@@ -1205,116 +1206,6 @@
                     <button class="indicator" aria-label="Slide 4"></button>
                     <button class="indicator" aria-label="Slide 5"></button>
                     <button class="indicator" aria-label="Slide 6"></button>
-                </div>
-            </div>
-        </section>
-
-        <!-- SOLOFORTE SECTION -->
-        <section aria-labelledby="soloforte-title">
-            <div class="section-header">
-                <h2 id="soloforte-title" class="section-title">🧪 SoloForte — Análise de Solo</h2>
-                <p class="section-description">Interpretação e recomendações baseadas em análises de solo de precisão.</p>
-            </div>
-
-            <div class="carousel-wrapper">
-                <div class="carousel-container" data-carousel="soloforte">
-                    <div class="carousel-track" role="region" aria-roledescription="carousel" aria-label="Carrossel - SoloForte">
-                        <a href="#" class="carousel-card">
-                            <div class="card-content">
-                                <div class="card-icon">
-                                    <img src="imagens/ph-solo.png" alt="pH do Solo">
-                                </div>
-                                <span class="card-title">pH do Solo</span>
-                            </div>
-                        </a>
-                        <a href="#" class="carousel-card">
-                            <div class="card-content">
-                                <div class="card-icon">
-                                    <img src="imagens/materia-organica.png" alt="Matéria Orgânica">
-                                </div>
-                                <span class="card-title">Matéria Orgânica</span>
-                            </div>
-                        </a>
-                        <a href="#" class="carousel-card">
-                            <div class="card-content">
-                                <div class="card-icon">
-                                    <img src="imagens/ctc-solo.png" alt="CTC do Solo">
-                                </div>
-                                <span class="card-title">CTC do Solo</span>
-                            </div>
-                        </a>
-                        <a href="#" class="carousel-card">
-                            <div class="card-content">
-                                <div class="card-icon">
-                                    <img src="imagens/saturacao-bases.png" alt="Saturação de Bases">
-                                </div>
-                                <span class="card-title">Saturação de Bases</span>
-                            </div>
-                        </a>
-                        <a href="#" class="carousel-card">
-                            <div class="card-content">
-                                <div class="card-icon">
-                                    <img src="imagens/granulometria.png" alt="Granulometria">
-                                </div>
-                                <span class="card-title">Granulometria</span>
-                            </div>
-                        </a>
-                        <a href="#" class="carousel-card">
-                            <div class="card-content">
-                                <div class="card-icon">
-                                    <img src="imagens/micronutrientes-solo.png" alt="Micronutrientes">
-                                </div>
-                                <span class="card-title">Micronutrientes</span>
-                            </div>
-                        </a>
-                        <!-- Duplicatas para scroll infinito -->
-                        <a href="#" class="carousel-card">
-                            <div class="card-content">
-                                <div class="card-icon">
-                                    <img src="imagens/ph-solo.png" alt="pH do Solo">
-                                </div>
-                                <span class="card-title">pH do Solo</span>
-                            </div>
-                        </a>
-                        <a href="#" class="carousel-card">
-                            <div class="card-content">
-                                <div class="card-icon">
-                                    <img src="imagens/materia-organica.png" alt="Matéria Orgânica">
-                                </div>
-                                <span class="card-title">Matéria Orgânica</span>
-                            </div>
-                        </a>
-                        <a href="#" class="carousel-card">
-                            <div class="card-content">
-                                <div class="card-icon">
-                                    <img src="imagens/ctc-solo.png" alt="CTC do Solo">
-                                </div>
-                                <span class="card-title">CTC do Solo</span>
-                            </div>
-                        </a>
-                        <a href="#" class="carousel-card">
-                            <div class="card-content">
-                                <div class="card-icon">
-                                    <img src="imagens/saturacao-bases.png" alt="Saturação de Bases">
-                                </div>
-                                <span class="card-title">Saturação de Bases</span>
-                            </div>
-                        </a>
-                    </div>
-                    
-                    <div class="carousel-nav">
-                        <button class="carousel-btn prev" aria-label="Slide anterior - SoloForte">‹</button>
-                        <button class="carousel-btn next" aria-label="Próximo slide - SoloForte">›</button>
-                    </div>
-                </div>
-
-                <div class="carousel-indicators" role="tablist" aria-label="Indicadores de slide">
-                    <button class="indicator active" aria-label="Slide 1: pH do Solo" aria-current="true"></button>
-                    <button class="indicator" aria-label="Slide 2: Matéria Orgânica"></button>
-                    <button class="indicator" aria-label="Slide 3: CTC"></button>
-                    <button class="indicator" aria-label="Slide 4: Saturação"></button>
-                    <button class="indicator" aria-label="Slide 5: Granulometria"></button>
-                    <button class="indicator" aria-label="Slide 6: Micronutrientes"></button>
                 </div>
             </div>
         </section>
