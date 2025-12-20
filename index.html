@@ -6,7 +6,7 @@
     <meta name="description" content="Raudinei Afonso - Engenheiro Agrônomo especializado em Fertilidade do Solo e Nutrição de Plantas. Experiência em cultura da soja, milho e análise de solo.">
     <meta name="keywords" content="agrônomo, soja, milho, fertilidade, nutrição de plantas, análise de solo, Raudinei Afonso">
     <meta name="author" content="Raudinei Afonso">
-    <meta name="theme-color" content="#0066FF">
+    <meta name="theme-color" content="#007AFF">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Raudinei Afonso">
@@ -22,7 +22,7 @@
     
     <style>
         /* =====================================================
-           RESET + DESIGN TOKENS
+           RESET + DESIGN TOKENS - iOS STYLE
            ===================================================== */
         * {
             margin: 0;
@@ -31,24 +31,28 @@
         }
 
         :root {
-            /* Colors - iOS Apple Style */
+            /* Colors - iOS Native */
             --primary: #007AFF;
             --primary-dark: #0051D5;
-            --primary-light: #5AC8FA;
             --success: #34C759;
             --accent: #00843D;
             --text-primary: #000000;
             --text-secondary: #86868b;
             --bg-primary: #f5f5f7;
-            --bg-secondary: #ffffff;
-            --card-bg: rgba(255, 255, 255, 0.98);
-            --border: rgba(0, 0, 0, 0.06);
+            --bg-card: #ffffff;
+            --border: #e5e5e7;
             
-            /* Shadows */
-            --shadow-xs: 0 2px 6px rgba(0, 0, 0, 0.05);
-            --shadow-sm: 0 6px 20px rgba(0, 0, 0, 0.08);
-            --shadow-md: 0 12px 40px rgba(0, 0, 0, 0.12);
-            --shadow-lg: 0 18px 40px rgba(0, 122, 255, 0.2);
+            /* Gradients */
+            --gradient-header: linear-gradient(180deg, #2c2c2e 0%, #1c1c1e 100%);
+            --gradient-blue: linear-gradient(135deg, #007AFF 0%, #0051D5 100%);
+            --gradient-green: linear-gradient(135deg, #34C759 0%, #00843D 100%);
+            
+            /* Shadows - Layered iOS Style */
+            --shadow-xs: 0 1px 3px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08), 0 8px 32px rgba(0, 0, 0, 0.04);
+            --shadow-blue: 0 4px 16px rgba(0, 122, 255, 0.3);
+            --shadow-card-active: 0 8px 24px rgba(0, 122, 255, 0.15), 0 4px 12px rgba(0, 0, 0, 0.08);
             
             /* Spacing */
             --spacing-xs: 8px;
@@ -61,26 +65,26 @@
             
             /* Border Radius */
             --radius-sm: 8px;
-            --radius-md: 16px;
-            --radius-lg: 28px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
             --radius-full: 50%;
             
-            /* Transitions */
+            /* Transitions - iOS Native */
             --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             --transition-fast: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Dark Mode Support - iOS Native */
+        /* Dark Mode - iOS Native */
         @media (prefers-color-scheme: dark) {
             :root {
                 --text-primary: #f5f5f7;
                 --text-secondary: #a1a1a6;
                 --bg-primary: #000000;
-                --bg-secondary: #1c1c1e;
-                --card-bg: rgba(28, 28, 30, 0.98);
+                --bg-card: #1c1c1e;
                 --border: rgba(255, 255, 255, 0.1);
                 --primary: #0A84FF;
-                --success: #30B0C0;
+                --gradient-header: linear-gradient(180deg, #1c1c1e 0%, #000000 100%);
             }
         }
 
@@ -94,7 +98,7 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background-color: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
@@ -108,30 +112,14 @@
         }
 
         /* =====================================================
-           HERO SECTION
+           HERO SECTION - iOS STYLE
            ===================================================== */
         .hero {
             height: 60vh;
             min-height: 420px;
-            background: linear-gradient(
-                135deg,
-                rgba(0, 122, 255, 0.1) 0%,
-                rgba(52, 199, 89, 0.05) 100%
-            ),
-            linear-gradient(180deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.65)),
-        url("logo.png"),            background-position: center;
-            background-attachment: fixed;
+            background: var(--gradient-header);
             position: relative;
             overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 20% 50%, rgba(0, 122, 255, 0.05), transparent),
-                        radial-gradient(circle at 80% 80%, rgba(52, 199, 89, 0.05), transparent);
-            pointer-events: none;
         }
 
         /* =====================================================
@@ -149,13 +137,12 @@
             width: 160px;
             height: 160px;
             margin: 0 auto var(--spacing-lg);
-            background: linear-gradient(135deg, var(--card-bg) 0%, rgba(255, 255, 255, 0.8) 100%);
-            border-radius: var(--radius-lg);
+            background: var(--bg-card);
+            border-radius: var(--radius-xl);
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: var(--shadow-md);
-            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255, 255, 255, 0.8);
             border: 1px solid var(--border);
         }
 
@@ -163,7 +150,7 @@
             width: 90%;
             height: 90%;
             object-fit: contain;
-            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.08));
         }
 
         header h1 {
@@ -186,12 +173,12 @@
             margin-top: var(--spacing-md);
             font-size: 0.875em;
             font-weight: 500;
-            color: var(--primary);
-            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+            letter-spacing: 0.3px;
         }
 
         /* =====================================================
-           CONTACT BUTTONS
+           CONTACT BUTTONS - iOS STYLE
            ===================================================== */
         .contact-grid {
             display: grid;
@@ -201,14 +188,14 @@
         }
 
         .contact-btn {
-            background: var(--card-bg);
+            background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
             padding: var(--spacing-md);
             text-decoration: none;
             color: var(--text-primary);
             text-align: center;
-            transition: all 0.3s ease;
+            transition: var(--transition-fast);
             box-shadow: var(--shadow-xs);
             display: flex;
             flex-direction: column;
@@ -217,17 +204,16 @@
             gap: var(--spacing-sm);
             cursor: pointer;
             position: relative;
-            overflow: hidden;
         }
 
         .contact-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 16px rgba(0, 122, 255, 0.12);
-            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+            border-color: rgba(0, 122, 255, 0.3);
         }
 
         .contact-btn:active {
-            transform: translateY(-1px);
+            transform: translateY(0);
         }
 
         .contact-icon {
@@ -237,8 +223,10 @@
             align-items: center;
             justify-content: center;
             font-size: 1.75em;
-            background: linear-gradient(135deg, rgba(0, 122, 255, 0.08), rgba(52, 199, 89, 0.08));
+            background: var(--gradient-blue);
             border-radius: var(--radius-sm);
+            color: #ffffff;
+            box-shadow: 0 2px 8px rgba(0, 122, 255, 0.2);
         }
 
         .contact-label {
@@ -250,7 +238,7 @@
         }
 
         /* =====================================================
-           SECTIONS
+           SECTIONS - iOS NATIVE STYLE
            ===================================================== */
         section {
             margin-bottom: var(--spacing-3xl);
@@ -264,22 +252,23 @@
             font-size: 0.75em;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            color: var(--primary);
-            font-weight: 600;
+            color: var(--text-secondary);
+            font-weight: 500;
             display: flex;
             align-items: center;
             gap: var(--spacing-xs);
+            margin-bottom: var(--spacing-sm);
         }
 
         .section-description {
-            margin-top: var(--spacing-sm);
             font-size: 0.9375em;
             color: var(--text-secondary);
             max-width: 600px;
+            line-height: 1.5;
         }
 
         /* =====================================================
-           CAROUSEL / SLIDER
+           CAROUSEL - iOS PREMIUM STYLE
            ===================================================== */
         .carousel-wrapper {
             position: relative;
@@ -292,14 +281,14 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 80px 0;
+            padding: 60px 0;
         }
 
         .carousel-track {
             display: flex;
-            gap: 40px;
-            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            padding: 30px 0;
+            gap: 32px;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 20px 0;
             cursor: grab;
             will-change: transform;
         }
@@ -311,50 +300,33 @@
         .carousel-card {
             flex: 0 0 360px;
             height: 260px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.99), rgba(255, 255, 255, 0.96));
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: var(--bg-card);
             border-radius: var(--radius-lg);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+            box-shadow: var(--shadow-xs);
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
             color: var(--text-primary);
-            opacity: 0.5;
-            transform: scale(0.88);
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            border: 1px solid rgba(232, 234, 237, 0.6);
+            opacity: 0.6;
+            transform: scale(0.95);
+            transition: var(--transition);
+            border: 1px solid var(--border);
             cursor: pointer;
             position: relative;
-            overflow: hidden;
-        }
-
-        .carousel-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(0, 122, 255, 0.05), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
         }
 
         .carousel-card.active {
             opacity: 1;
             transform: scale(1);
-            box-shadow: 0 16px 40px rgba(0, 122, 255, 0.15), 0 8px 20px rgba(0, 0, 0, 0.08);
-            border-color: rgba(0, 122, 255, 0.3);
-            background: linear-gradient(135deg, #ffffff, #ffffff);
+            box-shadow: var(--shadow-card-active);
+            border-color: rgba(0, 122, 255, 0.2);
             z-index: 10;
-        }
-
-        .carousel-card.active::before {
-            opacity: 1;
         }
 
         .carousel-card:hover:not(.active) {
             opacity: 0.8;
-            transform: scale(0.96);
+            transform: scale(0.97);
         }
 
         .card-content {
@@ -372,7 +344,7 @@
         .card-icon {
             width: 110px;
             height: 110px;
-            background: linear-gradient(135deg, rgba(0, 102, 255, 0.08), rgba(16, 185, 129, 0.08));
+            background: linear-gradient(135deg, rgba(0, 122, 255, 0.06), rgba(52, 199, 89, 0.06));
             border-radius: var(--radius-md);
             display: flex;
             align-items: center;
@@ -386,36 +358,31 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.12));
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.08));
+            transition: var(--transition);
         }
 
         .carousel-card.active .card-icon img {
-            filter: drop-shadow(0 8px 16px rgba(0, 102, 255, 0.25));
-            transform: scale(1.08);
+            filter: drop-shadow(0 4px 12px rgba(0, 122, 255, 0.2));
+            transform: scale(1.05);
         }
 
         .card-title {
             font-size: 1.0625em;
             font-weight: 600;
             letter-spacing: -0.01em;
-            opacity: 0.7;
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: var(--transition);
             max-width: 90%;
             line-height: 1.4;
         }
 
         .carousel-card.active .card-title {
-            font-size: 1.25em;
+            font-size: 1.125em;
             font-weight: 700;
-            background: linear-gradient(135deg, #0066FF, #00843D);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            opacity: 1;
+            color: var(--primary);
         }
 
-        /* Navigation Buttons */
+        /* Navigation Buttons - iOS Style */
         .carousel-nav {
             position: absolute;
             top: 50%;
@@ -425,7 +392,7 @@
             display: flex;
             justify-content: space-between;
             pointer-events: none;
-            padding: 0 30px;
+            padding: 0 20px;
             z-index: 10;
         }
 
@@ -438,45 +405,22 @@
             height: 56px;
             border-radius: var(--radius-full);
             border: none;
-            background: linear-gradient(135deg, #007AFF, #0051D5);
+            background: var(--gradient-blue);
             color: #fff;
-            font-size: 1.75em;
+            font-size: 1.5em;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 6px 16px rgba(0, 122, 255, 0.35), 0 2px 8px rgba(0, 0, 0, 0.15);
+            transition: var(--transition-fast);
+            box-shadow: var(--shadow-blue);
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 300;
-            position: relative;
-            overflow: hidden;
             line-height: 1;
-            animation: btnFloat 3s ease-in-out infinite;
-        }
-
-        @keyframes btnFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-4px); }
-        }
-
-        .carousel-btn::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
-            transform: scale(0);
-            transition: transform 0.6s ease;
         }
 
         .carousel-btn:hover {
-            background: linear-gradient(135deg, #0051D5, #003D99);
-            transform: scale(1.12) translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 122, 255, 0.4), 0 4px 12px rgba(0, 0, 0, 0.2);
-            animation: none;
-        }
-
-        .carousel-btn:hover::before {
-            transform: scale(1);
+            transform: scale(1.08);
+            box-shadow: 0 6px 20px rgba(0, 122, 255, 0.35);
         }
 
         .carousel-btn:active {
@@ -486,9 +430,9 @@
         .carousel-btn:disabled {
             opacity: 0.5;
             cursor: not-allowed;
-            animation: none;
         }
 
+        /* Indicators - iOS Native */
         .carousel-indicators {
             display: flex;
             gap: var(--spacing-xs);
@@ -534,17 +478,16 @@
         }
 
         footer a:hover {
-            color: var(--primary-dark);
-            text-decoration: underline;
+            opacity: 0.8;
         }
 
         /* =====================================================
-           ANIMATIONS
+           ANIMATIONS - MINIMAL iOS STYLE
            ===================================================== */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(15px);
             }
             to {
                 opacity: 1;
@@ -553,11 +496,7 @@
         }
 
         section {
-            animation: fadeInUp 0.6s ease-out;
-        }
-
-        section:nth-child(n+2) {
-            animation-delay: 0.1s;
+            animation: fadeInUp 0.4s ease-out;
         }
 
         /* =====================================================
@@ -584,7 +523,6 @@
 
             .contact-btn {
                 padding: var(--spacing-sm);
-                border-radius: 10px;
             }
 
             .contact-icon {
@@ -593,18 +531,9 @@
                 font-size: 1.5em;
             }
 
-            .contact-label {
-                font-size: 0.65em;
-                font-weight: 600;
-            }
-
             .carousel-card {
                 flex: 0 0 300px;
                 height: 220px;
-            }
-
-            .card-content {
-                padding: var(--spacing-md);
             }
 
             .card-icon {
@@ -633,10 +562,6 @@
                 font-size: 1.5em;
             }
 
-            header h2 {
-                font-size: 0.9375em;
-            }
-
             .contact-grid {
                 grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
                 gap: var(--spacing-xs);
@@ -644,7 +569,6 @@
 
             .contact-btn {
                 padding: 10px 8px;
-                border-radius: 10px;
             }
 
             .contact-icon {
@@ -658,8 +582,7 @@
             }
 
             .carousel-track {
-                gap: 16px;
-                padding: 20px 0;
+                gap: 20px;
             }
 
             .carousel-card {
@@ -677,10 +600,6 @@
             .carousel-nav {
                 padding: 0 10px;
             }
-
-            section {
-                margin-bottom: var(--spacing-2xl);
-            }
         }
 
         /* =====================================================
@@ -689,40 +608,21 @@
         @media (prefers-reduced-motion: reduce) {
             * {
                 animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
             }
         }
 
-        @media (prefers-contrast: more) {
-            body {
-                font-weight: 500;
-            }
-        }
-
-        /* Focus visible for keyboard navigation */
         button:focus-visible,
         a:focus-visible {
             outline: 2px solid var(--primary);
             outline-offset: 2px;
-        }
-
-        /* High contrast mode */
-        @media (forced-colors: active) {
-            .carousel-card.active {
-                border: 2px solid;
-            }
-
-            .carousel-btn {
-                border: 2px solid;
-            }
         }
     </style>
 </head>
 
 <body>
     <!-- HERO SECTION -->
-    <section class="hero" aria-label="Hero section com imagem de fundo"></section>
+    <section class="hero" aria-label="Hero section"></section>
 
     <div class="container">
         <!-- HEADER -->
@@ -749,7 +649,7 @@
                 <span class="contact-icon">💼</span>
                 <span class="contact-label">LinkedIn</span>
             </a>
-            <a href="https://afonsoraudinei.github.io/Jornadaprofissional/" class="contact-btn" aria-label="Ir para perfil">
+            <a href="#perfil" class="contact-btn" aria-label="Ir para perfil">
                 <span class="contact-icon">👤</span>
                 <span class="contact-label">Perfil</span>
             </a>
@@ -762,106 +662,106 @@
         <!-- SOJA SECTION -->
         <section aria-labelledby="soja-title">
             <div class="section-header">
-                <h2 id="soja-title" class="section-title">🌱 Cultura da Soja</h2>
+                <h2 id="soja-title" class="section-title">🌱 CULTURA DA SOJA</h2>
                 <p class="section-description">Tomada de decisão do plantio à colheita, baseada em fisiologia, solo e manejo.</p>
             </div>
 
             <div class="carousel-wrapper">
                 <div class="carousel-container" data-carousel="soja">
-                <div class="carousel-track" role="region" aria-roledescription="carousel" aria-label="Carrossel - Cultura da Soja">
-                    <a href="https://afonsoraudinei.github.io/EstadioSoja/" class="carousel-card" target="_blank" rel="noopener noreferrer">
-                        <div class="card-content">
-                            <div class="card-icon">
-                                <img src="estádios.png" alt="Estádios Fenológicos">
+                    <div class="carousel-track" role="region" aria-roledescription="carousel" aria-label="Carrossel - Cultura da Soja">
+                        <a href="https://afonsoraudinei.github.io/EstadioSoja/" class="carousel-card" target="_blank" rel="noopener noreferrer">
+                            <div class="card-content">
+                                <div class="card-icon">
+                                    <img src="estadios.png" alt="Estádios Fenológicos">
+                                </div>
+                                <span class="card-title">Estádios Fenológicos da Soja</span>
                             </div>
-                            <span class="card-title">Estádios Fenológicos da Soja</span>
-                        </div>
-                    </a>
-                    <a href="https://afonsoraudinei.github.io/insetossoja/" class="carousel-card" target="_blank" rel="noopener noreferrer">
-                        <div class="card-content">
-                            <div class="card-icon">
-                                <img src="pragas.png" alt="Pragas da Soja">
+                        </a>
+                        <a href="https://afonsoraudinei.github.io/insetossoja/" class="carousel-card" target="_blank" rel="noopener noreferrer">
+                            <div class="card-content">
+                                <div class="card-icon">
+                                    <img src="pragas.png" alt="Pragas da Soja">
+                                </div>
+                                <span class="card-title">Pragas da Soja</span>
                             </div>
-                            <span class="card-title">Pragas da Soja</span>
-                        </div>
-                    </a>
-                    <a href="https://afonsoraudinei.github.io/EXPNUTRIENTE/" class="carousel-card" target="_blank" rel="noopener noreferrer">
-                        <div class="card-content">
-                            <div class="card-icon">
-                                <img src="nutrientes.png" alt="Nutrientes na Soja">
+                        </a>
+                        <a href="https://afonsoraudinei.github.io/EXPNUTRIENTE/" class="carousel-card" target="_blank" rel="noopener noreferrer">
+                            <div class="card-content">
+                                <div class="card-icon">
+                                    <img src="flutuadores.png" alt="Nutrientes na Soja">
+                                </div>
+                                <span class="card-title">Nutrientes na Soja</span>
                             </div>
-                            <span class="card-title">Nutrientes na Soja</span>
-                        </div>
-                    </a>
-                    <a href="https://afonsoraudinei.github.io/Doencassoja/" class="carousel-card" target="_blank" rel="noopener noreferrer">
-                        <div class="card-content">
-                            <div class="card-icon">
-                                <img src="doencas.png" alt="Doenças da Soja">
+                        </a>
+                        <a href="https://afonsoraudinei.github.io/Doencassoja/" class="carousel-card" target="_blank" rel="noopener noreferrer">
+                            <div class="card-content">
+                                <div class="card-icon">
+                                    <img src="doencas.png" alt="Doenças da Soja">
+                                </div>
+                                <span class="card-title">Doenças da Soja</span>
                             </div>
-                            <span class="card-title">Doenças da Soja</span>
-                        </div>
-                    </a>
-                    <a href="https://afonsoraudinei.github.io/hormonios/" class="carousel-card" target="_blank" rel="noopener noreferrer">
-                        <div class="card-content">
-                            <div class="card-icon">
-                                <img src="hormônios.png" alt="Hormônios Vegetais">
+                        </a>
+                        <a href="https://afonsoraudinei.github.io/hormonios/" class="carousel-card" target="_blank" rel="noopener noreferrer">
+                            <div class="card-content">
+                                <div class="card-icon">
+                                    <img src="hormonios.png" alt="Hormônios Vegetais">
+                                </div>
+                                <span class="card-title">Hormônios Vegetais Soja</span>
                             </div>
-                            <span class="card-title">Hormônios Vegetais Soja</span>
-                        </div>
-                    </a>
-                    <a href="https://afonsoraudinei.github.io/manejo-soja/" class="carousel-card" target="_blank" rel="noopener noreferrer">
-                        <div class="card-content">
-                            <div class="card-icon">
-                                <img src="manejo-soja.png" alt="Manejo da Soja">
+                        </a>
+                        <a href="https://afonsoraudinei.github.io/manejo-soja/" class="carousel-card" target="_blank" rel="noopener noreferrer">
+                            <div class="card-content">
+                                <div class="card-icon">
+                                    <img src="perfil.png" alt="Manejo da Soja">
+                                </div>
+                                <span class="card-title">Manejo da Soja</span>
                             </div>
-                            <span class="card-title">Manejo da Soja</span>
-                        </div>
-                    </a>
-                    <!-- Duplicatas para scroll infinito -->
-                    <a href="https://afonsoraudinei.github.io/EstadioSoja/" class="carousel-card" target="_blank" rel="noopener noreferrer">
-                        <div class="card-content">
-                            <div class="card-icon">
-                                <img src="estádios.png" alt="Estádios Fenológicos">
+                        </a>
+                        <!-- Duplicatas -->
+                        <a href="https://afonsoraudinei.github.io/EstadioSoja/" class="carousel-card" target="_blank" rel="noopener noreferrer">
+                            <div class="card-content">
+                                <div class="card-icon">
+                                    <img src="estadios.png" alt="Estádios Fenológicos">
+                                </div>
+                                <span class="card-title">Estádios Fenológicos da Soja</span>
                             </div>
-                            <span class="card-title">Estádios Fenológicos da Soja</span>
-                        </div>
-                    </a>
-                    <a href="https://afonsoraudinei.github.io/insetossoja/" class="carousel-card" target="_blank" rel="noopener noreferrer">
-                        <div class="card-content">
-                            <div class="card-icon">
-                                <img src="pragas.png" alt="Pragas da Soja">
+                        </a>
+                        <a href="https://afonsoraudinei.github.io/insetossoja/" class="carousel-card" target="_blank" rel="noopener noreferrer">
+                            <div class="card-content">
+                                <div class="card-icon">
+                                    <img src="pragas.png" alt="Pragas da Soja">
+                                </div>
+                                <span class="card-title">Pragas da Soja</span>
                             </div>
-                            <span class="card-title">Pragas da Soja</span>
-                        </div>
-                    </a>
-                    <a href="https://afonsoraudinei.github.io/EXPNUTRIENTE/" class="carousel-card" target="_blank" rel="noopener noreferrer">
-                        <div class="card-content">
-                            <div class="card-icon">
-                                <img src="nutrientes.png" alt="Nutrientes na Soja">
+                        </a>
+                        <a href="https://afonsoraudinei.github.io/EXPNUTRIENTE/" class="carousel-card" target="_blank" rel="noopener noreferrer">
+                            <div class="card-content">
+                                <div class="card-icon">
+                                    <img src="flutuadores.png" alt="Nutrientes na Soja">
+                                </div>
+                                <span class="card-title">Nutrientes na Soja</span>
                             </div>
-                            <span class="card-title">Nutrientes na Soja</span>
-                        </div>
-                    </a>
-                    <a href="https://afonsoraudinei.github.io/Doencassoja/" class="carousel-card" target="_blank" rel="noopener noreferrer">
-                        <div class="card-content">
-                            <div class="card-icon">
-                                <img src="doencas.png" alt="Doenças da Soja">
+                        </a>
+                        <a href="https://afonsoraudinei.github.io/Doencassoja/" class="carousel-card" target="_blank" rel="noopener noreferrer">
+                            <div class="card-content">
+                                <div class="card-icon">
+                                    <img src="doencas.png" alt="Doenças da Soja">
+                                </div>
+                                <span class="card-title">Doenças da Soja</span>
                             </div>
-                            <span class="card-title">Doenças da Soja</span>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
+                    
+                    <div class="carousel-nav">
+                        <button class="carousel-btn prev" aria-label="Slide anterior - Soja">‹</button>
+                        <button class="carousel-btn next" aria-label="Próximo slide - Soja">›</button>
+                    </div>
                 </div>
-                
-                <div class="carousel-nav">
-                    <button class="carousel-btn prev" aria-label="Slide anterior - Soja">‹</button>
-                    <button class="carousel-btn next" aria-label="Próximo slide - Soja">›</button>
-                </div>
-            </div>
 
                 <div class="carousel-indicators" role="tablist" aria-label="Indicadores de slide">
-                    <button class="indicator active" aria-label="Slide 1: Estádios Fenológicos" aria-current="true"></button>
-                    <button class="indicator" aria-label="Slide 2: Pragas da Cultura"></button>
-                    <button class="indicator" aria-label="Slide 3: Nutrição da Planta"></button>
+                    <button class="indicator active" aria-label="Slide 1" aria-current="true"></button>
+                    <button class="indicator" aria-label="Slide 2"></button>
+                    <button class="indicator" aria-label="Slide 3"></button>
                 </div>
             </div>
         </section>
@@ -869,8 +769,8 @@
         <!-- NUTRIENTES SOJA SECTION -->
         <section aria-labelledby="nutrientes-title">
             <div class="section-header">
-                <h2 id="nutrientes-title" class="section-title">⚗️ Nutrientes na Soja</h2>
-            <p class="section-description">Elementos essenciais e beneficiosos para o desenvolvimento e produtividade da cultura.</p>
+                <h2 id="nutrientes-title" class="section-title">⚗️ NUTRIENTES NA SOJA</h2>
+                <p class="section-description">Elementos essenciais e beneficiosos para o desenvolvimento e produtividade da cultura.</p>
             </div>
 
             <div class="carousel-wrapper">
@@ -879,7 +779,7 @@
                         <a href="#" class="carousel-card">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="nutrientes-nitrogonio.png" alt="Nitrogênio">
+                                    <img src="flutuadores.png" alt="Nitrogênio">
                                 </div>
                                 <span class="card-title">Nitrogênio (N)</span>
                             </div>
@@ -887,7 +787,7 @@
                         <a href="#" class="carousel-card">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="nutrientes-fosforo.png" alt="Fósforo">
+                                    <img src="flutuadores.png" alt="Fósforo">
                                 </div>
                                 <span class="card-title">Fósforo (P)</span>
                             </div>
@@ -895,7 +795,7 @@
                         <a href="#" class="carousel-card">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="nutrientes-potassio.png" alt="Potássio">
+                                    <img src="flutuadores.png" alt="Potássio">
                                 </div>
                                 <span class="card-title">Potássio (K)</span>
                             </div>
@@ -903,7 +803,7 @@
                         <a href="#" class="carousel-card">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="nutrientes-calcio.png" alt="Cálcio">
+                                    <img src="flutuadores.png" alt="Cálcio">
                                 </div>
                                 <span class="card-title">Cálcio (Ca)</span>
                             </div>
@@ -911,7 +811,7 @@
                         <a href="#" class="carousel-card">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="nutrientes-magnesio.png" alt="Magnésio">
+                                    <img src="flutuadores.png" alt="Magnésio">
                                 </div>
                                 <span class="card-title">Magnésio (Mg)</span>
                             </div>
@@ -919,96 +819,16 @@
                         <a href="#" class="carousel-card">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="nutrientes-enxofre.png" alt="Enxofre">
+                                    <img src="flutuadores.png" alt="Enxofre">
                                 </div>
                                 <span class="card-title">Enxofre (S)</span>
                             </div>
                         </a>
+                        <!-- Duplicatas -->
                         <a href="#" class="carousel-card">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="nutrientes-boro.png" alt="Boro">
-                                </div>
-                                <span class="card-title">Boro (B)</span>
-                            </div>
-                        </a>
-                        <a href="#" class="carousel-card">
-                            <div class="card-content">
-                                <div class="card-icon">
-                                    <img src="nutrientes-cobre.png" alt="Cobre">
-                                </div>
-                                <span class="card-title">Cobre (Cu)</span>
-                            </div>
-                        </a>
-                        <a href="#" class="carousel-card">
-                            <div class="card-content">
-                                <div class="card-icon">
-                                    <img src="nutrientes-ferro.png" alt="Ferro">
-                                </div>
-                                <span class="card-title">Ferro (Fe)</span>
-                            </div>
-                        </a>
-                        <a href="#" class="carousel-card">
-                            <div class="card-content">
-                                <div class="card-icon">
-                                    <img src="nutrientes-manganes.png" alt="Manganês">
-                                </div>
-                                <span class="card-title">Manganês (Mn)</span>
-                            </div>
-                        </a>
-                        <a href="#" class="carousel-card">
-                            <div class="card-content">
-                                <div class="card-icon">
-                                    <img src="nutrientes-molibdenio.png" alt="Molibdênio">
-                                </div>
-                                <span class="card-title">Molibdênio (Mo)</span>
-                            </div>
-                        </a>
-                        <a href="#" class="carousel-card">
-                            <div class="card-content">
-                                <div class="card-icon">
-                                    <img src="nutrientes-zinco.png" alt="Zinco">
-                                </div>
-                                <span class="card-title">Zinco (Zn)</span>
-                            </div>
-                        </a>
-                        <a href="#" class="carousel-card">
-                            <div class="card-content">
-                                <div class="card-icon">
-                                    <img src="nutrientes-niquel.png" alt="Níquel">
-                                </div>
-                                <span class="card-title">Níquel (Ni)</span>
-                            </div>
-                        </a>
-                        <a href="#" class="carousel-card">
-                            <div class="card-content">
-                                <div class="card-icon">
-                                    <img src="nutrientes-silicio.png" alt="Silício">
-                                </div>
-                                <span class="card-title">Silício (Si)</span>
-                            </div>
-                        </a>
-                        <a href="#" class="carousel-card">
-                            <div class="card-content">
-                                <div class="card-icon">
-                                    <img src="nutrientes-cobalto.png" alt="Cobalto">
-                                </div>
-                                <span class="card-title">Cobalto (Co)</span>
-                            </div>
-                        </a>
-                        <a href="#" class="carousel-card">
-                            <div class="card-content">
-                                <div class="card-icon">
-                                    <img src="nutrientes-sodio.png" alt="Sódio">
-                                </div>
-                                <span class="card-title">Sódio (Na)</span>
-                            </div>
-                        </a>
-                        <!-- Duplicatas para scroll infinito -->
-                        <a href="#" class="carousel-card">
-                            <div class="card-content">
-                                <div class="card-icon">
-                                    <img src="nutrientes-nitrogonio.png" alt="Nitrogênio">
+                                    <img src="flutuadores.png" alt="Nitrogênio">
                                 </div>
                                 <span class="card-title">Nitrogênio (N)</span>
                             </div>
@@ -1016,57 +836,9 @@
                         <a href="#" class="carousel-card">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="nutrientes-fosforo.png" alt="Fósforo">
+                                    <img src="flutuadores.png" alt="Fósforo">
                                 </div>
                                 <span class="card-title">Fósforo (P)</span>
-                            </div>
-                        </a>
-                        <a href="#" class="carousel-card">
-                            <div class="card-content">
-                                <div class="card-icon">
-                                    <img src="nutrientes-potassio.png" alt="Potássio">
-                                </div>
-                                <span class="card-title">Potássio (K)</span>
-                            </div>
-                        </a>
-                        <a href="#" class="carousel-card">
-                            <div class="card-content">
-                                <div class="card-icon">
-                                    <img src="nutrientes-calcio.png" alt="Cálcio">
-                                </div>
-                                <span class="card-title">Cálcio (Ca)</span>
-                            </div>
-                        </a>
-                        <a href="#" class="carousel-card">
-                            <div class="card-content">
-                                <div class="card-icon">
-                                    <img src="nutrientes-magnesio.png" alt="Magnésio">
-                                </div>
-                                <span class="card-title">Magnésio (Mg)</span>
-                            </div>
-                        </a>
-                        <a href="#" class="carousel-card">
-                            <div class="card-content">
-                                <div class="card-icon">
-                                    <img src="nutrientes-enxofre.png" alt="Enxofre">
-                                </div>
-                                <span class="card-title">Enxofre (S)</span>
-                            </div>
-                        </a>
-                        <a href="#" class="carousel-card">
-                            <div class="card-content">
-                                <div class="card-icon">
-                                    <img src="nutrientes-boro.png" alt="Boro">
-                                </div>
-                                <span class="card-title">Boro (B)</span>
-                            </div>
-                        </a>
-                        <a href="#" class="carousel-card">
-                            <div class="card-content">
-                                <div class="card-icon">
-                                    <img src="nutrientes-cobre.png" alt="Cobre">
-                                </div>
-                                <span class="card-title">Cobre (Cu)</span>
                             </div>
                         </a>
                     </div>
@@ -1078,22 +850,12 @@
                 </div>
 
                 <div class="carousel-indicators" role="tablist" aria-label="Indicadores de slide">
-                    <button class="https://afonsoraudinei.github.io/Nitrogenio/" aria-label="Slide 1: Nitrogênio" aria-current="true"></button>
-                    <button class="indicator" aria-label="Slide 2: Fósforo"></button>
-                    <button class="indicator" aria-label="Slide 3: Potássio"></button>
-                    <button class="indicator" aria-label="Slide 4: Cálcio"></button>
-                    <button class="indicator" aria-label="Slide 5: Magnésio"></button>
-                    <button class="indicator" aria-label="Slide 6: Enxofre"></button>
-                    <button class="indicator" aria-label="Slide 7: Boro"></button>
-                    <button class="indicator" aria-label="Slide 8: Cobre"></button>
-                    <button class="indicator" aria-label="Slide 9: Ferro"></button>
-                    <button class="https://afonsoraudinei.github.io/Mangan-s/" aria-label="Slide 10: Manganês"></button>
-                    <button class="indicator" aria-label="Slide 11: Molibdênio"></button>
-                    <button class="indicator" aria-label="Slide 12: Zinco"></button>
-                    <button class="indicator" aria-label="Slide 13: Níquel"></button>
-                    <button class="indicator" aria-label="Slide 14: Silício"></button>
-                    <button class="indicator" aria-label="Slide 15: Cobalto"></button>
-                    <button class="indicator" aria-label="Slide 16: Sódio"></button>
+                    <button class="indicator active" aria-label="Slide 1" aria-current="true"></button>
+                    <button class="indicator" aria-label="Slide 2"></button>
+                    <button class="indicator" aria-label="Slide 3"></button>
+                    <button class="indicator" aria-label="Slide 4"></button>
+                    <button class="indicator" aria-label="Slide 5"></button>
+                    <button class="indicator" aria-label="Slide 6"></button>
                 </div>
             </div>
         </section>
@@ -1101,7 +863,7 @@
         <!-- MILHO SECTION -->
         <section aria-labelledby="milho-title">
             <div class="section-header">
-                <h2 id="milho-title" class="section-title">🌽 Cultura do Milho</h2>
+                <h2 id="milho-title" class="section-title">🌽 CULTURA DO MILHO</h2>
                 <p class="section-description">Estratégias de manejo e nutrição para maximizar produtividade.</p>
             </div>
 
@@ -1111,7 +873,7 @@
                         <a href="#" class="carousel-card">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="estádios.png" alt="Estádios Fenológicos do Milho">
+                                    <img src="estadios.png" alt="Estádios Fenológicos do Milho">
                                 </div>
                                 <span class="card-title">Estádios Fenológicos do Milho</span>
                             </div>
@@ -1127,7 +889,7 @@
                         <a href="#" class="carousel-card">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="nutrientes.png" alt="Nutrientes no Milho">
+                                    <img src="flutuadores.png" alt="Nutrientes no Milho">
                                 </div>
                                 <span class="card-title">Nutrientes no Milho</span>
                             </div>
@@ -1151,16 +913,16 @@
                         <a href="#" class="carousel-card">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="manejo.png" alt="Manejo do Milho">
+                                    <img src="perfil.png" alt="Manejo do Milho">
                                 </div>
                                 <span class="card-title">Manejo do Milho</span>
                             </div>
                         </a>
-                        <!-- Duplicatas para scroll infinito -->
+                        <!-- Duplicatas -->
                         <a href="#" class="carousel-card">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="estádios.png" alt="Estádios Fenológicos do Milho">
+                                    <img src="estadios.png" alt="Estádios Fenológicos do Milho">
                                 </div>
                                 <span class="card-title">Estádios Fenológicos do Milho</span>
                             </div>
@@ -1171,22 +933,6 @@
                                     <img src="pragas.png" alt="Pragas do Milho">
                                 </div>
                                 <span class="card-title">Pragas do Milho</span>
-                            </div>
-                        </a>
-                        <a href="#" class="carousel-card">
-                            <div class="card-content">
-                                <div class="card-icon">
-                                    <img src="nutrientes.png" alt="Nutrientes no Milho">
-                                </div>
-                                <span class="card-title">Nutrientes no Milho</span>
-                            </div>
-                        </a>
-                        <a href="#" class="carousel-card">
-                            <div class="card-content">
-                                <div class="card-icon">
-                                    <img src="doencas.png" alt="Doenças do Milho">
-                                </div>
-                                <span class="card-title">Doenças do Milho</span>
                             </div>
                         </a>
                     </div>
@@ -1219,7 +965,7 @@
         'use strict';
 
         /**
-         * Carousel Manager - Scroll infinito com duplicatas
+         * Carousel Manager - iOS Style
          */
         class Carousel {
             constructor(container) {
@@ -1229,11 +975,11 @@
                 this.prevBtn = container.querySelector('.carousel-btn.prev');
                 this.nextBtn = container.querySelector('.carousel-btn.next');
                 
-                this.totalCards = this.cards.length / 2; // metade são duplicatas
+                this.totalCards = this.cards.length / 2;
                 this.currentIndex = 0;
                 this.isTransitioning = false;
                 this.cardWidth = 0;
-                this.gap = 40;
+                this.gap = 32;
                 
                 this.init();
             }
@@ -1277,7 +1023,7 @@
                 
                 setTimeout(() => {
                     this.isTransitioning = false;
-                }, 600);
+                }, 400);
             }
 
             prev() {
@@ -1294,7 +1040,7 @@
                 
                 setTimeout(() => {
                     this.isTransitioning = false;
-                }, 600);
+                }, 400);
             }
 
             attachEvents() {
@@ -1305,7 +1051,6 @@
                 let currentX = 0;
                 let isDragging = false;
 
-                // Touch events
                 this.track.addEventListener('touchstart', (e) => {
                     startX = e.touches[0].clientX;
                     isDragging = true;
@@ -1326,7 +1071,6 @@
                     }
                 });
 
-                // Mouse events
                 this.track.addEventListener('mousedown', (e) => {
                     startX = e.clientX;
                     isDragging = true;
@@ -1356,7 +1100,6 @@
                     }
                 });
 
-                // Keyboard
                 document.addEventListener('keydown', (e) => {
                     if (e.key === 'ArrowLeft') this.prev();
                     else if (e.key === 'ArrowRight') this.next();
@@ -1364,16 +1107,13 @@
             }
         }
 
-        // Initialize carousels
         document.addEventListener('DOMContentLoaded', () => {
             const carousels = document.querySelectorAll('.carousel-container[data-carousel]');
             carousels.forEach(carousel => new Carousel(carousel));
 
-            console.log('🌱 Raudinei Afonso - Website loaded successfully!');
-            console.log('✅ Premium Carousels with infinite scroll initialized!');
+            console.log('🌱 Raudinei Afonso - iOS Style Website');
         });
 
-        // Performance: Intersection Observer for lazy loading
         if ('IntersectionObserver' in window) {
             const imageObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
