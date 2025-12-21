@@ -234,6 +234,14 @@
             box-shadow: 0 2px 8px rgba(0, 122, 255, 0.2);
         }
 
+        /* ✅ ADICIONA suporte para imagens nos ícones de contato */
+        .contact-icon img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+            filter: brightness(0) invert(1); /* Torna a imagem branca */
+        }
+
         .contact-label {
             font-size: 0.75em;
             font-weight: 600;
@@ -280,7 +288,7 @@
             position: relative;
             overflow: hidden;
             width: 100%;
-            margin: 0 -16px; /* Compensa padding do container */
+            margin: 0 -16px;
         }
 
         .carousel-container {
@@ -303,11 +311,10 @@
             cursor: grabbing;
         }
 
-        /* ✅ CARDS OTIMIZADOS PARA MOBILE */
         .carousel-card {
-            flex: 0 0 calc(100vw - 80px); /* Largura da tela - margens */
-            max-width: 420px; /* Máximo em telas grandes */
-            height: 240px; /* Altura fixa */
+            flex: 0 0 calc(100vw - 80px);
+            max-width: 420px;
+            height: 240px;
             background: var(--bg-card);
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-xs);
@@ -337,7 +344,6 @@
             transform: scale(0.97);
         }
 
-        /* ✅ CONTEÚDO DO CARD OTIMIZADO */
         .card-content {
             text-align: center;
             padding: var(--spacing-lg);
@@ -350,17 +356,16 @@
             height: 100%;
         }
 
-        /* ✅ ÍCONE MAIOR - SEM ESPAÇO EM BRANCO */
         .card-icon {
-            width: 140px; /* ✅ AUMENTADO de 80px */
-            height: 140px; /* ✅ AUMENTADO de 80px */
+            width: 140px;
+            height: 140px;
             background: linear-gradient(135deg, rgba(0, 122, 255, 0.06), rgba(52, 199, 89, 0.06));
             border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            padding: var(--spacing-sm); /* ✅ ADICIONA padding interno */
+            padding: var(--spacing-sm);
         }
 
         .card-icon img {
@@ -372,7 +377,7 @@
         }
 
         .carousel-card.active .card-icon {
-            width: 150px; /* ✅ Aumenta no active */
+            width: 150px;
             height: 150px;
         }
 
@@ -381,7 +386,6 @@
             transform: scale(1.05);
         }
 
-        /* ✅ TÍTULO OTIMIZADO */
         .card-title {
             font-size: 1em;
             font-weight: 600;
@@ -397,7 +401,6 @@
             color: var(--primary);
         }
 
-        /* ✅ BOTÕES DE NAVEGAÇÃO OTIMIZADOS */
         .carousel-nav {
             position: absolute;
             top: 50%;
@@ -447,7 +450,6 @@
             cursor: not-allowed;
         }
 
-        /* Indicators - iOS Native */
         .carousel-indicators {
             display: flex;
             gap: var(--spacing-xs);
@@ -546,7 +548,11 @@
                 font-size: 1.5em;
             }
 
-            /* ✅ AJUSTES MOBILE */
+            .contact-icon img {
+                width: 28px;
+                height: 28px;
+            }
+
             .carousel-card {
                 flex: 0 0 calc(100vw - 64px);
                 height: 220px;
@@ -591,7 +597,11 @@
                 font-size: 1.25em;
             }
 
-            /* ✅ MOBILE PEQUENO */
+            .contact-icon img {
+                width: 24px;
+                height: 24px;
+            }
+
             .carousel-container {
                 padding: 40px 0;
             }
@@ -667,23 +677,33 @@
         <!-- CONTACT BUTTONS -->
         <nav class="contact-grid" aria-label="Canais de contato">
             <a href="https://wa.me/5563984376572" class="contact-btn" target="_blank" rel="noopener noreferrer" aria-label="Contato WhatsApp">
-                <span class="contact-icon">📱</span>
+                <span class="contact-icon">
+                    <img src="imagens/whatsapp.png" alt="WhatsApp">
+                </span>
                 <span class="contact-label">WhatsApp</span>
             </a>
             <a href="mailto:raudinei@gmail.com" class="contact-btn" aria-label="Enviar e-mail">
-                <span class="contact-icon">✉️</span>
+                <span class="contact-icon">
+                    <img src="imagens/email.png" alt="E-mail">
+                </span>
                 <span class="contact-label">E-mail</span>
             </a>
             <a href="https://linkedin.com/in/raudinei" class="contact-btn" target="_blank" rel="noopener noreferrer" aria-label="Perfil LinkedIn">
-                <span class="contact-icon">💼</span>
+                <span class="contact-icon">
+                    <img src="imagens/linkedin.png" alt="LinkedIn">
+                </span>
                 <span class="contact-label">LinkedIn</span>
             </a>
             <a href="#perfil" class="contact-btn" aria-label="Ir para perfil">
-                <span class="contact-icon">👤</span>
+                <span class="contact-icon">
+                    <img src="imagens/perfil.png" alt="Perfil">
+                </span>
                 <span class="contact-label">Perfil</span>
             </a>
             <a href="https://instagram.com/raudineiafonsosilva" class="contact-btn" target="_blank" rel="noopener noreferrer" aria-label="Perfil Instagram">
-                <span class="contact-icon">📸</span>
+                <span class="contact-icon">
+                    <img src="imagens/instagram.png" alt="Instagram">
+                </span>
                 <span class="contact-label">Instagram</span>
             </a>
         </nav>
@@ -701,7 +721,7 @@
                         <a href="https://afonsoraudinei.github.io/EstadioSoja/" class="carousel-card" target="_blank" rel="noopener noreferrer">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="estadios.png" alt="Estádios Fenológicos" onerror="this.style.display='none'">
+                                    <img src="imagens/estadios.png" alt="Estádios Fenológicos">
                                 </div>
                                 <span class="card-title">Estádios Fenológicos da Soja</span>
                             </div>
@@ -709,7 +729,7 @@
                         <a href="https://afonsoraudinei.github.io/insetossoja/" class="carousel-card" target="_blank" rel="noopener noreferrer">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="pragas.png" alt="Pragas da Soja" onerror="this.style.display='none'">
+                                    <img src="imagens/pragas.png" alt="Pragas da Soja">
                                 </div>
                                 <span class="card-title">Pragas da Soja</span>
                             </div>
@@ -717,7 +737,7 @@
                         <a href="https://afonsoraudinei.github.io/EXPNUTRIENTE/" class="carousel-card" target="_blank" rel="noopener noreferrer">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="flutuadores.png" alt="Nutrientes na Soja" onerror="this.style.display='none'">
+                                    <img src="imagens/flutuadores.png" alt="Nutrientes na Soja">
                                 </div>
                                 <span class="card-title">Nutrientes na Soja</span>
                             </div>
@@ -725,7 +745,7 @@
                         <a href="https://afonsoraudinei.github.io/Doencassoja/" class="carousel-card" target="_blank" rel="noopener noreferrer">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="doencas.png" alt="Doenças da Soja" onerror="this.style.display='none'">
+                                    <img src="imagens/doencas.png" alt="Doenças da Soja">
                                 </div>
                                 <span class="card-title">Doenças da Soja</span>
                             </div>
@@ -733,7 +753,7 @@
                         <a href="https://afonsoraudinei.github.io/hormonios/" class="carousel-card" target="_blank" rel="noopener noreferrer">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="hormonios.png" alt="Hormônios Vegetais" onerror="this.style.display='none'">
+                                    <img src="imagens/hormonios.png" alt="Hormônios Vegetais">
                                 </div>
                                 <span class="card-title">Hormônios Vegetais Soja</span>
                             </div>
@@ -741,7 +761,7 @@
                         <a href="https://afonsoraudinei.github.io/manejo-soja/" class="carousel-card" target="_blank" rel="noopener noreferrer">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="perfil.png" alt="Manejo da Soja" onerror="this.style.display='none'">
+                                    <img src="imagens/perfil.png" alt="Manejo da Soja">
                                 </div>
                                 <span class="card-title">Manejo da Soja</span>
                             </div>
@@ -750,7 +770,7 @@
                         <a href="https://afonsoraudinei.github.io/EstadioSoja/" class="carousel-card" target="_blank" rel="noopener noreferrer">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="estadios.png" alt="Estádios Fenológicos" onerror="this.style.display='none'">
+                                    <img src="imagens/estadios.png" alt="Estádios Fenológicos">
                                 </div>
                                 <span class="card-title">Estádios Fenológicos da Soja</span>
                             </div>
@@ -758,7 +778,7 @@
                         <a href="https://afonsoraudinei.github.io/insetossoja/" class="carousel-card" target="_blank" rel="noopener noreferrer">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="pragas.png" alt="Pragas da Soja" onerror="this.style.display='none'">
+                                    <img src="imagens/pragas.png" alt="Pragas da Soja">
                                 </div>
                                 <span class="card-title">Pragas da Soja</span>
                             </div>
@@ -766,7 +786,7 @@
                         <a href="https://afonsoraudinei.github.io/EXPNUTRIENTE/" class="carousel-card" target="_blank" rel="noopener noreferrer">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="flutuadores.png" alt="Nutrientes na Soja" onerror="this.style.display='none'">
+                                    <img src="imagens/flutuadores.png" alt="Nutrientes na Soja">
                                 </div>
                                 <span class="card-title">Nutrientes na Soja</span>
                             </div>
@@ -774,7 +794,7 @@
                         <a href="https://afonsoraudinei.github.io/Doencassoja/" class="carousel-card" target="_blank" rel="noopener noreferrer">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="doencas.png" alt="Doenças da Soja" onerror="this.style.display='none'">
+                                    <img src="imagens/doencas.png" alt="Doenças da Soja">
                                 </div>
                                 <span class="card-title">Doenças da Soja</span>
                             </div>
@@ -808,7 +828,7 @@
                         <a href="#" class="carousel-card">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="flutuadores.png" alt="Nitrogênio" onerror="this.style.display='none'">
+                                    <img src="imagens/flutuadores.png" alt="Nitrogênio">
                                 </div>
                                 <span class="card-title">Nitrogênio (N)</span>
                             </div>
@@ -816,7 +836,7 @@
                         <a href="#" class="carousel-card">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="flutuadores.png" alt="Fósforo" onerror="this.style.display='none'">
+                                    <img src="imagens/flutuadores.png" alt="Fósforo">
                                 </div>
                                 <span class="card-title">Fósforo (P)</span>
                             </div>
@@ -824,7 +844,7 @@
                         <a href="#" class="carousel-card">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="flutuadores.png" alt="Potássio" onerror="this.style.display='none'">
+                                    <img src="imagens/flutuadores.png" alt="Potássio">
                                 </div>
                                 <span class="card-title">Potássio (K)</span>
                             </div>
@@ -832,7 +852,7 @@
                         <a href="#" class="carousel-card">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="flutuadores.png" alt="Cálcio" onerror="this.style.display='none'">
+                                    <img src="imagens/flutuadores.png" alt="Cálcio">
                                 </div>
                                 <span class="card-title">Cálcio (Ca)</span>
                             </div>
@@ -840,7 +860,7 @@
                         <a href="#" class="carousel-card">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="flutuadores.png" alt="Magnésio" onerror="this.style.display='none'">
+                                    <img src="imagens/flutuadores.png" alt="Magnésio">
                                 </div>
                                 <span class="card-title">Magnésio (Mg)</span>
                             </div>
@@ -848,7 +868,7 @@
                         <a href="#" class="carousel-card">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="flutuadores.png" alt="Enxofre" onerror="this.style.display='none'">
+                                    <img src="imagens/flutuadores.png" alt="Enxofre">
                                 </div>
                                 <span class="card-title">Enxofre (S)</span>
                             </div>
@@ -857,7 +877,7 @@
                         <a href="#" class="carousel-card">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="flutuadores.png" alt="Nitrogênio" onerror="this.style.display='none'">
+                                    <img src="imagens/flutuadores.png" alt="Nitrogênio">
                                 </div>
                                 <span class="card-title">Nitrogênio (N)</span>
                             </div>
@@ -865,7 +885,7 @@
                         <a href="#" class="carousel-card">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="flutuadores.png" alt="Fósforo" onerror="this.style.display='none'">
+                                    <img src="imagens/flutuadores.png" alt="Fósforo">
                                 </div>
                                 <span class="card-title">Fósforo (P)</span>
                             </div>
@@ -902,7 +922,7 @@
                         <a href="#" class="carousel-card">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="estadios.png" alt="Estádios Fenológicos do Milho" onerror="this.style.display='none'">
+                                    <img src="imagens/estadios.png" alt="Estádios Fenológicos do Milho">
                                 </div>
                                 <span class="card-title">Estádios Fenológicos do Milho</span>
                             </div>
@@ -910,7 +930,7 @@
                         <a href="#" class="carousel-card">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="pragas.png" alt="Pragas do Milho" onerror="this.style.display='none'">
+                                    <img src="imagens/pragas.png" alt="Pragas do Milho">
                                 </div>
                                 <span class="card-title">Pragas do Milho</span>
                             </div>
@@ -918,7 +938,7 @@
                         <a href="#" class="carousel-card">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="flutuadores.png" alt="Nutrientes no Milho" onerror="this.style.display='none'">
+                                    <img src="imagens/flutuadores.png" alt="Nutrientes no Milho">
                                 </div>
                                 <span class="card-title">Nutrientes no Milho</span>
                             </div>
@@ -926,7 +946,7 @@
                         <a href="#" class="carousel-card">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="doencas.png" alt="Doenças do Milho" onerror="this.style.display='none'">
+                                    <img src="imagens/doencas.png" alt="Doenças do Milho">
                                 </div>
                                 <span class="card-title">Doenças do Milho</span>
                             </div>
@@ -934,7 +954,7 @@
                         <a href="#" class="carousel-card">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="hormonios.png" alt="Hormônios Vegetais" onerror="this.style.display='none'">
+                                    <img src="imagens/hormonios.png" alt="Hormônios Vegetais">
                                 </div>
                                 <span class="card-title">Hormônios Vegetais Milho</span>
                             </div>
@@ -942,7 +962,7 @@
                         <a href="#" class="carousel-card">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="perfil.png" alt="Manejo do Milho" onerror="this.style.display='none'">
+                                    <img src="imagens/perfil.png" alt="Manejo do Milho">
                                 </div>
                                 <span class="card-title">Manejo do Milho</span>
                             </div>
@@ -951,7 +971,7 @@
                         <a href="#" class="carousel-card">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="estadios.png" alt="Estádios Fenológicos do Milho" onerror="this.style.display='none'">
+                                    <img src="imagens/estadios.png" alt="Estádios Fenológicos do Milho">
                                 </div>
                                 <span class="card-title">Estádios Fenológicos do Milho</span>
                             </div>
@@ -959,7 +979,7 @@
                         <a href="#" class="carousel-card">
                             <div class="card-content">
                                 <div class="card-icon">
-                                    <img src="pragas.png" alt="Pragas do Milho" onerror="this.style.display='none'">
+                                    <img src="imagens/pragas.png" alt="Pragas do Milho">
                                 </div>
                                 <span class="card-title">Pragas do Milho</span>
                             </div>
