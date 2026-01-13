@@ -1,17 +1,9 @@
-import { MessageCircle, Award, CheckCircle, Star, Users, TrendingUp } from "lucide-react";
+import { Award, CheckCircle } from "lucide-react";
 import { Button } from "./ui/button";
 import raudineiFoto from "@/assets/raudinei-foto.png";
 import { motion } from "framer-motion";
 
 const Hero = () => {
-  const whatsappLink = `https://wa.me/5563984376572?text=${encodeURIComponent("Olá! Gostaria de tirar uma dúvida sobre manejo de solo ou nutrição de plantas.")}`;
-
-  const stats = [
-    { icon: <Users className="w-4 h-4" />, value: "500+", label: "Produtores atendidos" },
-    { icon: <TrendingUp className="w-4 h-4" />, value: "15+", label: "Anos de experiência" },
-    { icon: <Star className="w-4 h-4" />, value: "4.9", label: "Avaliação média" },
-  ];
-
   const highlights = [
     "Recomendações baseadas em ciência",
     "Resultados comprovados no campo",
@@ -77,15 +69,6 @@ const Hero = () => {
                 <span>Especialista Certificado</span>
               </motion.div>
 
-              <motion.div 
-                className="absolute top-10 -right-4 lg:right-0 bg-gradient-to-br from-emerald-500 to-teal-600 text-white px-4 py-2 rounded-xl shadow-lg flex items-center gap-2 text-sm font-semibold z-30"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.6, duration: 0.4 }}
-              >
-                <CheckCircle className="w-4 h-4" />
-                <span>15+ Anos</span>
-              </motion.div>
             </div>
           </motion.div>
 
@@ -138,20 +121,8 @@ const Hero = () => {
               ))}
             </div>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button 
-                asChild 
-                size="lg" 
-                className="relative bg-[#25D366] hover:bg-[#20BD5A] text-white px-8 py-6 text-lg rounded-full shadow-xl hover:shadow-2xl shadow-green-500/30 hover:shadow-green-500/40 transition-all duration-300 hover:-translate-y-1 hover:scale-105 active:scale-[0.98] group"
-              >
-                <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-                  <span className="absolute inset-0 rounded-full animate-ping bg-green-400/20" style={{ animationDuration: '2s' }} />
-                  <MessageCircle className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
-                  Fale Comigo no WhatsApp
-                </a>
-              </Button>
-              
+            {/* CTA Button */}
+            <div className="flex justify-center lg:justify-start">
               <Button 
                 asChild 
                 variant="outline" 
@@ -162,25 +133,6 @@ const Hero = () => {
                   Conhecer Especialidades
                 </a>
               </Button>
-            </div>
-
-            {/* Stats */}
-            <div className="flex justify-center lg:justify-start gap-6 lg:gap-8 pt-4">
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  className="text-center lg:text-left"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 + index * 0.1 }}
-                >
-                  <div className="flex items-center justify-center lg:justify-start gap-2 text-emerald-600 mb-1">
-                    {stat.icon}
-                    <span className="text-2xl lg:text-3xl font-bold text-gray-900">{stat.value}</span>
-                  </div>
-                  <p className="text-xs lg:text-sm text-gray-500">{stat.label}</p>
-                </motion.div>
-              ))}
             </div>
           </motion.div>
         </div>
