@@ -98,7 +98,6 @@ const CTASection = () => {
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </Button>
-            <p className="text-emerald-100/50 text-sm mt-4">+55 63 98437-6572</p>
           </motion.div>
         </div>
       </div>
