@@ -1,7 +1,40 @@
-import { CheckCircle, Leaf } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 import { Button } from "./ui/button";
 import raudineiFoto from "@/assets/raudinei-foto.png";
 import { motion } from "framer-motion";
+
+// SVG de folha realista
+const RealisticLeaf = ({ className = "", style = {} }: { className?: string; style?: React.CSSProperties }) => (
+  <svg viewBox="0 0 100 100" className={className} style={style} fill="none">
+    <defs>
+      <linearGradient id="leafGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="rgba(34, 211, 238, 0.4)" />
+        <stop offset="50%" stopColor="rgba(59, 130, 246, 0.3)" />
+        <stop offset="100%" stopColor="rgba(20, 184, 166, 0.2)" />
+      </linearGradient>
+    </defs>
+    <path
+      d="M50 5 C20 20, 5 50, 15 80 C25 95, 45 98, 50 95 C55 98, 75 95, 85 80 C95 50, 80 20, 50 5"
+      fill="url(#leafGradient)"
+      stroke="rgba(34, 211, 238, 0.3)"
+      strokeWidth="0.5"
+    />
+    {/* Nervura central */}
+    <path
+      d="M50 10 C50 30, 50 60, 50 90"
+      stroke="rgba(34, 211, 238, 0.25)"
+      strokeWidth="1"
+      fill="none"
+    />
+    {/* Nervuras laterais */}
+    <path d="M50 25 C35 30, 25 40, 20 50" stroke="rgba(34, 211, 238, 0.15)" strokeWidth="0.5" fill="none" />
+    <path d="M50 25 C65 30, 75 40, 80 50" stroke="rgba(34, 211, 238, 0.15)" strokeWidth="0.5" fill="none" />
+    <path d="M50 45 C38 50, 28 58, 22 68" stroke="rgba(34, 211, 238, 0.15)" strokeWidth="0.5" fill="none" />
+    <path d="M50 45 C62 50, 72 58, 78 68" stroke="rgba(34, 211, 238, 0.15)" strokeWidth="0.5" fill="none" />
+    <path d="M50 65 C42 70, 35 76, 30 82" stroke="rgba(34, 211, 238, 0.15)" strokeWidth="0.5" fill="none" />
+    <path d="M50 65 C58 70, 65 76, 70 82" stroke="rgba(34, 211, 238, 0.15)" strokeWidth="0.5" fill="none" />
+  </svg>
+);
 
 const Hero = () => {
   const highlights = [
@@ -12,12 +45,16 @@ const Hero = () => {
 
   // Folhas decorativas com posições variadas
   const leaves = [
-    { x: "5%", y: "15%", rotate: -20, size: 32, delay: 0 },
-    { x: "92%", y: "20%", rotate: 45, size: 28, delay: 0.2 },
-    { x: "8%", y: "75%", rotate: -45, size: 24, delay: 0.4 },
-    { x: "88%", y: "70%", rotate: 30, size: 36, delay: 0.3 },
-    { x: "15%", y: "45%", rotate: 15, size: 20, delay: 0.5 },
-    { x: "85%", y: "45%", rotate: -30, size: 22, delay: 0.1 },
+    { x: "3%", y: "12%", rotate: -25, size: 80, delay: 0, opacity: 0.6 },
+    { x: "90%", y: "8%", rotate: 40, size: 70, delay: 0.2, opacity: 0.5 },
+    { x: "6%", y: "70%", rotate: -50, size: 60, delay: 0.4, opacity: 0.4 },
+    { x: "85%", y: "65%", rotate: 35, size: 90, delay: 0.3, opacity: 0.5 },
+    { x: "18%", y: "40%", rotate: 20, size: 45, delay: 0.5, opacity: 0.35 },
+    { x: "80%", y: "35%", rotate: -35, size: 55, delay: 0.1, opacity: 0.4 },
+    { x: "12%", y: "85%", rotate: 10, size: 50, delay: 0.6, opacity: 0.3 },
+    { x: "92%", y: "85%", rotate: -20, size: 65, delay: 0.35, opacity: 0.45 },
+    { x: "25%", y: "20%", rotate: -15, size: 40, delay: 0.7, opacity: 0.25 },
+    { x: "75%", y: "50%", rotate: 25, size: 35, delay: 0.45, opacity: 0.3 },
   ];
 
   return (
@@ -33,30 +70,44 @@ const Hero = () => {
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
       
-      {/* Floating leaves */}
+      {/* Floating realistic leaves */}
       {leaves.map((leaf, index) => (
         <motion.div
           key={index}
-          className="absolute text-cyan-400/30"
-          style={{ left: leaf.x, top: leaf.y }}
-          initial={{ opacity: 0, scale: 0, rotate: leaf.rotate - 20 }}
+          className="absolute pointer-events-none"
+          style={{ 
+            left: leaf.x, 
+            top: leaf.y,
+            width: leaf.size,
+            height: leaf.size,
+          }}
+          initial={{ opacity: 0, scale: 0, rotate: leaf.rotate - 30 }}
           animate={{ 
-            opacity: 1, 
+            opacity: leaf.opacity, 
             scale: 1, 
             rotate: leaf.rotate,
-            y: [0, -10, 0]
+            y: [0, -15, 0],
+            x: [0, index % 2 === 0 ? 5 : -5, 0]
           }}
           transition={{ 
             delay: leaf.delay,
-            duration: 0.6,
+            duration: 0.8,
             y: {
-              duration: 4 + index,
+              duration: 5 + index * 0.5,
+              repeat: Infinity,
+              ease: "easeInOut"
+            },
+            x: {
+              duration: 6 + index * 0.3,
               repeat: Infinity,
               ease: "easeInOut"
             }
           }}
         >
-          <Leaf size={leaf.size} strokeWidth={1.5} />
+          <RealisticLeaf 
+            className="w-full h-full"
+            style={{ transform: `rotate(${leaf.rotate}deg)` }}
+          />
         </motion.div>
       ))}
       
