@@ -1,7 +1,6 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import SpecialtyCards from "@/components/SpecialtyCards";
-import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -11,7 +10,6 @@ const Index = () => {
       <main>
         <Hero />
         <SpecialtyCards />
-        <CTASection />
       </main>
       <Footer />
     </div>
