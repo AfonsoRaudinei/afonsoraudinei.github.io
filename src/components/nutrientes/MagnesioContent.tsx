@@ -300,13 +300,6 @@ const MagnesioContent = () => (
         />
       </section>
 
-      {/* Footer */}
-      <div className="bg-gradient-to-br from-lime-700 to-lime-900 text-white p-8 rounded-2xl text-center shadow-xl">
-        <p className="font-bold text-xl mb-2">GEFEN - Nutrição de Plantas</p>
-        <p className="text-lime-200 text-sm">
-          Conteúdo educacional • Imagens ilustrativas pendentes
-        </p>
-      </div>
     </div>
   </div>
 );

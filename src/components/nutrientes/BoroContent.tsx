@@ -356,12 +356,6 @@ const BoroContent = () => (
         </div>
       </section>
 
-      {/* Footer */}
-      <div className="bg-gradient-to-br from-rose-700 to-rose-900 text-white p-8 rounded-2xl text-center">
-        <p className="mb-2">Material desenvolvido para fins educacionais</p>
-        <p className="font-bold text-lg">GEFEN - Nutrição de Plantas</p>
-        <p className="text-sm mt-3 text-white/80">© 2024 Nutrição de Plantas</p>
-      </div>
     </div>
   </div>
 );

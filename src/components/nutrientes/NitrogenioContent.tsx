@@ -359,13 +359,6 @@ export default function NitrogenioContent() {
         }]} />
         </section>
 
-        {/* Footer */}
-        <div className="bg-gradient-to-br from-blue-700 to-blue-900 text-white p-8 rounded-2xl text-center shadow-xl">
-          
-          <p className="text-blue-200 text-sm">
-            Conteúdo educacional • Imagens ilustrativas pendentes
-          </p>
-        </div>
       </div>
     </div>;
 }

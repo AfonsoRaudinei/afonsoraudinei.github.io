@@ -439,12 +439,6 @@ const NiquelContent = () => (
         />
       </section>
 
-      {/* Footer */}
-      <div className="text-center pt-8 border-t border-muted">
-        <p className="text-muted-foreground text-sm">
-          Nutrição de Plantas • Níquel (Ni)
-        </p>
-      </div>
     </div>
   </div>
 );
