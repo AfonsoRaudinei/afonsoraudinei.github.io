@@ -43,18 +43,13 @@ const Hero = () => {
     "Suporte técnico personalizado",
   ];
 
-  // Folhas decorativas com posições variadas
+  // Folhas decorativas - menos quantidade, maior impacto visual
   const leaves = [
-    { x: "3%", y: "12%", rotate: -25, size: 80, delay: 0, opacity: 0.6 },
-    { x: "90%", y: "8%", rotate: 40, size: 70, delay: 0.2, opacity: 0.5 },
-    { x: "6%", y: "70%", rotate: -50, size: 60, delay: 0.4, opacity: 0.4 },
-    { x: "85%", y: "65%", rotate: 35, size: 90, delay: 0.3, opacity: 0.5 },
-    { x: "18%", y: "40%", rotate: 20, size: 45, delay: 0.5, opacity: 0.35 },
-    { x: "80%", y: "35%", rotate: -35, size: 55, delay: 0.1, opacity: 0.4 },
-    { x: "12%", y: "85%", rotate: 10, size: 50, delay: 0.6, opacity: 0.3 },
-    { x: "92%", y: "85%", rotate: -20, size: 65, delay: 0.35, opacity: 0.45 },
-    { x: "25%", y: "20%", rotate: -15, size: 40, delay: 0.7, opacity: 0.25 },
-    { x: "75%", y: "50%", rotate: 25, size: 35, delay: 0.45, opacity: 0.3 },
+    { x: "2%", y: "15%", rotate: -20, size: 100, delay: 0, opacity: 0.5 },
+    { x: "88%", y: "10%", rotate: 30, size: 90, delay: 0.2, opacity: 0.45 },
+    { x: "5%", y: "75%", rotate: -45, size: 85, delay: 0.4, opacity: 0.4 },
+    { x: "90%", y: "70%", rotate: 40, size: 110, delay: 0.3, opacity: 0.45 },
+    { x: "92%", y: "40%", rotate: -25, size: 70, delay: 0.15, opacity: 0.35 },
   ];
 
   return (
