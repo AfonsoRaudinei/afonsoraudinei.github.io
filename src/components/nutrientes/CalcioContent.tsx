@@ -298,13 +298,6 @@ const CalcioContent = () => (
         />
       </section>
 
-      {/* Footer */}
-      <div className="bg-gradient-to-br from-amber-700 to-amber-900 text-white p-8 rounded-2xl text-center shadow-xl">
-        <p className="font-bold text-xl mb-2">GEFEN - Nutrição de Plantas</p>
-        <p className="text-amber-200 text-sm">
-          Conteúdo educacional • Imagens ilustrativas pendentes
-        </p>
-      </div>
     </div>
   </div>
 );
