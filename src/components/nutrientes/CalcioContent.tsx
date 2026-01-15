@@ -1,6 +1,14 @@
 import { Droplets, AlertTriangle, Leaf, Shield, Building, Heart, FlaskConical, Zap } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ImagePlaceholder, ImageGrid } from "./ImagePlaceholder";
+import { 
+  ScrollReveal, 
+  StaggerContainer, 
+  StaggerItem, 
+  HeroParallax,
+  FloatingElement,
+  ScaleOnScroll
+} from "@/components/ui/scroll-animations";
 
 const CalcioContent = () => (
   <div className="min-h-screen">

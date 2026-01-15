@@ -1,6 +1,14 @@
 import { Droplets, AlertTriangle, Sun, Leaf, Zap, Shield, FlaskConical } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ImagePlaceholder, ImageGrid } from "./ImagePlaceholder";
+import { 
+  ScrollReveal, 
+  StaggerContainer, 
+  StaggerItem, 
+  HeroParallax,
+  FloatingElement,
+  ScaleOnScroll
+} from "@/components/ui/scroll-animations";
 
 const FerroContent = () => (
   <div className="min-h-screen">

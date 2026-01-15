@@ -1,6 +1,14 @@
 import { Droplets, AlertTriangle, Leaf, FlaskConical, Flower, TreeDeciduous, Dna, ArrowLeftRight } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ImagePlaceholder, ImageGrid } from "./ImagePlaceholder";
+import { 
+  ScrollReveal, 
+  StaggerContainer, 
+  StaggerItem, 
+  HeroParallax,
+  FloatingElement,
+  ScaleOnScroll
+} from "@/components/ui/scroll-animations";
 
 const BoroContent = () => (
   <div className="min-h-screen">

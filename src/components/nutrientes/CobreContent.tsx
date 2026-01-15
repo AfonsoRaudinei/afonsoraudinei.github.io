@@ -1,6 +1,14 @@
 import { Droplets, AlertTriangle, Leaf, FlaskConical, Zap, Shield, Cog, Sun } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ImagePlaceholder, ImageGrid } from "./ImagePlaceholder";
+import { 
+  ScrollReveal, 
+  StaggerContainer, 
+  StaggerItem, 
+  HeroParallax,
+  FloatingElement,
+  ScaleOnScroll
+} from "@/components/ui/scroll-animations";
 
 const CobreContent = () => (
   <div className="min-h-screen">
