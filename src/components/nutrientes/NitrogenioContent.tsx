@@ -3,6 +3,15 @@ import { Beaker, Leaf, RefreshCw, Dna, Zap, AlertTriangle, BarChart3, Lightbulb,
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FertilizanteCard, ImageGrid, ImagePlaceholder } from "./ImagePlaceholder";
 import AbsorcaoSojaAccordion from "./AbsorcaoSojaAccordion";
+import { 
+  ScrollReveal, 
+  StaggerContainer, 
+  StaggerItem, 
+  HeroParallax,
+  FloatingElement,
+  ScaleOnScroll
+} from "@/components/ui/scroll-animations";
+
 const fontesNitrogenio = [{
   nome: "Ureia",
   formula: "CH₄N₂O",
@@ -77,46 +86,67 @@ const sintomasDeficiencia = [{
   detalhe: "Folhas velhas secam e caem antecipadamente"
 }];
 export default function NitrogenioContent() {
-  return <div className="min-h-screen">
-      {/* Hero Header */}
+  return <div className="min-h-screen overflow-hidden">
+      {/* Hero Header with Parallax */}
       <div className="relative bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16 px-6 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.1)_0%,transparent_70%)]" />
-        <div className="absolute top-10 right-10 w-32 h-32 bg-white/5 rounded-full blur-2xl" />
-        <div className="absolute bottom-10 left-10 w-24 h-24 bg-white/5 rounded-full blur-xl" />
         
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="flex items-center justify-center gap-6 mb-8">
-            <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-2xl ring-4 ring-blue-300/30">
-              <span className="text-5xl font-bold text-blue-600">N</span>
+        {/* Floating decorative elements */}
+        <FloatingElement className="absolute top-10 right-10" amplitude={15} duration={5}>
+          <div className="w-32 h-32 bg-white/10 rounded-full blur-2xl" />
+        </FloatingElement>
+        <FloatingElement className="absolute bottom-10 left-10" amplitude={10} duration={4}>
+          <div className="w-24 h-24 bg-white/10 rounded-full blur-xl" />
+        </FloatingElement>
+        
+        <HeroParallax className="max-w-6xl mx-auto relative z-10">
+          <ScrollReveal direction="down" duration={0.8}>
+            <div className="flex items-center justify-center gap-6 mb-8">
+              <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-2xl ring-4 ring-blue-300/30">
+                <span className="text-5xl font-bold text-blue-600">N</span>
+              </div>
             </div>
-          </div>
-          <h1 className="text-5xl md:text-6xl font-bold text-center mb-6">Nitrogênio (N)</h1>
-          <p className="text-lg text-center text-white/95 max-w-3xl mx-auto leading-relaxed">
-            Macronutriente primário mais exigido pelas plantas. Componente essencial de aminoácidos, 
-            proteínas, ácidos nucleicos e clorofila. Constitui 2 a 5% da matéria seca vegetal.
-          </p>
+          </ScrollReveal>
+          
+          <ScrollReveal delay={0.1}>
+            <h1 className="text-5xl md:text-6xl font-bold text-center mb-6">Nitrogênio (N)</h1>
+          </ScrollReveal>
+          
+          <ScrollReveal delay={0.2}>
+            <p className="text-lg text-center text-white/95 max-w-3xl mx-auto leading-relaxed">
+              Macronutriente primário mais exigido pelas plantas. Componente essencial de aminoácidos, 
+              proteínas, ácidos nucleicos e clorofila. Constitui 2 a 5% da matéria seca vegetal.
+            </p>
+          </ScrollReveal>
           
           {/* Quick Stats */}
-          <div className="grid grid-cols-3 gap-4 mt-10 max-w-2xl mx-auto">
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
-              <p className="text-3xl font-bold text-white">78%</p>
-              <p className="text-white/70 text-sm">da atmosfera</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
-              <p className="text-3xl font-bold text-white">2-5%</p>
-              <p className="text-white/70 text-sm">matéria seca</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
-              <p className="text-3xl font-bold text-white">NO₃⁻</p>
-              <p className="text-white/70 text-sm">forma principal</p>
-            </div>
-          </div>
-        </div>
+          <StaggerContainer className="grid grid-cols-3 gap-4 mt-10 max-w-2xl mx-auto" staggerDelay={0.1}>
+            <StaggerItem>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
+                <p className="text-3xl font-bold text-white">78%</p>
+                <p className="text-white/70 text-sm">da atmosfera</p>
+              </div>
+            </StaggerItem>
+            <StaggerItem>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
+                <p className="text-3xl font-bold text-white">2-5%</p>
+                <p className="text-white/70 text-sm">matéria seca</p>
+              </div>
+            </StaggerItem>
+            <StaggerItem>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
+                <p className="text-3xl font-bold text-white">NO₃⁻</p>
+                <p className="text-white/70 text-sm">forma principal</p>
+              </div>
+            </StaggerItem>
+          </StaggerContainer>
+        </HeroParallax>
       </div>
 
       <div className="max-w-6xl mx-auto px-6 lg:px-8 py-12 lg:py-16 space-y-12 lg:space-y-16">
         
         {/* Principais Fontes */}
+        <ScrollReveal>
         <Card className="bg-gradient-to-br from-blue-500 to-blue-700 text-white border-0 shadow-xl overflow-hidden">
           <CardHeader className="pb-2">
             <CardTitle className="text-2xl text-center uppercase tracking-wider">
@@ -135,8 +165,10 @@ export default function NitrogenioContent() {
             </div>
           </CardContent>
         </Card>
+        </ScrollReveal>
 
         {/* Fertilizantes Nitrogenados */}
+        <ScrollReveal delay={0.1}>
         <section>
           <h3 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2">
             <FlaskConical className="w-5 h-5 text-blue-600" />
@@ -150,8 +182,10 @@ export default function NitrogenioContent() {
             <FertilizanteCard nome="DAP" formula="(NH₄)₂HPO₄" percentual="17% N" descricao="+ 45% P₂O₅" icon={Layers} />
           </div>
         </section>
+        </ScrollReveal>
 
         {/* Ciclo do Nitrogênio */}
+        <ScrollReveal>
         <section className="space-y-6">
           <h3 className="text-2xl font-bold text-foreground text-center mb-8">
             <RefreshCw className="w-6 h-6 inline mr-2 text-blue-600" />
@@ -177,8 +211,10 @@ export default function NitrogenioContent() {
             </div>
           </div>
         </section>
+        </ScrollReveal>
 
         {/* Fixação Biológica */}
+        <ScrollReveal>
         <div className="bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-950/30 dark:to-green-950/30 p-6 rounded-2xl border-2 border-emerald-200 dark:border-emerald-800">
           <h4 className="text-emerald-800 dark:text-emerald-300 text-xl font-bold mb-4 flex items-center gap-2">
             <Sprout className="w-6 h-6" />
@@ -215,8 +251,10 @@ export default function NitrogenioContent() {
             </div>
           </div>
         </div>
+        </ScrollReveal>
 
         {/* Metabolismo */}
+        <ScrollReveal>
         <section className="space-y-6">
           <h3 className="text-2xl font-bold text-foreground text-center mb-8">
             <Dna className="w-6 h-6 inline mr-2 text-blue-600" />
@@ -247,8 +285,10 @@ export default function NitrogenioContent() {
             </p>
           </div>
         </section>
+        </ScrollReveal>
 
         {/* Principais Funções */}
+        <ScrollReveal>
         <section className="space-y-6">
           <h3 className="text-2xl font-bold text-foreground text-center mb-8">
             Principais Funções do Nitrogênio
@@ -268,8 +308,10 @@ export default function NitrogenioContent() {
               </Card>)}
           </div>
         </section>
+        </ScrollReveal>
 
         {/* Deficiência */}
+        <ScaleOnScroll>
         <Card className="bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-950/30 dark:to-amber-950/30 border-2 border-orange-400">
           <CardHeader>
             <CardTitle className="text-orange-800 dark:text-orange-300 text-center text-xl flex items-center justify-center gap-2">
@@ -302,13 +344,17 @@ export default function NitrogenioContent() {
             </div>
           </CardContent>
         </Card>
+        </ScaleOnScroll>
 
         {/* Absorção em Soja - Accordion */}
+        <ScrollReveal>
         <section>
           <AbsorcaoSojaAccordion corPrimaria="blue" />
         </section>
+        </ScrollReveal>
 
         {/* Teores Adequados */}
+        <ScrollReveal>
         <section className="bg-gradient-to-br from-slate-100 to-slate-50 dark:from-slate-900 dark:to-slate-800 p-6 rounded-2xl">
           <h3 className="text-xl font-bold text-foreground mb-6 text-center flex items-center justify-center gap-2">
             <BarChart3 className="w-5 h-5 text-blue-600" />
@@ -338,8 +384,10 @@ export default function NitrogenioContent() {
               </div>)}
           </div>
         </section>
+        </ScrollReveal>
 
         {/* Galeria Visual */}
+        <ScrollReveal>
         <section>
           <h3 className="text-xl font-bold text-foreground mb-4 text-center">
             Galeria: Nitrogênio na Agricultura
@@ -358,6 +406,7 @@ export default function NitrogenioContent() {
           icon: Sprout
         }]} />
         </section>
+        </ScrollReveal>
 
       </div>
     </div>;
