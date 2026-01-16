@@ -1,6 +1,7 @@
 import { CheckCircle } from "lucide-react";
 import { Button } from "./ui/button";
-import raudineiFoto from "@/assets/raudinei-foto.png";
+import logoRealista from "@/assets/logo-realista.jpeg";
+import logoFlat from "@/assets/logo-flat.png";
 import { motion } from "framer-motion";
 
 // SVG de folha realista
@@ -109,40 +110,61 @@ const Hero = () => {
       <div className="relative z-10 w-full max-w-[1600px] mx-auto px-4 md:px-8 lg:px-16 xl:px-20 pt-28 pb-16">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 xl:gap-20 items-center">
           
-          {/* Photo Section */}
+          {/* Logo Section */}
           <motion.div 
             className="flex justify-center lg:justify-start order-1"
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="relative group">
-              {/* Glow effect */}
-              <div className="absolute -inset-8 bg-gradient-to-br from-cyan-400/30 via-blue-500/20 to-teal-400/30 rounded-full blur-2xl group-hover:blur-3xl transition-all duration-500" />
+            <motion.div 
+              className="relative group"
+              animate={{ y: [0, -12, 0] }}
+              transition={{ 
+                duration: 5, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }}
+            >
+              {/* Ambient glow - soft and diffuse */}
+              <div className="absolute -inset-16 bg-gradient-radial from-cyan-400/25 via-blue-500/15 to-transparent rounded-full blur-3xl opacity-80 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="absolute -inset-8 bg-gradient-radial from-teal-400/20 to-transparent rounded-full blur-2xl opacity-60" />
               
-              {/* Rotating ring */}
-              <div 
-                className="absolute -inset-4 rounded-full opacity-50"
-                style={{
-                  background: 'conic-gradient(from 0deg, transparent, rgba(34, 211, 238, 0.4), transparent, rgba(59, 130, 246, 0.4), transparent)',
-                  animation: 'spin 30s linear infinite'
-                }}
-              />
-              
-              {/* Main photo container */}
-              <div className="relative p-[6px] bg-gradient-to-br from-cyan-400 via-blue-500 to-teal-400 rounded-full shadow-2xl shadow-cyan-500/40 group-hover:shadow-cyan-500/60 transition-all duration-500">
-                <div className="p-[3px] bg-slate-900 rounded-full">
-                  <div className="relative w-72 h-72 sm:w-80 sm:h-80 md:w-[22rem] md:h-[22rem] lg:w-[26rem] lg:h-[26rem] xl:w-[28rem] xl:h-[28rem] rounded-full overflow-hidden">
-                    <img 
-                      src={raudineiFoto} 
-                      alt="Raudinei Afonso - Especialista em Fertilidade do Solo" 
-                      className="w-full h-full object-cover object-top scale-[1.15] group-hover:scale-[1.2] transition-transform duration-700" 
-                    />
-                  </div>
-                </div>
-              </div>
-              
-            </div>
+              {/* Logo container - clean, no borders */}
+              <motion.div 
+                className="relative w-72 h-72 sm:w-80 sm:h-80 md:w-[22rem] md:h-[22rem] lg:w-[26rem] lg:h-[26rem] xl:w-[28rem] xl:h-[28rem]"
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.4 }}
+              >
+                {/* Logo Realista - base layer */}
+                <motion.img 
+                  src={logoRealista}
+                  alt="Soloforte - Consultoria Agronômica"
+                  className="absolute inset-0 w-full h-full object-contain drop-shadow-2xl"
+                  animate={{ opacity: [1, 1, 0, 0] }}
+                  transition={{ 
+                    duration: 8,
+                    repeat: Infinity,
+                    times: [0, 0.45, 0.55, 1],
+                    ease: "easeInOut"
+                  }}
+                />
+                
+                {/* Logo Flat - overlay layer */}
+                <motion.img 
+                  src={logoFlat}
+                  alt="Soloforte - Consultoria Agronômica"
+                  className="absolute inset-0 w-full h-full object-contain drop-shadow-2xl"
+                  animate={{ opacity: [0, 0, 1, 1] }}
+                  transition={{ 
+                    duration: 8,
+                    repeat: Infinity,
+                    times: [0, 0.45, 0.55, 1],
+                    ease: "easeInOut"
+                  }}
+                />
+              </motion.div>
+            </motion.div>
           </motion.div>
 
           {/* Content Section */}
