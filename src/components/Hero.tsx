@@ -1,7 +1,7 @@
 import { CheckCircle } from "lucide-react";
 import { Button } from "./ui/button";
 import logoRealista from "@/assets/logo-realista.jpeg";
-import logoFlat from "@/assets/logo-flat.png";
+import logoFlat from "@/assets/logo-flat-nobg.png";
 import { motion } from "framer-motion";
 
 // SVG de folha realista
@@ -141,11 +141,11 @@ const Hero = () => {
                   src={logoRealista}
                   alt="Soloforte - Consultoria Agronômica"
                   className="absolute inset-0 w-full h-full object-contain drop-shadow-2xl"
-                  animate={{ opacity: [1, 1, 0, 0] }}
+                  animate={{ opacity: [1, 1, 1, 0, 0, 0] }}
                   transition={{ 
-                    duration: 8,
+                    duration: 16,
                     repeat: Infinity,
-                    times: [0, 0.45, 0.55, 1],
+                    times: [0, 0.4, 0.45, 0.55, 0.6, 1],
                     ease: "easeInOut"
                   }}
                 />
@@ -155,11 +155,11 @@ const Hero = () => {
                   src={logoFlat}
                   alt="Soloforte - Consultoria Agronômica"
                   className="absolute inset-0 w-full h-full object-contain drop-shadow-2xl"
-                  animate={{ opacity: [0, 0, 1, 1] }}
+                  animate={{ opacity: [0, 0, 0, 1, 1, 1] }}
                   transition={{ 
-                    duration: 8,
+                    duration: 16,
                     repeat: Infinity,
-                    times: [0, 0.45, 0.55, 1],
+                    times: [0, 0.4, 0.45, 0.55, 0.6, 1],
                     ease: "easeInOut"
                   }}
                 />
