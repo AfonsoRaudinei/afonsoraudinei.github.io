@@ -153,6 +153,20 @@ const Hero = () => {
                   ease: "easeInOut"
                 }}
               />
+              {/* Green agricultural glow layer */}
+              <motion.div 
+                className="absolute -inset-12 bg-gradient-radial from-[#4ADE80]/20 via-emerald-500/10 to-transparent rounded-full blur-2xl"
+                animate={{ 
+                  opacity: [0.3, 0.3, 0.8, 0.5, 0.3, 0.3, 0.8, 0.5, 0.3],
+                  scale: [1, 1, 1.06, 1.03, 1, 1, 1.06, 1.03, 1]
+                }}
+                transition={{ 
+                  duration: 40,
+                  repeat: Infinity,
+                  times: [0, 0.125, 0.35, 0.5, 0.5, 0.625, 0.85, 1, 1],
+                  ease: "easeInOut"
+                }}
+              />
               
               {/* Logo container - clean, no borders */}
               <motion.div 
