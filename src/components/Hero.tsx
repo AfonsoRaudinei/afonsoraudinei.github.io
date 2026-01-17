@@ -37,6 +37,70 @@ const RealisticLeaf = ({ className = "", style = {} }: { className?: string; sty
   </svg>
 );
 
+// Floating particles around logo
+const FloatingParticle = ({ delay, duration, startX, startY, size, type }: { 
+  delay: number; 
+  duration: number; 
+  startX: number; 
+  startY: number; 
+  size: number;
+  type: 'leaf' | 'pollen';
+}) => (
+  <motion.div
+    className="absolute pointer-events-none"
+    style={{ 
+      left: `${startX}%`, 
+      top: `${startY}%`,
+      width: size,
+      height: size
+    }}
+    animate={{
+      x: [0, 20, -15, 25, -10, 0],
+      y: [0, -30, -50, -70, -90, -110],
+      rotate: type === 'leaf' ? [0, 45, 90, 135, 180, 225] : [0, 360],
+      opacity: [0, 0.8, 0.9, 0.7, 0.4, 0],
+      scale: [0.5, 1, 1.1, 1, 0.8, 0.5]
+    }}
+    transition={{
+      duration,
+      repeat: Infinity,
+      delay,
+      ease: "easeInOut"
+    }}
+  >
+    {type === 'leaf' ? (
+      <svg viewBox="0 0 24 24" className="w-full h-full" fill="none">
+        <path
+          d="M12 2C6 6, 4 12, 6 18C8 22, 12 22, 12 22C12 22, 16 22, 18 18C20 12, 18 6, 12 2Z"
+          fill="rgba(74, 222, 128, 0.6)"
+          stroke="rgba(74, 222, 128, 0.8)"
+          strokeWidth="0.5"
+        />
+        <path d="M12 4V20" stroke="rgba(74, 222, 128, 0.4)" strokeWidth="0.5" />
+      </svg>
+    ) : (
+      <div 
+        className="w-full h-full rounded-full"
+        style={{
+          background: 'radial-gradient(circle, rgba(74, 222, 128, 0.7) 0%, rgba(52, 211, 153, 0.4) 50%, transparent 70%)'
+        }}
+      />
+    )}
+  </motion.div>
+);
+
+// Particle configuration for logo area
+const logoParticles = [
+  { delay: 0, duration: 8, startX: 20, startY: 80, size: 12, type: 'leaf' as const },
+  { delay: 1.5, duration: 10, startX: 75, startY: 85, size: 8, type: 'pollen' as const },
+  { delay: 3, duration: 9, startX: 30, startY: 90, size: 6, type: 'pollen' as const },
+  { delay: 4.5, duration: 11, startX: 65, startY: 75, size: 10, type: 'leaf' as const },
+  { delay: 6, duration: 8, startX: 15, startY: 70, size: 5, type: 'pollen' as const },
+  { delay: 7.5, duration: 10, startX: 80, startY: 80, size: 14, type: 'leaf' as const },
+  { delay: 2, duration: 9, startX: 45, startY: 95, size: 7, type: 'pollen' as const },
+  { delay: 5, duration: 12, startX: 55, startY: 85, size: 9, type: 'leaf' as const },
+];
+
 const Hero = () => {
   const highlights = [
     "Recomendações baseadas em ciência",
@@ -167,6 +231,11 @@ const Hero = () => {
                   ease: "easeInOut"
                 }}
               />
+
+              {/* Floating particles - leaves and pollen */}
+              {logoParticles.map((particle, index) => (
+                <FloatingParticle key={index} {...particle} />
+              ))}
               
               {/* Logo container - clean, no borders */}
               <motion.div 
