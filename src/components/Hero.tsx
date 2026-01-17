@@ -126,9 +126,32 @@ const Hero = () => {
                 ease: "easeInOut" 
               }}
             >
-              {/* Ambient glow - soft and diffuse */}
-              <div className="absolute -inset-16 bg-gradient-radial from-cyan-400/25 via-blue-500/15 to-transparent rounded-full blur-3xl opacity-80 group-hover:opacity-100 transition-opacity duration-700" />
-              <div className="absolute -inset-8 bg-gradient-radial from-teal-400/20 to-transparent rounded-full blur-2xl opacity-60" />
+              {/* Ambient glow - soft and diffuse with pulse */}
+              <motion.div 
+                className="absolute -inset-16 bg-gradient-radial from-cyan-400/25 via-blue-500/15 to-transparent rounded-full blur-3xl"
+                animate={{ 
+                  opacity: [0.6, 0.9, 0.6],
+                  scale: [1, 1.05, 1]
+                }}
+                transition={{ 
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+              <motion.div 
+                className="absolute -inset-8 bg-gradient-radial from-teal-400/20 to-transparent rounded-full blur-2xl"
+                animate={{ 
+                  opacity: [0.4, 0.7, 0.4],
+                  scale: [1, 1.03, 1]
+                }}
+                transition={{ 
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.5
+                }}
+              />
               
               {/* Logo container - clean, no borders */}
               <motion.div 
