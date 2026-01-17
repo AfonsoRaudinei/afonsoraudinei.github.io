@@ -126,30 +126,31 @@ const Hero = () => {
                 ease: "easeInOut" 
               }}
             >
-              {/* Ambient glow - soft and diffuse with pulse */}
+              {/* Ambient glow - synchronized with logo metamorphosis (40s cycle) */}
               <motion.div 
-                className="absolute -inset-16 bg-gradient-radial from-cyan-400/25 via-blue-500/15 to-transparent rounded-full blur-3xl"
+                className="absolute -inset-16 bg-gradient-radial from-cyan-400/30 via-blue-500/20 to-transparent rounded-full blur-3xl"
                 animate={{ 
-                  opacity: [0.6, 0.9, 0.6],
-                  scale: [1, 1.05, 1]
+                  opacity: [0.5, 0.5, 1, 0.8, 0.5, 0.5, 1, 0.8, 0.5],
+                  scale: [1, 1, 1.08, 1.04, 1, 1, 1.08, 1.04, 1]
                 }}
                 transition={{ 
-                  duration: 4,
+                  duration: 40,
                   repeat: Infinity,
+                  times: [0, 0.125, 0.3, 0.5, 0.5, 0.625, 0.8, 1, 1],
                   ease: "easeInOut"
                 }}
               />
               <motion.div 
-                className="absolute -inset-8 bg-gradient-radial from-teal-400/20 to-transparent rounded-full blur-2xl"
+                className="absolute -inset-8 bg-gradient-radial from-teal-400/25 to-transparent rounded-full blur-2xl"
                 animate={{ 
-                  opacity: [0.4, 0.7, 0.4],
-                  scale: [1, 1.03, 1]
+                  opacity: [0.4, 0.4, 0.9, 0.6, 0.4, 0.4, 0.9, 0.6, 0.4],
+                  scale: [1, 1, 1.05, 1.02, 1, 1, 1.05, 1.02, 1]
                 }}
                 transition={{ 
-                  duration: 3,
+                  duration: 40,
                   repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 0.5
+                  times: [0, 0.125, 0.3, 0.5, 0.5, 0.625, 0.8, 1, 1],
+                  ease: "easeInOut"
                 }}
               />
               
