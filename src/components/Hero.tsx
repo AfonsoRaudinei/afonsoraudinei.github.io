@@ -141,12 +141,12 @@ const Hero = () => {
                   src={logoRealista}
                   alt="Soloforte - Consultoria Agronômica"
                   className="absolute inset-0 w-full h-full object-contain drop-shadow-2xl"
-                  animate={{ opacity: [1, 1, 1, 1, 0, 0, 0, 0] }}
+                  animate={{ opacity: [1, 1, 0, 0, 0, 1] }}
                   transition={{ 
-                    duration: 30,
+                    duration: 40,
                     repeat: Infinity,
-                    times: [0, 0.35, 0.4, 0.45, 0.55, 0.6, 0.65, 1],
-                    ease: "easeInOut"
+                    times: [0, 0.125, 0.5, 0.5, 0.625, 1],
+                    ease: "linear"
                   }}
                 />
                 
@@ -155,12 +155,12 @@ const Hero = () => {
                   src={logoFlat}
                   alt="Soloforte - Consultoria Agronômica"
                   className="absolute inset-0 w-full h-full object-contain drop-shadow-2xl"
-                  animate={{ opacity: [0, 0, 0, 0, 1, 1, 1, 1] }}
+                  animate={{ opacity: [0, 0, 1, 1, 1, 0] }}
                   transition={{ 
-                    duration: 30,
+                    duration: 40,
                     repeat: Infinity,
-                    times: [0, 0.35, 0.4, 0.45, 0.55, 0.6, 0.65, 1],
-                    ease: "easeInOut"
+                    times: [0, 0.125, 0.5, 0.5, 0.625, 1],
+                    ease: "linear"
                   }}
                 />
               </motion.div>
