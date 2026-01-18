@@ -232,10 +232,24 @@ const Hero = () => {
                 }}
               />
 
-              {/* Floating particles - leaves and pollen */}
-              {logoParticles.map((particle, index) => (
-                <FloatingParticle key={index} {...particle} />
-              ))}
+              {/* Floating particles - synchronized with metamorphosis */}
+              <motion.div
+                className="absolute inset-0 pointer-events-none"
+                animate={{
+                  opacity: [0.5, 0.5, 1, 0.8, 0.5, 0.5, 1, 0.8, 0.5],
+                  scale: [0.9, 0.9, 1.15, 1.05, 0.9, 0.9, 1.15, 1.05, 0.9]
+                }}
+                transition={{
+                  duration: 40,
+                  repeat: Infinity,
+                  times: [0, 0.125, 0.35, 0.5, 0.5, 0.625, 0.85, 1, 1],
+                  ease: "easeInOut"
+                }}
+              >
+                {logoParticles.map((particle, index) => (
+                  <FloatingParticle key={index} {...particle} />
+                ))}
+              </motion.div>
               
               {/* Logo container - clean, no borders */}
               <motion.div 
