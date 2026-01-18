@@ -276,7 +276,7 @@ const Hero = () => {
                   src={logoFlat}
                   alt="Soloforte - Consultoria Agronômica"
                   className="absolute inset-0 w-full h-full object-contain drop-shadow-2xl"
-                  style={{ transform: 'scale(1.08)' }}
+                  style={{ transform: 'scale(1.05)' }}
                   animate={{ opacity: [0, 0, 1, 1, 1, 0] }}
                   transition={{ 
                     duration: 40,
