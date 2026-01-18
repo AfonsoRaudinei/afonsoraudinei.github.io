@@ -271,11 +271,12 @@ const Hero = () => {
                   }}
                 />
                 
-                {/* Logo Flat - overlay layer */}
+                {/* Logo Flat - overlay layer, scaled to match realista leaves */}
                 <motion.img 
                   src={logoFlat}
                   alt="Soloforte - Consultoria Agronômica"
                   className="absolute inset-0 w-full h-full object-contain drop-shadow-2xl"
+                  style={{ transform: 'scale(1.08)' }}
                   animate={{ opacity: [0, 0, 1, 1, 1, 0] }}
                   transition={{ 
                     duration: 40,
