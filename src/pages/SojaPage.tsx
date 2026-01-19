@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import SojaNavigation from "@/components/soja/SojaNavigation";
 import CalendarioTab from "@/components/soja/CalendarioTab";
 import HormoniosTab from "@/components/soja/HormoniosTab";
+import InsetosTab from "@/components/soja/InsetosTab";
 
 const SojaPage = () => {
   const [activeTab, setActiveTab] = useState("calendario");
@@ -92,6 +93,8 @@ const SojaPage = () => {
             onSelect={setSelectedHormonioIndex}
           />
         )}
+
+        {activeTab === "insetos" && <InsetosTab />}
       </main>
 
       <Footer />
