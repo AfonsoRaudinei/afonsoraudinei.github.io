@@ -1,28 +1,77 @@
 import React from 'react';
 import { Leaf, Shield, Bug, Droplets, Sun, Wheat, ArrowRight, Sprout, Wind, Zap } from 'lucide-react';
 import ImagePlaceholder from './ImagePlaceholder';
+import { 
+  ScrollReveal, 
+  StaggerContainer, 
+  StaggerItem, 
+  HeroParallax,
+  FloatingElement 
+} from "@/components/ui/scroll-animations";
 
 const SilicioContent: React.FC = () => {
   return (
-    <div className="space-y-8 text-foreground">
-      {/* Header Section */}
-      <div className="bg-gradient-to-br from-slate-50 to-gray-100 rounded-2xl p-6 lg:p-8 border border-slate-200">
-        <div className="flex items-center gap-3 mb-4">
-          <div className="w-14 h-14 bg-gradient-to-br from-slate-500 to-gray-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg">
-            Si
-          </div>
-          <div>
-            <h1 className="text-2xl lg:text-3xl font-bold text-foreground">Silício</h1>
-            <p className="text-muted-foreground">Elemento Benéfico • Resistência e Proteção</p>
-          </div>
-        </div>
-        <p className="text-muted-foreground leading-relaxed">
-          O Silício (Si) é considerado um <strong>elemento benéfico</strong>, não essencial pela definição clássica, 
-          mas com efeitos extraordinários na <strong>resistência mecânica</strong>, <strong>tolerância a estresses</strong> e 
-          <strong>proteção contra pragas e doenças</strong>. É o segundo elemento mais abundante da crosta terrestre 
-          e tem ganhado destaque especialmente em gramíneas como arroz, cana-de-açúcar e milho.
-        </p>
+    <div className="min-h-screen overflow-hidden text-foreground">
+      {/* Header Hero with Parallax */}
+      <div className="relative bg-gradient-to-br from-slate-500 to-gray-700 text-white py-16 px-6 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.1)_0%,transparent_70%)]" />
+        
+        {/* Floating decorative elements */}
+        <FloatingElement className="absolute top-10 right-10" amplitude={15} duration={5}>
+          <div className="w-32 h-32 bg-white/10 rounded-full blur-2xl" />
+        </FloatingElement>
+        <FloatingElement className="absolute bottom-10 left-10" amplitude={10} duration={4}>
+          <div className="w-24 h-24 bg-white/10 rounded-full blur-xl" />
+        </FloatingElement>
+        <FloatingElement className="absolute top-1/2 left-1/4" amplitude={8} duration={6}>
+          <div className="w-16 h-16 bg-white/5 rounded-full blur-lg" />
+        </FloatingElement>
+        
+        <HeroParallax className="max-w-6xl mx-auto relative z-10">
+          <ScrollReveal direction="down" duration={0.8}>
+            <div className="flex items-center justify-center gap-6 mb-8">
+              <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-2xl ring-4 ring-slate-300/30">
+                <span className="text-5xl font-bold text-slate-600">Si</span>
+              </div>
+            </div>
+          </ScrollReveal>
+          
+          <ScrollReveal delay={0.1}>
+            <h1 className="text-5xl md:text-6xl font-bold text-center mb-6">Silício (Si)</h1>
+          </ScrollReveal>
+          
+          <ScrollReveal delay={0.2}>
+            <p className="text-lg text-center text-white/95 max-w-3xl mx-auto leading-relaxed">
+              Elemento benéfico não essencial, mas com efeitos extraordinários na resistência mecânica, 
+              tolerância a estresses e proteção contra pragas e doenças em gramíneas.
+            </p>
+          </ScrollReveal>
+          
+          {/* Quick Stats */}
+          <StaggerContainer className="grid grid-cols-3 gap-4 mt-10 max-w-2xl mx-auto" staggerDelay={0.15}>
+            <StaggerItem>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center hover:bg-white/20 transition-colors duration-300">
+                <p className="text-3xl font-bold text-white">&gt;1%</p>
+                <p className="text-white/70 text-sm">em acumuladoras</p>
+              </div>
+            </StaggerItem>
+            <StaggerItem>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center hover:bg-white/20 transition-colors duration-300">
+                <p className="text-3xl font-bold text-white">H₄SiO₄</p>
+                <p className="text-white/70 text-sm">forma absorvida</p>
+              </div>
+            </StaggerItem>
+            <StaggerItem>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center hover:bg-white/20 transition-colors duration-300">
+                <p className="text-3xl font-bold text-white">Benéfico</p>
+                <p className="text-white/70 text-sm">classificação</p>
+              </div>
+            </StaggerItem>
+          </StaggerContainer>
+        </HeroParallax>
       </div>
+      
+      <div className="max-w-6xl mx-auto px-6 py-12 space-y-8">
 
       {/* Unique Classification */}
       <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl p-5 border border-amber-200">
@@ -473,6 +522,7 @@ const SilicioContent: React.FC = () => {
           </div>
         </div>
       </section>
+      </div>
     </div>
   );
 };

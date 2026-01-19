@@ -1,43 +1,73 @@
 import { Droplets, AlertTriangle, Leaf, FlaskConical, Dna, ArrowLeftRight, Zap, Bug } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ImagePlaceholder, ImageGrid } from "./ImagePlaceholder";
+import { 
+  ScrollReveal, 
+  StaggerContainer, 
+  StaggerItem, 
+  HeroParallax,
+  FloatingElement 
+} from "@/components/ui/scroll-animations";
 
 const MolibdenioContent = () => (
-  <div className="min-h-screen">
-    {/* Header Hero */}
+  <div className="min-h-screen overflow-hidden">
+    {/* Header Hero with Parallax */}
     <div className="relative bg-gradient-to-br from-violet-600 to-purple-800 text-white py-16 px-6 overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.1)_0%,transparent_70%)]" />
-      <div className="absolute top-10 right-10 w-32 h-32 bg-white/5 rounded-full blur-2xl" />
-      <div className="absolute bottom-10 left-10 w-24 h-24 bg-white/5 rounded-full blur-xl" />
       
-      <div className="max-w-6xl mx-auto relative z-10">
-        <div className="flex items-center justify-center gap-6 mb-8">
-          <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-2xl ring-4 ring-violet-300/30">
-            <span className="text-5xl font-bold text-violet-600">Mo</span>
+      {/* Floating decorative elements */}
+      <FloatingElement className="absolute top-10 right-10" amplitude={15} duration={5}>
+        <div className="w-32 h-32 bg-white/10 rounded-full blur-2xl" />
+      </FloatingElement>
+      <FloatingElement className="absolute bottom-10 left-10" amplitude={10} duration={4}>
+        <div className="w-24 h-24 bg-white/10 rounded-full blur-xl" />
+      </FloatingElement>
+      <FloatingElement className="absolute top-1/2 left-1/4" amplitude={8} duration={6}>
+        <div className="w-16 h-16 bg-white/5 rounded-full blur-lg" />
+      </FloatingElement>
+      
+      <HeroParallax className="max-w-6xl mx-auto relative z-10">
+        <ScrollReveal direction="down" duration={0.8}>
+          <div className="flex items-center justify-center gap-6 mb-8">
+            <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-2xl ring-4 ring-violet-300/30">
+              <span className="text-5xl font-bold text-violet-600">Mo</span>
+            </div>
           </div>
-        </div>
-        <h1 className="text-5xl md:text-6xl font-bold text-center mb-6">Molibdênio (Mo)</h1>
-        <p className="text-lg text-center text-white/95 max-w-3xl mx-auto leading-relaxed">
-          Micronutriente essencial para fixação biológica de nitrogênio e redução de nitrato. 
-          Componente das enzimas nitrogenase e nitrato redutase, fundamentais no metabolismo do N.
-        </p>
+        </ScrollReveal>
+        
+        <ScrollReveal delay={0.1}>
+          <h1 className="text-5xl md:text-6xl font-bold text-center mb-6">Molibdênio (Mo)</h1>
+        </ScrollReveal>
+        
+        <ScrollReveal delay={0.2}>
+          <p className="text-lg text-center text-white/95 max-w-3xl mx-auto leading-relaxed">
+            Micronutriente essencial para fixação biológica de nitrogênio e redução de nitrato. 
+            Componente das enzimas nitrogenase e nitrato redutase, fundamentais no metabolismo do N.
+          </p>
+        </ScrollReveal>
         
         {/* Quick Stats */}
-        <div className="grid grid-cols-3 gap-4 mt-10 max-w-2xl mx-auto">
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
-            <p className="text-3xl font-bold text-white">20-30</p>
-            <p className="text-white/70 text-sm">g/ha extração soja</p>
-          </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
-            <p className="text-3xl font-bold text-white">MoO₄²⁻</p>
-            <p className="text-white/70 text-sm">forma absorvida</p>
-          </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
-            <p className="text-3xl font-bold text-white">Móvel</p>
-            <p className="text-white/70 text-sm">no floema</p>
-          </div>
-        </div>
-      </div>
+        <StaggerContainer className="grid grid-cols-3 gap-4 mt-10 max-w-2xl mx-auto" staggerDelay={0.15}>
+          <StaggerItem>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center hover:bg-white/20 transition-colors duration-300">
+              <p className="text-3xl font-bold text-white">20-30</p>
+              <p className="text-white/70 text-sm">g/ha extração soja</p>
+            </div>
+          </StaggerItem>
+          <StaggerItem>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center hover:bg-white/20 transition-colors duration-300">
+              <p className="text-3xl font-bold text-white">MoO₄²⁻</p>
+              <p className="text-white/70 text-sm">forma absorvida</p>
+            </div>
+          </StaggerItem>
+          <StaggerItem>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center hover:bg-white/20 transition-colors duration-300">
+              <p className="text-3xl font-bold text-white">Móvel</p>
+              <p className="text-white/70 text-sm">no floema</p>
+            </div>
+          </StaggerItem>
+        </StaggerContainer>
+      </HeroParallax>
     </div>
 
     <div className="max-w-6xl mx-auto px-6 py-12 space-y-12">
