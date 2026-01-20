@@ -2,6 +2,7 @@ import { CheckCircle } from "lucide-react";
 import { Button } from "./ui/button";
 import logoRealista from "@/assets/logo-realista.png";
 import logoFlat from "@/assets/logo-flat-nobg.png";
+import heroFarmBg from "@/assets/hero-farm-bg.jpeg";
 import { motion } from "framer-motion";
 
 // SVG de folha realista
@@ -119,16 +120,29 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-      {/* Tech blue gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-950 to-cyan-950" />
+      {/* Background farm image - flipped horizontally so house is on right */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ 
+          backgroundImage: `url(${heroFarmBg})`,
+          transform: 'scaleX(-1)' // Flip horizontally - house goes to right
+        }}
+      />
+      
+      {/* Blue gradient overlay - stronger on left (logo area), fading to right */}
+      <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-blue-950/95 to-blue-950/70" />
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-blue-950/80 to-transparent" />
+      
+      {/* Extra coverage for left side where logo is */}
+      <div className="absolute inset-y-0 left-0 w-2/3 bg-gradient-to-r from-slate-900 via-slate-900/90 to-transparent" />
       
       {/* Glowing orbs */}
-      <div className="absolute top-20 right-0 w-[600px] h-[600px] bg-gradient-to-br from-cyan-500/20 to-blue-500/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-teal-500/20 to-cyan-500/10 rounded-full blur-3xl" />
+      <div className="absolute top-20 right-0 w-[600px] h-[600px] bg-gradient-to-br from-cyan-500/15 to-blue-500/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-teal-500/15 to-cyan-500/10 rounded-full blur-3xl" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-blue-400/5 to-transparent rounded-full" />
       
-      {/* Grid pattern overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
+      {/* Grid pattern overlay - subtle */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
       
       {/* Floating realistic leaves */}
       {leaves.map((leaf, index) => (
