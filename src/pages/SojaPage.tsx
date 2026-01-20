@@ -8,6 +8,7 @@ import SojaNavigation from "@/components/soja/SojaNavigation";
 import CalendarioTab from "@/components/soja/CalendarioTab";
 import HormoniosTab from "@/components/soja/HormoniosTab";
 import InsetosTab from "@/components/soja/InsetosTab";
+import DoencasTab from "@/components/soja/DoencasTab";
 
 const SojaPage = () => {
   const [activeTab, setActiveTab] = useState("calendario");
@@ -95,6 +96,8 @@ const SojaPage = () => {
         )}
 
         {activeTab === "insetos" && <InsetosTab />}
+
+        {activeTab === "doencas" && <DoencasTab />}
       </main>
 
       <Footer />
