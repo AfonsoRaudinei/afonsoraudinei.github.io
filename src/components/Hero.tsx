@@ -129,12 +129,12 @@ const Hero = () => {
         }}
       />
       
-      {/* Blue gradient overlay - stronger on left (logo area), fading to right */}
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-blue-950/95 to-blue-950/70" />
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-blue-950/80 to-transparent" />
+      {/* Blue gradient overlay - balanced: shows farm while keeping blue identity */}
+      <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-blue-950/75 to-blue-950/50" />
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-blue-950/60 to-transparent" />
       
       {/* Extra coverage for left side where logo is */}
-      <div className="absolute inset-y-0 left-0 w-2/3 bg-gradient-to-r from-slate-900 via-slate-900/90 to-transparent" />
+      <div className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-transparent" />
       
       {/* Glowing orbs */}
       <div className="absolute top-20 right-0 w-[600px] h-[600px] bg-gradient-to-br from-cyan-500/15 to-blue-500/10 rounded-full blur-3xl" />
