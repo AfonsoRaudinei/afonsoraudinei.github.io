@@ -39,6 +39,7 @@ const absorptionPercentages: Record<string, Record<string, number>> = {
   Mo: { V1_V3: 3.5, V4: 12.5, V5: 25, R1: 40, R3: 77.5, R5: 92.5, R6: 97.5 },
   Co: { V1_V3: 3.5, V4: 12.5, V5: 25, R1: 40, R3: 77.5, R5: 92.5, R6: 97.5 },
   Ni: { V1_V3: 3.5, V4: 12.5, V5: 25, R1: 40, R3: 77.5, R5: 92.5, R6: 97.5 },
+  Se: { V1_V3: 5, V4: 15, V5: 30, R1: 50, R3: 75, R5: 92.5, R6: 97.5 },
 };
 
 // Dados de nutrientes por fonte
@@ -269,14 +270,14 @@ const exportIndices: Record<string, string> = {
   N: "50-70%", P: "70-90%", K: "50-60%", Ca: "10-20%",
   Mg: "20-30%", S: "20-40%", B: "20-30%", Cu: "25-35%",
   Fe: "15-25%", Mn: "5-10%", Zn: "25-35%", Mo: "20-40%",
-  Co: "40-50%", Ni: "20-30%",
+  Co: "40-50%", Ni: "20-30%", Se: "60-85%",
 };
 
 const nutrientNames: Record<string, string> = {
   N: 'Nitrogênio', P: 'Fósforo', K: 'Potássio', Ca: 'Cálcio',
   Mg: 'Magnésio', S: 'Enxofre', B: 'Boro', Cu: 'Cobre',
   Fe: 'Ferro', Mn: 'Manganês', Zn: 'Zinco', Mo: 'Molibdênio',
-  Co: 'Cobalto', Ni: 'Níquel',
+  Co: 'Cobalto', Ni: 'Níquel', Se: 'Selênio',
 };
 
 const stages = ['V1-V3', 'V4', 'V5', 'R1', 'R3', 'R5', 'R6'];
@@ -408,6 +409,7 @@ export default function AbsorcaoAnalyzer() {
                   <SelectItem value="Mo">Molibdênio (Mo)</SelectItem>
                   <SelectItem value="Co">Cobalto (Co)</SelectItem>
                   <SelectItem value="Ni">Níquel (Ni)</SelectItem>
+                  <SelectItem value="Se">Selênio (Se)</SelectItem>
                 </SelectContent>
               </Select>
             </div>
