@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raudinei Afonso · Agtech</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    /* Samsung Blue palette */
+    --samsung:      #1428A0;
+    --samsung-deep: #0A1A6E;
+    --samsung-soft: #2E4DC4;
+
+    /* Silver palette */
+    --silver-bg:    #E8EBF0;
+    --silver-card:  #F4F6F9;
+    --silver-edge:  #C8CFD8;
+    --silver-deep:  #9AA3B0;
+
+    /* Gold accents */
+    --gold:         #C9A961;
+    --gold-deep:    #8E7438;
+    --gold-soft:    #E4CC8E;
+
+    /* Text */
+    --ink-1:        #0E1A3D;
+    --ink-2:        #4A5468;
+    --ink-3:        #7C8696;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+    background:
+      radial-gradient(ellipse at 50% 0%, #F5F7FA 0%, #DDE3EB 50%, #C5CDDA 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 18px;
+    color: var(--ink-1);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* Ambient lights */
+  body::before {
+    content: '';
+    position: fixed;
+    top: -10%; right: -10%;
+    width: 480px; height: 480px;
+    background: radial-gradient(circle, rgba(20,40,160,0.10) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    bottom: -10%; left: -10%;
+    width: 380px; height: 380px;
+    background: radial-gradient(circle, rgba(201,169,97,0.08) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    text-align: center;
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .avatar-ring {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    margin: 0 auto 14px;
+    padding: 2.5px;
+    background: conic-gradient(from 0deg,
+      var(--samsung) 0%,
+      var(--gold) 25%,
+      var(--samsung-deep) 50%,
+      var(--gold-soft) 75%,
+      var(--samsung) 100%);
+    box-shadow:
+      0 14px 32px rgba(20,40,160,0.28),
+      0 4px 10px rgba(0,0,0,0.10);
+    animation: rotate 12s linear infinite;
+  }
+
+  @keyframes rotate { to { transform: rotate(360deg); } }
+
+  .avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(145deg, var(--samsung) 0%, var(--samsung-deep) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: -0.5px;
+    box-shadow:
+      inset 0 1px 2px rgba(255,255,255,0.25),
+      inset 0 -2px 4px rgba(0,0,0,0.25);
+    animation: rotate-inverse 12s linear infinite;
+  }
+
+  @keyframes rotate-inverse { to { transform: rotate(-360deg); } }
+
+  .header-name {
+    font-size: 1.35em;
+    font-weight: 700;
+    color: var(--ink-1);
+    letter-spacing: -0.5px;
+  }
+
+  .header-role {
+    font-size: 0.8em;
+    color: var(--ink-2);
+    margin-top: 4px;
+    letter-spacing: 0.3px;
+    font-weight: 500;
+  }
+
+  .header-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    background: rgba(20,40,160,0.06);
+    border: 1px solid rgba(20,40,160,0.18);
+    font-size: 0.68em;
+    font-weight: 600;
+    color: var(--samsung-deep);
+    letter-spacing: 0.5px;
+  }
+
+  .header-tag::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 8px rgba(201,169,97,0.7);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+  }
+
+  /* ── GRID ── */
+  .grid-wrapper {
+    width: 100%;
+    max-width: 540px;
+    aspect-ratio: 1 / 1;
+    position: relative;
+    z-index: 2;
+    perspective: 1400px;
+  }
+
+  .link-grid {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 4fr 4fr 4fr;
+    grid-template-rows: 4fr 4fr 4fr;
+    gap: 11px;
+    transition: grid-template-columns 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                grid-template-rows 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    transform-style: preserve-3d;
+  }
+
+  /* ── CELL premium ── */
+  .cell {
+    position: relative;
+    border-radius: 22px;
+    overflow: hidden;
+    cursor: pointer;
+    background:
+      linear-gradient(145deg, #FFFFFF 0%, #DCE2EB 100%);
+    box-shadow:
+      /* Sombra projetada */
+      0 18px 36px rgba(14,26,61,0.16),
+      0 6px 14px rgba(14,26,61,0.10),
+      0 1px 2px rgba(14,26,61,0.08),
+      /* Brilho superior */
+      inset 0 1px 0 rgba(255,255,255,1),
+      /* Sombra inferior interna */
+      inset 0 -1px 2px rgba(14,26,61,0.10),
+      /* Borda metálica */
+      inset 0 0 0 1px rgba(255,255,255,0.5);
+    transition:
+      box-shadow 0.4s ease,
+      transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    transform-style: preserve-3d;
+  }
+
+  /* Linha dourada superior — detalhe premium */
+  .cell::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 18%; right: 18%;
+    height: 1px;
+    background: linear-gradient(to right,
+      transparent,
+      var(--gold-soft) 30%,
+      var(--gold) 50%,
+      var(--gold-soft) 70%,
+      transparent);
+    opacity: 0.7;
+    z-index: 6;
+  }
+
+  /* Glow azul no hover */
+  .cell::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 22px;
+    pointer-events: none;
+    z-index: 5;
+    box-shadow:
+      inset 0 0 0 1px rgba(20,40,160,0),
+      0 0 0 0 rgba(20,40,160,0);
+    transition: box-shadow 0.4s ease;
+  }
+
+  .cell:hover {
+    transform: translateZ(28px) scale(1.025);
+    box-shadow:
+      0 32px 60px rgba(14,26,61,0.28),
+      0 16px 30px rgba(20,40,160,0.20),
+      0 6px 12px rgba(14,26,61,0.12),
+      inset 0 1px 0 rgba(255,255,255,1),
+      inset 0 -1px 2px rgba(14,26,61,0.12),
+      inset 0 0 0 1px rgba(255,255,255,0.7);
+  }
+
+  .cell:hover::after {
+    box-shadow:
+      inset 0 0 0 1.5px rgba(20,40,160,0.4),
+      0 0 32px rgba(20,40,160,0.18);
+  }
+
+  .cell a {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    position: relative;
+    color: inherit;
+    padding: 14px 14px 13px;
+  }
+
+  /* ── ZONA 1: Ícone (topo, área dominante visual) ── */
+  .cell-media {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 8px;
+    min-height: 0;
+  }
+
+  .cell-emoji {
+    font-size: 2.4em;
+    line-height: 1;
+    filter: drop-shadow(0 6px 12px rgba(14,26,61,0.18));
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .cell:hover .cell-emoji {
+    transform: scale(1.15) translateY(-3px);
+  }
+
+  /* Imagem/Vídeo (quando existir) — fica no fundo absoluto */
+  .cell-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    border-radius: 22px;
+  }
+
+  .cell-bg img,
+  .cell-bg video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(1.08) contrast(1.05);
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .cell:hover .cell-bg img,
+  .cell:hover .cell-bg video {
+    transform: scale(1.08);
+  }
+
+  /* Overlay escuro QUANDO há mídia (garante contraste do texto) */
+  .cell-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,
+      rgba(10,26,110,0.88) 0%,
+      rgba(10,26,110,0.55) 35%,
+      rgba(10,26,110,0.15) 70%,
+      transparent 100%);
+  }
+
+  /* Quando há .cell-bg, escondemos o emoji */
+  .cell:has(.cell-bg) .cell-emoji {
+    display: none;
+  }
+
+  /* ── ZONA 2: Texto (footer da célula, fundo sólido legível) ── */
+  .cell-text {
+    position: relative;
+    z-index: 2;
+    /* Fundo legibilidade — semi-transparente sobre prata */
+    background: linear-gradient(to top,
+      rgba(244,246,249,0.98) 0%,
+      rgba(244,246,249,0.92) 70%,
+      rgba(244,246,249,0) 100%);
+    margin: 0 -14px -13px;
+    padding: 10px 14px 13px;
+    border-radius: 0 0 22px 22px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  /* Quando há imagem, o footer fica em azul escuro */
+  .cell:has(.cell-bg) .cell-text {
+    background: linear-gradient(to top,
+      rgba(10,26,110,0.95) 0%,
+      rgba(10,26,110,0.85) 70%,
+      rgba(10,26,110,0) 100%);
+  }
+
+  .cell-label {
+    font-size: 0.78em;
+    font-weight: 700;
+    color: var(--ink-1);
+    letter-spacing: -0.1px;
+    line-height: 1.2;
+  }
+
+  .cell-sub {
+    font-size: 0.66em;
+    font-weight: 500;
+    color: var(--ink-2);
+    margin-top: 3px;
+    line-height: 1.3;
+    letter-spacing: 0.1px;
+  }
+
+  /* Texto branco quando há imagem */
+  .cell:has(.cell-bg) .cell-label { color: #FFFFFF; }
+  .cell:has(.cell-bg) .cell-sub { color: rgba(255,255,255,0.85); }
+
+  /* Linha dourada divisória sutil */
+  .cell-divider {
+    height: 1px;
+    background: linear-gradient(to right,
+      transparent,
+      var(--gold) 50%,
+      transparent);
+    margin: 0 -14px 8px;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+
+  .cell:hover .cell-divider { opacity: 0.6; }
+
+  /* Chevron canto superior direito */
+  .cell-corner {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 26px;
+    height: 26px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(20,40,160,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 6;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: all 0.3s ease;
+    color: var(--samsung);
+    box-shadow:
+      0 4px 10px rgba(14,26,61,0.15),
+      inset 0 1px 0 rgba(255,255,255,0.9);
+  }
+
+  .cell:hover .cell-corner {
+    opacity: 1;
+    transform: translateY(0);
+    background: var(--samsung);
+    color: white;
+    border-color: var(--samsung-deep);
+  }
+
+  .cell-corner svg { width: 12px; height: 12px; }
+
+  /* ── CONTACT ROW ── */
+  .contact-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 22px;
+    width: 100%;
+    max-width: 540px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .contact-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px;
+    border-radius: 14px;
+    background: linear-gradient(145deg, #FFFFFF 0%, #DCE2EB 100%);
+    text-decoration: none;
+    color: var(--ink-1);
+    font-size: 0.8em;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    box-shadow:
+      0 10px 22px rgba(14,26,61,0.12),
+      0 2px 4px rgba(14,26,61,0.08),
+      inset 0 1px 0 rgba(255,255,255,1),
+      inset 0 -1px 2px rgba(14,26,61,0.08),
+      inset 0 0 0 1px rgba(255,255,255,0.5);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    position: relative;
+  }
+
+  /* Linha dourada nos contatos */
+  .contact-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 25%; right: 25%;
+    height: 1px;
+    background: linear-gradient(to right,
+      transparent, var(--gold), transparent);
+    opacity: 0.6;
+  }
+
+  .contact-btn:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 16px 32px rgba(14,26,61,0.18),
+      0 4px 8px rgba(20,40,160,0.18),
+      inset 0 1px 0 rgba(255,255,255,1),
+      inset 0 0 0 1px rgba(20,40,160,0.25);
+  }
+
+  .contact-btn:active { transform: scale(0.97); }
+
+  /* ── FOOTER ── */
+  .footer {
+    margin-top: 26px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .footer-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.72em;
+    font-weight: 700;
+    color: var(--ink-2);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .footer-line {
+    width: 28px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold));
+  }
+
+  .footer-line.right {
+    background: linear-gradient(to left, transparent, var(--gold));
+  }
+
+  .footer-copy {
+    font-size: 0.66em;
+    color: var(--ink-3);
+    margin-top: 6px;
+    letter-spacing: 0.3px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 420px) {
+    body { padding: 24px 14px; }
+    .grid-wrapper { max-width: 100%; }
+    .cell a { padding: 11px 11px 10px; }
+    .cell-text { margin: 0 -11px -10px; padding: 8px 11px 10px; }
+    .cell-label { font-size: 0.68em; }
+    .cell-sub { font-size: 0.58em; }
+    .cell-emoji { font-size: 1.9em; }
+    .header-name { font-size: 1.15em; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation: none !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="avatar-ring">
+    <div class="avatar">RA</div>
+  </div>
+  <div class="header-name">Raudinei Afonso</div>
+  <div class="header-role">Engenheiro Agrônomo · Agtech · SoloForte</div>
+  <div class="header-tag">Disponível para projetos</div>
+</div>
+
+<!-- GRID 3×3 -->
+<div class="grid-wrapper">
+  <div class="link-grid" id="grid">
+
+    <div class="cell" data-row="0" data-col="0">
+      <a href="https://afonsoraudinei.github.io/Appsoloforte/" target="_blank" rel="noopener">
+        <!-- <div class="cell-bg"><img src="images/soloforte.jpg" alt=""></div> -->
+        <div class="cell-corner">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M3 9L9 3M9 3H4M9 3V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="cell-media"><div class="cell-emoji">🌾</div></div>
+        <div class="cell-text">
+          <div class="cell-divider"></div>
+          <div class="cell-label">SoloForte</div>
+          <div class="cell-sub">Plataforma Agtech</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="cell" data-row="0" data-col="1">
+      <a href="https://afonsoraudinei.github.io/Calculadorasoja/" target="_blank" rel="noopener">
+        <!-- <div class="cell-bg"><img src="images/calculadora.jpg" alt=""></div> -->
+        <div class="cell-corner">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M3 9L9 3M9 3H4M9 3V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="cell-media"><div class="cell-emoji">📊</div></div>
+        <div class="cell-text">
+          <div class="cell-divider"></div>
+          <div class="cell-label">Produtividade</div>
+          <div class="cell-sub">Calculadora Soja</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="cell" data-row="0" data-col="2">
+      <a href="https://afonsoraudinei.github.io/EXPNUTRIENTE/" target="_blank" rel="noopener">
+        <!-- <div class="cell-bg"><img src="images/nutrientes.jpg" alt=""></div> -->
+        <div class="cell-corner">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M3 9L9 3M9 3H4M9 3V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="cell-media"><div class="cell-emoji">🧪</div></div>
+        <div class="cell-text">
+          <div class="cell-divider"></div>
+          <div class="cell-label">Nutrientes</div>
+          <div class="cell-sub">Extração NPK · Soja</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="cell" data-row="1" data-col="0">
+      <a href="https://afonsoraudinei.github.io/Agromind/" target="_blank" rel="noopener">
+        <!-- <div class="cell-bg"><img src="images/agromind.jpg" alt=""></div> -->
+        <div class="cell-corner">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M3 9L9 3M9 3H4M9 3V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="cell-media"><div class="cell-emoji">🧠</div></div>
+        <div class="cell-text">
+          <div class="cell-divider"></div>
+          <div class="cell-label">Mapa Mental</div>
+          <div class="cell-sub">Agro · Visão sistêmica</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="cell" data-row="1" data-col="1">
+      <a href="https://afonsoraudinei.github.io/EstadioSoja/" target="_blank" rel="noopener">
+        <!-- <div class="cell-bg"><video autoplay loop muted playsinline src="videos/estadios.mp4"></video></div> -->
+        <div class="cell-corner">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M3 9L9 3M9 3H4M9 3V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="cell-media"><div class="cell-emoji">🌱</div></div>
+        <div class="cell-text">
+          <div class="cell-divider"></div>
+          <div class="cell-label">Fenologia</div>
+          <div class="cell-sub">Estádios VE → R8</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="cell" data-row="1" data-col="2">
+      <a href="https://afonsoraudinei.github.io/insetossoja/" target="_blank" rel="noopener">
+        <!-- <div class="cell-bg"><img src="images/insetos.jpg" alt=""></div> -->
+        <div class="cell-corner">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M3 9L9 3M9 3H4M9 3V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="cell-media"><div class="cell-emoji">🦗</div></div>
+        <div class="cell-text">
+          <div class="cell-divider"></div>
+          <div class="cell-label">Pragas</div>
+          <div class="cell-sub">MIP por estádio</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="cell" data-row="2" data-col="0">
+      <a href="https://afonsoraudinei.github.io/Hormonios-vegetais/" target="_blank" rel="noopener">
+        <!-- <div class="cell-bg"><img src="images/hormonios.jpg" alt=""></div> -->
+        <div class="cell-corner">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M3 9L9 3M9 3H4M9 3V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="cell-media"><div class="cell-emoji">⚗️</div></div>
+        <div class="cell-text">
+          <div class="cell-divider"></div>
+          <div class="cell-label">Hormônios</div>
+          <div class="cell-sub">Reguladores · Soja</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="cell" data-row="2" data-col="1">
+      <a href="https://afonsoraudinei.github.io/Doencassoja/" target="_blank" rel="noopener">
+        <!-- <div class="cell-bg"><img src="images/doencas.jpg" alt=""></div> -->
+        <div class="cell-corner">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M3 9L9 3M9 3H4M9 3V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="cell-media"><div class="cell-emoji">🔬</div></div>
+        <div class="cell-text">
+          <div class="cell-divider"></div>
+          <div class="cell-label">Doenças</div>
+          <div class="cell-sub">Fitopatologia Soja</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="cell" data-row="2" data-col="2">
+      <a href="https://afonsoraudinei.github.io/Jornadaprofissional/" target="_blank" rel="noopener">
+        <!-- <div class="cell-bg"><img src="images/curriculo.jpg" alt=""></div> -->
+        <div class="cell-corner">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M3 9L9 3M9 3H4M9 3V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="cell-media"><div class="cell-emoji">💼</div></div>
+        <div class="cell-text">
+          <div class="cell-divider"></div>
+          <div class="cell-label">Currículo</div>
+          <div class="cell-sub">Jornada profissional</div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<!-- CONTATO -->
+<div class="contact-row">
+  <a class="contact-btn" href="mailto:Raudyneyb@icloud.com">
+    <svg width="15" height="15" viewBox="0 0 20 20" fill="none">
+      <rect x="2" y="4" width="16" height="12" rx="2" stroke="#1428A0" stroke-width="1.5"/>
+      <path d="M2 7l8 5 8-5" stroke="#1428A0" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    E-mail
+  </a>
+  <a class="contact-btn" href="https://wa.me/5563984376572" target="_blank" rel="noopener">
+    <svg width="15" height="15" viewBox="0 0 20 20" fill="none">
+      <path d="M10 2C5.58 2 2 5.58 2 10c0 1.54.42 2.99 1.15 4.22L2 18l3.94-1.13A7.97 7.97 0 0010 18c4.42 0 8-3.58 8-8s-3.58-8-8-8z" stroke="#1428A0" stroke-width="1.4"/>
+      <path d="M7.5 8.5c.5 1 1.5 2.5 3 3 .3-.3.7-.7.9-.8.2-.1.5 0 .7.1l1.4.7c.2.1.3.4.2.6-.4 1-1.5 1.5-2.5 1.1-2.2-.8-4-3-4.3-5.2-.1-.8.5-1.6 1.3-1.6.2 0 .4.1.5.2l.8 1.1c.1.2.1.5 0 .7-.1.1-.3.3-.5.4a.4.4 0 00-.5.7z" fill="#1428A0"/>
+    </svg>
+    WhatsApp
+  </a>
+  <a class="contact-btn" href="https://www.linkedin.com/in/raudinei?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener">
+    <svg width="15" height="15" viewBox="0 0 20 20" fill="none">
+      <rect x="2" y="2" width="16" height="16" rx="3" stroke="#1428A0" stroke-width="1.4"/>
+      <path d="M6 8.5v5M6 6v.5" stroke="#1428A0" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M9.5 13.5V11c0-1.4 1.5-1.5 2 0v2.5M9.5 8.5v5" stroke="#1428A0" stroke-width="1.4" stroke-linecap="round"/>
+    </svg>
+    LinkedIn
+  </a>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-brand">
+    <span class="footer-line"></span>
+    SoloForte · Agtech
+    <span class="footer-line right"></span>
+  </div>
+  <div class="footer-copy">Engenharia Agronômica com tecnologia · © 2025</div>
+</div>
+
+<script>
+  const HOVER = 6;
+  const REST  = 3;
+  const grid  = document.getElementById('grid');
+  const cells = grid.querySelectorAll('.cell');
+
+  function expand(row, col) {
+    grid.style.gridTemplateColumns = [0,1,2].map(c => c===col ? `${HOVER}fr` : `${REST}fr`).join(' ');
+    grid.style.gridTemplateRows    = [0,1,2].map(r => r===row ? `${HOVER}fr` : `${REST}fr`).join(' ');
+  }
+
+  function reset() {
+    grid.style.gridTemplateColumns = '4fr 4fr 4fr';
+    grid.style.gridTemplateRows    = '4fr 4fr 4fr';
+  }
+
+  cells.forEach(cell => {
+    const r = +cell.dataset.row;
+    const c = +cell.dataset.col;
+    cell.addEventListener('mouseenter', () => {
+      expand(r,c);
+      const v = cell.querySelector('video');
+      v && v.play();
+    });
+    cell.addEventListener('mouseleave', () => {
+      reset();
+      const v = cell.querySelector('video');
+      v && v.pause();
+    });
+    cell.addEventListener('touchstart', () => expand(r,c), {passive:true});
+    cell.addEventListener('touchend',   reset, {passive:true});
+  });
+</script>
+</body>
+</html>
