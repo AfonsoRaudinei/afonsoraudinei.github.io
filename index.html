@@ -182,16 +182,15 @@
   .cell a{display:flex;flex-direction:column;width:100%;height:100%;text-decoration:none;color:inherit;padding:14px;position:relative;z-index:2}
   .cell-media{flex:1;display:flex;align-items:center;justify-content:center}
   .cell-icon{
-    width:62px;height:62px;border-radius:20px;
+    width:100%;height:100%;border-radius:0;
     display:flex;align-items:center;justify-content:center;font-size:28px;
-    box-shadow: 0 12px 18px rgba(0,0,0,0.10), inset 0 1px 1px rgba(255,255,255,0.7), inset 0 -1px 2px rgba(0,0,0,0.12);
+    box-shadow: none;
     transition: transform 0.45s cubic-bezier(0.22,1,0.36,1);
-    background: transparent !important;
-    box-shadow: none !important;
+    background: transparent;
   }
   .cell:hover .cell-icon{transform:scale(1.12) translateY(-2px) rotate(-2deg)}
   .cell-emoji{filter:drop-shadow(0 4px 6px rgba(0,0,0,0.15));line-height:1}
-  .cell-icon img{width:100%;height:100%;object-fit:contain;border-radius:0;display:block;transition:inherit}
+  .cell-icon img{width:100%;height:100%;object-fit:cover;border-radius:0;display:block;transition:inherit}
 
   .cell-text{margin-top:10px;text-align:center}
   .cell-label{font-size:0.82em;font-weight:800;letter-spacing:-0.2px;color:#1E2A44;line-height:1.2}
