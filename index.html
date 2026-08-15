@@ -197,14 +197,7 @@
   .cell-label{font-size:0.82em;font-weight:800;letter-spacing:-0.2px;color:#1E2A44;line-height:1.2}
   .cell-sub{font-size:0.68em;font-weight:500;color:#7A8AA3;margin-top:3px}
 
-  .cell-fold{
-    position:absolute;right:-1px;bottom:-1px;width:28px;height:28px;
-    background: linear-gradient(135deg,#E3E8EF,#C8D1DF);
-    border-radius:14px 0 24px 0;
-    box-shadow:-3px -3px 8px rgba(0,0,0,0.08),inset 1px 1px 1px rgba(255,255,255,0.8);
-    transition:all 0.35s cubic-bezier(0.22,1,0.36,1);z-index:3
-  }
-  .cell:hover .cell-fold{width:40px;height:40px;border-radius:18px 0 26px 0}
+  .cell-fold{display:none}
 
   /* Dock iOS */
   .dock{
